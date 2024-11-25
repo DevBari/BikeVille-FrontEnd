@@ -1,0 +1,24 @@
+.header,
+.home,
+.footer {
+	position: relative;
+}
+
+.header h1,
+.home h1,
+.footer h1 {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.header,
+.home {
+	height: 100vh;
+}
+
+.hidden {
+	display: none;
+}
