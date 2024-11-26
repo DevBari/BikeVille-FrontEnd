@@ -1,42 +1,110 @@
-<!-- ========== 3bee menu ========== -->
+<!-- ========== Navbar menu ========== -->
+<link rel="preload" as="image" href="/assets/images/logo_BikeVille.png" type="image/png" />
 
 <div class="navbar sticky">
 
-  <nav class="navigation">
+  <nav class="navigation" aria-label="BikeVille" data-orientation="horizontal" dir="ltr">
 
-    <div class="logo-container">
+    <div class="menu-container">
 
-      <a href="/it/business/" aria-label="BikeVille">
+      <!-- ========== Logo ========== -->
+  
+      <a href="" aria-label="BikeVille" class="logo-link">
+    
+        <div class="logo-container">
 
-        <div class="logo">
-
-          <img src="/assets/images/logo_BikeVille.png" alt="BikeVille" class="logo-img">
+          <img decoding="async" data-nimg="fill"  src="/assets/images/logo_BikeVille.png" alt="BikeVille Logo" class="logo-img">
 
         </div>
 
       </a>
+    
+      <div class="menu-button-container-sx">
+
+        <ul data-orientation="horizontal" class="nav__items" dir="ltr">
+
+          <li class="nav__item">
+
+            <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+
+              Home
+
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12">
+                
+                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
+              
+              </svg>
+
+            </button>
+
+          </li>
+
+          <li class="nav__item">
+
+            <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+
+              Prodotti
+
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12">
+                
+                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
+              
+              </svg>
+
+            </button>
+
+          </li>
+
+          <li class="nav__item">
+
+            <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+
+              Contatti
+
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12">
+                
+                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
+              
+              </svg>
+
+            </button>
+
+          </li>
+
+        </ul>
+
+      </div>
 
     </div>
-    
-    <div class="menu-container">
 
-      <ul class="nav__items">
+    <div class="menu-button-container-dx">
 
-        <li class="nav__item">
+      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}"> 
 
-          <button class="nav__link" aria-label="Espandi">
+        <button class="button-dx" type="button" role="combobox" aria-controls="" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder>
+          
+          <div [ngStyle]="{ 'display': 'flex', 'align-items': 'center', 'gap': '0.25rem', 'font-size': '1rem', 'font-weight': 'bold', 'color': '#ffffff'}">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="icon iconify--tabler" viewBox="0 0 24 24" width="24px" height="24px" [ngStyle]="{'color': 'white'}" role="img" aria-hidden="true">
+              
+              <g transform="translate(0, 0)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                
+                <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8"/>
+                <path d="M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"/>
+              
+              </g>
 
-            Prodotti
-
-            <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-icon" viewBox="0 0 12 12" width="1em" height="1em">
-              <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
             </svg>
 
-          </button>
+            IT
 
-        </li>
+          </div>
 
-      </ul>
+        </button>
+
+      </div> 
+
+      <a aria-label="contattaci" class="button-contattaci" href="" [ngStyle]="{ 'font-weight': 'bold'}">Contattaci</a>
 
     </div>
 

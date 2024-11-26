@@ -1,152 +1,411 @@
+:host {
+  font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
 /* Navbar con trasparenza e sfocatura */
 .navbar {
-	padding-top: .5em;
-	padding-bottom: .5em;
-	background-color: rgba(0, 0, 0, 0.5); /* Trasparenza con opacità 50% */
-	backdrop-filter: blur(10px); /* Aggiungi effetto sfocato */
-	box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
-	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background: rgba(6, 33, 243, 0.695);
+  background: radial-gradient(
+    circle,
+    rgba(20, 41, 198, 0.213) 40%,
+    rgba(47, 138, 249, 0.544) 93%
+  );
+  box-shadow: 0 14px 14px -14px rgba(8, 55, 165, 0.568); /* Box shadow */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: fixed;
+  top: 0;
+  z-index: 12345;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(38, 60, 126, 0.423); /* Black overlay with opacity */
+  z-index: -1;
+  -webkit-backdrop-filter: blur(5px); /* Safari support */
+  backdrop-filter: blur(5px); /* Optional blur effect */
+}
+
+.sticky {
+  position: sticky; /* Mantiene l'elemento fisso durante lo scroll */
+  top: 0;
+  z-index: 12345;
+}
+
+/* Navbar Flex */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.navigation.hidden {
+  display: none; /* Nasconde la navigazione sui dispositivi con larghezza inferiore a XL */
+}
+
+@media (min-width: 1280px) {
+  /* Media query per schermi XL e superiori */
+  .navigation.xl-flex {
+    display: flex; /* Mostra la navigazione su schermi XL */
   }
-  
-  .sticky {
-	position: sticky;
-	top: 0;
-	z-index: 12345;
-  }
-  
-  /* Navbar Flex */
-  .navigation {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	position: relative;
-  }
-  
-  /* Logo */
+}
+
+.navigation.sticky {
+  position: sticky; /* Fissa la navigazione durante lo scroll */
+  top: 0; /* Posiziona la barra in alto */
+  left: 0; /* Posiziona la barra a sinistra */
+  z-index: 12345; /* Imposta un livello di sovrapposizione alto */
+  width: 100%; /* Imposta la larghezza al 100% */
+}
+
+.navigation::before {
+  content: ""; /* Crea un pseudo-elemento */
+  position: absolute; /* Posiziona il pseudo-elemento assolutamente rispetto al contenitore */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Posiziona il pseudo-elemento dietro il contenuto */
+  backdrop-filter: blur(10px); /* Aggiunge un effetto di sfocatura */
+  -webkit-backdrop-filter: blur(10px); /* Prefisso per Safari */
+}
+
+.navigation.p-4 {
+  padding: 1rem; /* Aggiunge padding di 1rem */
+}
+
+/* Logo */
+.logo-container {
+  display: flex; /* Imposta il contenitore come flexbox */
+  justify-content: flex-start; /* Allinea gli elementi all'inizio lungo l'asse principale */
+  align-items: center; /* Allinea gli elementi al centro lungo l'asse trasversale */
+  flex-shrink: 0; /* Previene il restringimento dell'elemento */
+  width: 100%; /* Imposta la larghezza al 100% del contenitore */
+  height: 100%;
+  transition: all 0.3s ease-in-out; /* Aggiunge una transizione per eventuali cambiamenti */
+  margin-right: 1rem; /* Aggiunge un margine destro di 1rem */
+  padding-top: 0.3125rem; /* Aggiunge padding sopra di 0.3125rem */
+  padding-bottom: 0.3125rem; /* Aggiunge padding sotto di 0.3125rem */
+  position: relative; /* Imposta la posizione come relativa */
+}
+
+@media (min-width: 1280px) {
+  /* Stile per schermi XL e superiori */
   .logo-container {
-	display: flex;
-	align-items: center;
+    width: fit-content; /* Imposta la larghezza in base al contenuto per schermi XL */
   }
-  
-  .logo {
-	display: inline-block;
-	margin-right: 1rem;
-	padding-top: .3125rem;
-	padding-bottom: .3125rem;
+}
+
+@media (min-width: 1024px) {
+  /* Media query per schermi LG e superiori */
+  .logo-container {
+    width: 110px; /* Larghezza specifica della immagine */
+    height: 75.97px; /* Altezza specifica della immagine */
   }
-  
-  .logo-img {
-	width: 10%;
-	height: auto;
-  }
-  
-  /* Menu e icona dropdown */
+}
+
+/* a */
+.logo-link {
+  display: inline-block; /* Garantisce che l'ancora rispetti le dimensioni del contenitore */
+  height: 75.97px; /* Altezza specifica della immagine */
+  width: 110px; /* Larghezza specifica della immagine */
+  position: relative; /* Imposta la posizione per eventuali contenuti interni */
+  text-decoration: none; /* Rimuove sottolineatura del link */
+}
+
+.logo-img {
+  width: 110px;
+  height: auto;
+  position: absolute;
+  top: 0; /* Allinea la immagine alla parte superiore del contenitore */
+  left: 0; /* Allinea la immagine alla parte sinistra del contenitore */
+  object-fit: contain; /* Mantiene le proporzioni dell'immagine */
+  color: transparent; /* Colore trasparente (per ottimizzazione) */
+}
+
+/* Menu e icona dropdown */
+.menu-container {
+  display: flex; /* Imposta il layout flex */
+  justify-content: flex-start; /* Allinea gli elementi all'inizio lungo l'asse principale */
+  align-items: center; /* Allinea gli elementi al centro lungo l'asse trasversale */
+  flex-shrink: 0; /* Impedisce che l'elemento si restringa */
+  width: 100%; /* Imposta la larghezza al 100% del contenitore */
+}
+
+@media (min-width: 1280px) {
+  /* Media query per schermi XL e superiori */
   .menu-container {
-	display: flex;
-	justify-content: flex-end;
+    width: fit-content; /* Adatta la larghezza al contenuto per schermi XL */
   }
-  
-  .nav__items {
-	display: flex;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-  }
-  
-  .nav__item {
-	margin-left: 20px;
-  }
-  
-  .nav__link {
-	color: var(--shades);
-	text-decoration: none;
-	padding: 10px 15px;
-	display: flex;
-	align-items: center;
-	font-size: 0.99rem;
-  }
-  
-  .nav__link:hover {
-	color: var(--secondary);
-  }
-  
+}
+
+.nav__items {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__items a:hover {
+  color: rgba(255, 255, 255, 0.8); /* Lighter hover effect */
+  transition: color 0.3s ease;
+}
+
+.nav__item {
+  margin-left: 20px;
+}
+
+/* Bottoni Menu */
+
+.nav__link {
+  color: var(--shades); /* Colore variabile per il testo */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  padding: 10px 15px; /* Spaziatura interna */
+  display: flex; /* Allinea gli elementi come flexbox */
+  align-items: center; /* Centra verticalmente il contenuto */
+  font-size: 0.99rem; /* Dimensione del testo */
+  border: none; /* Rimuove bordi di default */
+  background: none; /* Rimuove lo sfondo di default */
+  cursor: pointer; /* Imposta il cursore a mano */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transizione fluida */
+  font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.nav__button:hover {
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.2
+  ); /* Sfondo grigio chiaro al passaggio */
+}
+
+.nav__button:focus {
+  outline: none; /* Rimuove il contorno di default */
+  background-color: rgba(128, 128, 128, 0.3); /* Sfondo più scuro */
+}
+
+.nav__button:disabled {
+  pointer-events: none; /* Disabilita interazioni */
+  opacity: 0.5; /* Riduce l'opacità */
+}
+
+.nav__icon {
+  margin-left: 5px; /* Spaziatura tra testo e icona */
+  width: 16px; /* Larghezza dell'icona */
+  height: 16px; /* Altezza dell'icona */
+  transition: transform 0.3s ease; /* Transizione fluida per la rotazione */
+}
+
+.nav__button[data-state="open"] .nav__icon {
+  transform: rotate(180deg); /* Ruota l'icona quando aperta */
+}
+
+/* Bottoni menu dx */
+.button-dx {
+  display: flex; /* Imposta il layout flexbox */
+  align-items: center; /* Centra verticalmente il contenuto */
+  justify-content: space-between; /* Spazia gli elementi ai lati */
+  font-size: 0.875rem; /* Imposta il testo a una dimensione piccola (14px) */
+  margin-left: 0.5rem; /* Margine a sinistra */
+  margin-right: 1rem; /* Margine a destra */
+  height: 100%; /* Altezza al 100% del contenitore */
+  width: fit-content; /* Larghezza adattata al contenuto */
+  cursor: pointer; /* Cambia il cursore in pointer */
+  border-radius: 1.25rem; /* Arrotonda gli angoli (20px) */
+  border: 1px solid #e0e0e0; /* Colore del bordo */
+  background-color: transparent; /* Sfondo trasparente */
+  padding: 0.625rem; /* Spaziatura interna (10px) */
+  transition: border-color 0.3s ease; /* Transizione per il bordo */
+}
+
+.button-dx:hover {
+  border-color: #ff7a00; /* Cambia il colore del bordo al passaggio */
+}
+
+.button-dx:focus {
+  outline: none; /* Rimuove il contorno di default */
+  box-shadow: 0 0 0 2px #ff7a00, 0 0 0 4px #ffffff; /* Evidenziazione al focus */
+}
+
+.button-dx:disabled {
+  cursor: not-allowed; /* Cambia il cursore in "non consentito" */
+  opacity: 0.5; /* Riduce l'opacità */
+}
+
+.button-dx::placeholder {
+  color: var(--muted-foreground, #6c757d); /* Colore del testo placeholder */
+}
+
+/* Bottoni menu dx - contattaci */
+
+/* Button container styles */
+.button-contattaci {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  background-color: #ffb000;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.button-contattaci:hover {
+  background-color: #ffb000; /* Hover state */
+}
+
+.button-contattaci:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* icona dropdown */
+
+.dropdown-icon {
+  margin-left: 5px; /* Spazio a sinistra dell'icona */
+  transition: transform 0.3s ease-in-out, color 0.2s ease; /* Aggiunge una transizione fluida per rotazione e colore */
+  display: none; /* Nasconde l'icona per impostazione predefinita */
+  height: 1rem; /* Altezza equivalente a 4 unità (h-4) */
+  width: 1rem; /* Larghezza equivalente a 4 unità (w-4) */
+  flex-shrink: 0; /* Impedisce il ridimensionamento in contenitori flessibili */
+  color: white; /* Colore bianco per l'icona */
+}
+
+@media (min-width: 1536px) {
+  /* Per schermi 2XL e superiori */
   .dropdown-icon {
-	margin-left: 5px;
-	transition: transform 0.3s ease-in-out;
+    display: block; /* Mostra l'icona solo su schermi 2XL e superiori */
   }
-  
-  /* Media Queries per dispositivi mobili */
-  @media (min-width: 800px) {
-	.navbar {
-	  flex-direction: row;
-	}
+}
+
+.group[data-state="open"] .dropdown-icon {
+  transform: rotate(
+    180deg
+  ); /* Ruota l'icona quando lo stato del gruppo è "open" */
+}
+
+/* Media Queries per dispositivi mobili */
+@media (min-width: 800px) {
+  .navbar {
+    flex-direction: row;
   }
-  
-  @media screen and (max-width: 799px) {
-	.navbar {
-	  position: fixed;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background-color: rgba(0, 0, 0, 0.5); /* Trasparenza con opacità 50% */
-	  backdrop-filter: blur(10px); /* Effetto sfocato */
-	  opacity: 0;
-	  transition: all 0.2s ease;
-	  box-shadow: none; /* Rimuovi la shadow per mobile */
-	}
-  
-	.nav__items {
-	  position: absolute;
-	  top: 50%;
-	  transform: translateY(-50%);
-	  width: 100%;
-	  padding-left: 0;
-	}
-  
-	.nav__item {
-	  display: block;
-	  width: 100%;
-	  text-align: right;
-	  margin-bottom: 10px;
-	}
-  
-	.nav__link {
-	  opacity: 0;
-	  transform: translateY(-20px);
-	  font-size: 24px;
-	  font-weight: 600;
-	  transition: opacity 0.2s ease, transform 0.2s ease;
-	}
-  
-	.nav__link:hover {
-	  color: var(--secondary);
-	}
-  
-	.navbar:checked + .nav__open {
-	  opacity: 1;
-	  transform: rotate(45deg);
-	}
-  
-	.nav__open {
-	  position: absolute;
-	  top: 16px;
-	  right: 10px;
-	  width: 48px;
-	  height: 48px;
-	  cursor: pointer;
-	  border-radius: 50%;
-	  display: flex;
-	  justify-content: center;
-	  align-items: center;
-	}
-  
-	.nav__open i {
-	  width: 20px;
-	  height: 2px;
-	  background-color: var(--secondary);
-	  border-radius: 2px;
-	}
+}
+
+@media screen and (max-width: 799px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Trasparenza con opacità 50% */
+    backdrop-filter: blur(10px); /* Effetto sfocato */
+    opacity: 0;
+    transition: all 0.2s ease;
+    box-shadow: none; /* Rimuovi la shadow per mobile */
   }
-  
+
+  .nav__items {
+    position: absolute; /* Posiziona la lista in modo assoluto */
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Regola il posizionamento verticale */
+    width: 100%; /* Larghezza completa */
+    padding-left: 0; /* Rimuove la spaziatura predefinita a sinistra */
+    flex: 1; /* Definisce la flessibilità dell'elemento */
+    list-style: none; /* Rimuove i bullet point o numeri */
+    display: flex; /* Imposta il layout flexbox */
+    align-items: center; /* Allinea gli elementi al centro lungo l'asse trasversale */
+    gap: 0.25rem; /* Aggiunge uno spazio uniforme tra gli elementi */
+  }
+
+  .group {
+    display: inline-flex; /* Consente l'interazione con un gruppo di elementi flessibili */
+  }
+
+  .nav__item {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  .nav__link {
+    display: inline-flex; /* Imposta un layout flessibile inline */
+    width: max-content; /* Adatta la larghezza al contenuto */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+    justify-content: center; /* Allinea orizzontalmente gli elementi */
+    border-radius: 0.375rem; /* Arrotonda gli angoli */
+    transition: background-color 0.2s; /* Aggiunge una transizione per i colori */
+    background-color: transparent; /* Sfondo iniziale */
+    color: white; /* Testo bianco */
+    padding: 0.5rem 0.625rem; /* Aggiunge padding */
+  }
+
+  .nav__link:hover {
+    background-color: rgba(
+      209,
+      213,
+      219,
+      0.5
+    ); /* Sfondo grigio con opacità al passaggio del mouse */
+  }
+
+  .navbar:checked + .nav__open {
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+
+  .nav__open {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav__open i {
+    width: 20px;
+    height: 2px;
+    background-color: var(--secondary);
+    border-radius: 2px;
+  }
+}
+
+.menu-button-container-sx {
+  position: relative;
+}
+
+.menu-button-container-dx {
+  position: relative; /* Posizionamento relativo */
+  display: flex; /* Imposta il layout flexbox */
+  align-items: center; /* Centra verticalmente il contenuto */
+  justify-content: flex-end; /* Allinea il contenuto all'estremità destra */
+  width: 50%; /* Imposta la larghezza al 50% */
+}

@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+	font-family: 'inter-bold';
+	src: url('assets/fonts/Inter-Bold.ttf') format('ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'inter-regular';
+	src: url('assets/fonts/Inter-Regular.ttf') format('tff');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'contour-generator';
+	src: url('assets/fonts/Contour\ Generator.otf') format('off');
+	font-weight: bold;
+	font-style: normal;
+}
+
 :root {
 
 	--primary: rgba(37, 37, 37, 1.0);
