@@ -1,12 +1,16 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink, NavigationEnd } from '@angular/router';
+import { ContactComponent } from '@components/contact/contact.component';
+import { ProductComponent } from '@components/product/product.component';
+import { filter } from 'rxjs/operators';
 
 @Component({
 
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, NgStyle, FormsModule],
+  imports: [CommonModule,RouterLink, NgStyle, FormsModule, ContactComponent, ProductComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 
@@ -19,11 +23,51 @@ export class NavbarComponent {
 
   // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
   
-  constructor() {
+  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef) {
 
     window.addEventListener('resize', () => {
+
       this.isXlScreen = window.innerWidth >= 1280;
+
     });
+    
+  }
+
+  @Output() routeChanged = new EventEmitter<string>();
+
+  ngOnInit() {
+
+    // Sottoscrizione agli eventi del router
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+
+        const currentRoute = event.urlAfterRedirects.replace('/', ''); // Estrai il nome della route
+        this.routeChanged.emit(currentRoute); // Emetti la route come stringa
+
+      });
+
+  }
+
+  isDropdownOpen: { [key: string]: boolean } = {
+
+    home: false,
+    product: false,
+    contact: false
+
+  };
+
+  toggleDropdown(choice: string) {
+
+    this.isDropdownOpen[choice] = !this.isDropdownOpen[choice];
+
+  }
+  
+  isLockOpen = false;
+
+  toggleLock(state: boolean) {
+
+    this.isLockOpen = state; 
     
   }
 

@@ -1,43 +1,151 @@
-/* You can add global styles to this file, and also import other style files */
+/* Font Styles */
 @font-face {
-	font-family: 'inter-bold';
-	src: url('assets/fonts/Inter-Bold.ttf') format('ttf');
-	font-weight: normal;
-	font-style: normal;
+
+  font-family: "inter-bold";
+  src: url("assets/fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+
 }
 
 @font-face {
-	font-family: 'inter-regular';
-	src: url('assets/fonts/Inter-Regular.ttf') format('tff');
-	font-weight: bold;
-	font-style: normal;
+
+  font-family: "inter-regular";
+  src: url("assets/fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+
 }
 
 @font-face {
-	font-family: 'contour-generator';
-	src: url('assets/fonts/Contour\ Generator.otf') format('off');
-	font-weight: bold;
-	font-style: normal;
+
+  font-family: "contour-generator";
+  src: url("assets/fonts/Contour\ Generator.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+
 }
 
+/* Color Styles */
 :root {
 
-	--primary: rgba(37, 37, 37, 1.0);
-	--secondary: rgba(252, 41, 74, 1.0);
-	--shades: rgba(238, 238, 238, 1.0);
+  --background: #f5f5f5;
+  --primary: #004ebd;
+  --secondary: #ffb000;
+  --shades: rgba(238, 238, 238, 1);
+  --card: #ffffff;
+  --border: #e0e0e0;
+  --table-header: #f0f0f0;
+  --primary-text: #000000;
+  --secondary-text: #666666;
 
 }
 
-* {
-
-	scroll-behavior: smooth;
-
+/* Dark Theme */
+[data-theme="dark"] {
+  --background: #212121;
+  --primary: #1a73e8;
+  --secondary: #fbbc04;
+  --shades: rgba(40, 40, 40, 1);
+  --card: #181818;
+  --border: #212121;
+  --table-header: #212121;
+  --primary-text: #f6f6f6;
+  --secondary-text: #9ca3af;
 }
 
+/* General Scrollbar Setup */
 body {
 
-	font-family: 'Source Code Pro', monospace;
-	line-height: 1.6;
-	margin: 0;
+  overflow-y: scroll;
+  height: 100%;
+  margin: 0;
+  background-color: var(--background);
+  color: var(--primary-text);
+
+}
+
+/* Scrollbar container */
+body::-webkit-scrollbar {
+
+  width: 15px; /* Dimensione della scrollbar */
+
+}
+
+/* Scrollbar track */
+body::-webkit-scrollbar-track {
+
+  background: rgb(175, 212, 255);
+  background: linear-gradient(
+
+    180deg,
+    rgba(175, 212, 255, 0.9809173669467787) 35%,
+    rgba(228, 216, 175, 0.9641106442577031) 100%
+
+  );
+
+  border-radius: 8px; /* Angoli smussati */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2); /* Effetto leggero */
+
+}
+
+/* Scrollbar thumb */
+body::-webkit-scrollbar-thumb {
+
+  background: linear-gradient(
+
+    to right,
+    #ffb000,
+    #ff9500
+
+  ); /* Gradiente */
+
+  border-radius: 8px; /* Angoli smussati */
+  border: 3px solid #e6e6e6; /* Spazio tra thumb e track */
+  box-shadow: 0 2px 5px rgba(120, 87, 21, 0.3); /* Effetto tridimensionale */
+  -webkit-transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Safari/Chrome */
+  -moz-transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;   /* Firefox */
+  -o-transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;    /* Opera */
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;       /* Standard */
+
+}
+
+/* Hover effect */
+body::-webkit-scrollbar-thumb:hover {
+
+  background: linear-gradient(
+
+    to right,
+    #ff9500,
+    #ffb000
+
+  ); /* Inversione del gradiente */
+
+  transform: scale(1.1); /* Leggera espansione */
+  box-shadow: 0 4px 8px rgba(131, 75, 1, 0.5); /* Glow più intenso */
+  cursor: grab;
+
+}
+
+/* Active (dragging) effect */
+body::-webkit-scrollbar-thumb:active {
+
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(131, 75, 1, 0.5); /* Effetto più marcato */
+  cursor: grabbing;
+
+}
+
+/* Track Decorations */
+body::-webkit-scrollbar-track-piece {
+
+  background: rgb(190, 220, 255);
+  background: linear-gradient(
+
+    180deg,
+    rgba(190, 220, 255, 0.9809173669467787) 15%,
+    rgba(228, 216, 175, 0.9641106442577031) 85%
+
+  );
 
 }

@@ -1,0 +1,24 @@
+.header,
+.contact,
+.footer {
+	position: relative;
+}
+
+.header h1,
+.contact h1,
+.footer h1 {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.header,
+.contact {
+	height: 100vh;
+}
+
+.hidden {
+	display: none;
+}

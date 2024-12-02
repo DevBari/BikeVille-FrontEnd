@@ -1,61 +1,158 @@
 :host {
+  
   font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  "Segoe UI Symbol", "Noto Color Emoji";
+
 }
 
 a {
+
   text-decoration: none;
   transition: color 0.3s ease;
+  color: #F5F5F5;
+
+}
+
+div {
+
+  display: block;
+  unicode-bidi: isolate;
+
+}
+
+menu, ol, ul {
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+ul {
+
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+
+}
+
+button, input, optgroup, select, textarea {
+
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+
+}
+
+.ease-in-out {
+
+  animation-timing-function: cubic-bezier(.4,0,.2,1);
+
+}
+.duration-300 {
+
+  animation-duration: .3s;
+
+}
+.ease-in-out {
+
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+
+}
+.duration-300 {
+
+  transition-duration: .3s;
+
+}
+
+.transition-all {
+
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: .15s;
+
 }
 
 /* Navbar con trasparenza e sfocatura */
 .navbar {
+
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  background: rgba(6, 33, 243, 0.695);
-  background: radial-gradient(
-    circle,
-    rgba(20, 41, 198, 0.213) 40%,
-    rgba(47, 138, 249, 0.544) 93%
-  );
-  box-shadow: 0 14px 14px -14px rgba(8, 55, 165, 0.568); /* Box shadow */
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  background: rgb(0,78,189);
+  background: radial-gradient(circle, rgba(0,78,189,0.6643032212885154) 5%, rgba(0,115,189,0.8687850140056023) 65%);
+  box-shadow: 0 14px 14px -14px rgba(7, 49, 147, 0.667); /* Box shadow */
+  -webkit-transition: background-color 0.2s ease, box-shadow 0.3s ease; /* Safari/Chrome */
+  -moz-transition: background-color 0.2s ease, box-shadow 0.3s ease;   /* Firefox */
+  -o-transition: background-color 0.2s ease, box-shadow 0.3s ease;    /* Opera */
+  transition: background-color 0.2s ease, box-shadow 0.3s ease;       /* Standard */
+
   position: fixed;
+
   top: 0;
-  z-index: 12345;
+  right: 0;
+  left: 0;
+
+  z-index: 10;
   width: 100%;
   transition: all 0.3s ease-in-out;
+  flex: none;
+  opacity: 1;
+
 }
 
 .navbar::before {
+
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(38, 60, 126, 0.423); /* Black overlay with opacity */
   z-index: -1;
-  -webkit-backdrop-filter: blur(5px); /* Safari support */
-  backdrop-filter: blur(5px); /* Optional blur effect */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  backdrop-filter: blur(10px); /* Optional blur effect */
+  opacity: 1;
+
 }
 
 .sticky {
+
   position: sticky; /* Mantiene l'elemento fisso durante lo scroll */
   top: 0;
   z-index: 12345;
+  opacity: 1;
+
 }
 
 /* Navbar Flex */
 .navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; /* Default display */
+  justify-content: space-between; /* Spaziatura tra gli elementi */
+  align-items: center; /* Allineamento verticale */
   width: auto;
+  height: 40px;
   position: relative;
-  transition: all 0.3s ease-in-out;
-  margin-left: 15px;
-  margin-right: 15px;
+  transition: all 0.3s ease-in-out; /* Transizione fluida */
+  margin-left: 20px;
+  margin-right: 30px;
+  padding: 1rem; /* Padding equivalente a p-4 */
+  opacity: 1;
+  backdrop-filter: blur(0px); /* Effetto sfocato */
+  -webkit-backdrop-filter: blur(0px); /* Prefisso per Safari */
+
+
 }
 
 .navigation.hidden {
@@ -85,12 +182,13 @@ a {
   width: 100%;
   height: 100%;
   z-index: -1; /* Posiziona il pseudo-elemento dietro il contenuto */
-  backdrop-filter: blur(10px); /* Aggiunge un effetto di sfocatura */
-  -webkit-backdrop-filter: blur(10px); /* Prefisso per Safari */
+  backdrop-filter: blur(20px); /* Aggiunge un effetto di sfocatura */
+  -webkit-backdrop-filter: blur(20px); /* Prefisso per Safari */
+  opacity: 1;
 }
 
-.navigation.p-4 {
-  padding: 1rem; /* Aggiunge padding di 1rem */
+.navigation.transition-all {
+  transition: all 0.3s ease-in-out; /* Transizione animata */
 }
 
 /* Logo */
@@ -152,12 +250,15 @@ a {
 }
 
 @media (min-width: 1280px) {
+
   /* Media query per schermi XL e superiori */
   .menu-container {
     width: fit-content; /* Adatta la larghezza al contenuto per schermi XL */
   }
+
 }
 
+/* Bottoni Menu */
 .nav__items {
   display: flex;
   list-style: none;
@@ -177,6 +278,7 @@ a {
 /* Bottoni Menu */
 
 .nav__link {
+  
   color: var(--shades); /* Colore variabile per il testo */
   text-decoration: none; /* Rimuove la sottolineatura */
   padding: 10px 15px; /* Spaziatura interna */
@@ -185,19 +287,20 @@ a {
   font-size: 0.99rem; /* Dimensione del testo */
   border: none; /* Rimuove bordi di default */
   background: none; /* Rimuove lo sfondo di default */
-  cursor: pointer; /* Imposta il cursore a mano */
+  
   transition: background-color 0.3s ease, color 0.3s ease; /* Transizione fluida */
+
+  cursor: pointer; /* Imposta il cursore a mano */
+
   font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
+
+  border-radius: 20px;
+
 }
 
 .nav__button:hover {
-  background-color: rgba(
-    128,
-    128,
-    128,
-    0.2
-  ); /* Sfondo grigio chiaro al passaggio */
+  background-color: rgba(56, 139, 216, 0.2); /* Sfondo grigio chiaro al passaggio */
 }
 
 .nav__button:focus {
@@ -221,8 +324,9 @@ a {
   transform: rotate(180deg); /* Ruota l'icona quando aperta */
 }
 
-/* Bottoni menu dx */
-.button-dx {
+/* Bottone Flag */
+
+.button-flag {
   display: flex; /* Imposta il layout flexbox */
   align-items: center; /* Centra verticalmente il contenuto */
   justify-content: space-between; /* Spazia gli elementi ai lati */
@@ -233,52 +337,164 @@ a {
   width: fit-content; /* Larghezza adattata al contenuto */
   cursor: pointer; /* Cambia il cursore in pointer */
   border-radius: 1.25rem; /* Arrotonda gli angoli (20px) */
-  border: 1px solid #e0e0e0; /* Colore del bordo */
+  border: 2px solid #F5F5F5; /* Colore del bordo */
   background-color: transparent; /* Sfondo trasparente */
   padding: 0.625rem; /* Spaziatura interna (10px) */
   transition: border-color 0.3s ease; /* Transizione per il bordo */
 }
 
-.button-dx:hover {
+.button-flag:hover {
   border-color: #ff7a00; /* Cambia il colore del bordo al passaggio */
+  box-shadow: 0 0 3px 0 #ffae0098;
 }
 
-.button-dx:focus {
+.button-flag:focus {
   outline: none; /* Rimuove il contorno di default */
-  box-shadow: 0 0 0 2px #ff7a00, 0 0 0 4px #ffffff; /* Evidenziazione al focus */
+  box-shadow: 0 0 0 2px #ff7a00, 0 0 0 4px #F5F5F5; /* Evidenziazione al focus */
 }
 
-.button-dx:disabled {
+.button-flag:disabled {
   cursor: not-allowed; /* Cambia il cursore in "non consentito" */
   opacity: 0.5; /* Riduce l'opacità */
 }
 
-.button-dx::placeholder {
+.button-flag::placeholder {
   color: var(--muted-foreground, #6c757d); /* Colore del testo placeholder */
 }
 
-/* Bottoni menu dx - contattaci */
+/* Bottoni menu dx - register */
 
-/* Button container styles */
-.button-contattaci {
-  display: flex;
+.button-register {
+  position: relative;
+
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: bold;
+  align-content: center;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  background-color: #ffb000;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  color: white;
-  transition: background-color 0.3s ease;
+  text-align: center;
+
+  padding: 10px 25px;
+
+  display: inline-flex;
+  cursor: pointer;
+
+  border-radius: 20px;
+  transition: all 0.3s;
+  border: none;
+
+  font-family: inherit;
+  font-weight: 500;
+
+  color: #ffffffe0;
+  background: var(--secondary);
+
+  height: 33px;
+
 }
 
-.button-contattaci:hover {
-  background-color: #ffb000; /* Hover state */
+.button-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffbf00;
+  margin-left: 22px;
 }
 
-.button-contattaci:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.button-register:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(19, 56, 119, 0.2);
+}
+
+.button-register::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.button-register::after {
+  background-color: #ffb000 !important;
+}
+
+.button-register:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+/* Lucchetto */
+
+.lock-container {
+  fill: none;
+  transform: translate3d(0, 0, 0);
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 30px;
+  width: 30px;
+  margin-right: 2px;
+}
+
+.lock-container .lockb {
+  fill: #ffffffe0;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  transform: rotate(0); /* Partenza chiuso */
+  transform-origin: 14px 22px;
+  transition: transform 0.2s ease;
+}
+
+.lock-container .lock {
+  stroke: #ffffffe0;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 48; /* Partenza chiuso */
+  transition: stroke-dasharray 0.2s ease;
+}
+
+.lock-container .bling {
+  stroke: #ffffffe0;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 3;
+  stroke-dashoffset: 9; /* Partenza chiuso */
+  transition: stroke-dashoffset 0.2s ease;
+}
+
+/* Stato aperto */
+.lock-open .lock-container .lockb {
+  transform: rotate(8deg); /* Si apre */
+  transform-origin: 14px 20px;
+}
+
+.lock-open .lock-container .lock {
+  stroke-dasharray: 36; /* Si apre */
+}
+
+.lock-open .lock-container .bling {
+  stroke-dashoffset: 15; /* Si apre */
+}
+
+@keyframes bling-animation {
+  50% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 12;
+  }
+  100% {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 9;
+  }
+}
+
+@keyframes locked-animation {
+  50% {
+    transform: translateY(1px);
+  }
 }
 
 /* icona dropdown */
@@ -290,7 +506,7 @@ a {
   height: 1rem; /* Altezza equivalente a 4 unità (h-4) */
   width: 1rem; /* Larghezza equivalente a 4 unità (w-4) */
   flex-shrink: 0; /* Impedisce il ridimensionamento in contenitori flessibili */
-  color: white; /* Colore bianco per l'icona */
+  color: #F5F5F5; /* Colore bianco per l'icona */
 }
 
 @media (min-width: 1536px) {
@@ -322,6 +538,7 @@ a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Trasparenza con opacità 50% */
     backdrop-filter: blur(10px); /* Effetto sfocato */
+    -webkit-backdrop-filter: blur(10px); /* Prefisso per Safari */
     opacity: 0;
     transition: all 0.2s ease;
     box-shadow: none; /* Rimuovi la shadow per mobile */
@@ -344,11 +561,17 @@ a {
     display: inline-flex; /* Consente l'interazione con un gruppo di elementi flessibili */
   }
 
+  /* Li menu item */
   .nav__item {
+
     display: block;
     width: 100%;
     text-align: right;
     margin-bottom: 10px;
+    display: list-item;
+    text-align: inherit;
+    unicode-bidi: isolate;
+
   }
 
   .nav__link {
@@ -359,7 +582,7 @@ a {
     border-radius: 0.375rem; /* Arrotonda gli angoli */
     transition: background-color 0.2s; /* Aggiunge una transizione per i colori */
     background-color: transparent; /* Sfondo iniziale */
-    color: white; /* Testo bianco */
+    color: #F5F5F5; /* Testo bianco */
     padding: 0.5rem 0.625rem; /* Aggiunge padding */
   }
 
@@ -408,4 +631,95 @@ a {
   align-items: center; /* Centra verticalmente il contenuto */
   justify-content: flex-end; /* Allinea il contenuto all'estremità destra */
   width: 50%; /* Imposta la larghezza al 50% */
+}
+
+/* Incona Flag Lingua */
+
+#icon-flag {
+  height: 30px; /* Altezza dell'icona */
+  width: 30px; /* Larghezza dell'icona */
+  position: relative;
+}
+
+/* Bottone SearchBar */
+.div-searchbar {
+  margin-right: 8px;
+}
+
+.button-searchbar {
+  width: 110px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: var(--secondary);
+  border-radius: 20px;
+  color: #ffffffe0;
+  font-weight: 600;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition-duration: .2s;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  padding: 10px;
+  transition-duration: .5s;
+}
+
+.icon-searchbar {
+  height: 30px;
+  width: 30px;
+  transition-duration: 1.5s;
+}
+
+.bell path {
+  fill: rgb(0, 78, 189);
+}
+
+.button-searchbar:hover {
+  background-color: #ffbf00;
+  transition-duration: .5s;
+}
+
+.button-searchbar:active {
+  transform: scale(0.97);
+  transition-duration: .2s;
+}
+
+.button-searchbar:hover .icon-searchbar {
+  transform: rotate(250deg);
+  transition-duration: 1.5s;
+}
+
+/* Tooltip data-title */
+
+[data-title] {
+  position: relative;
+  cursor: pointer;
+  border-radius: 30%;
+}
+
+[data-title]:after {
+  content: attr(data-title); /* Inserisce il contenuto di data-title */
+  background-color: #00FF00;
+  color: #111;
+  font-size: 1.2em;
+  position: absolute;
+  padding: 5px 10px;
+  bottom: -2.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  box-shadow: 1px 1px 3px #222;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 40%;
+  z-index: 9999;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  visibility: visible;
+  border-radius: 30%;
 }
