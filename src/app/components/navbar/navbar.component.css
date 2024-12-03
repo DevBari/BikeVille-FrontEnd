@@ -5,14 +5,6 @@
 
 }
 
-a {
-
-  text-decoration: none;
-  transition: color 0.3s ease;
-  color: #F5F5F5;
-
-}
-
 div {
 
   display: block;
@@ -383,11 +375,14 @@ button, input, optgroup, select, textarea {
   transition: all 0.3s;
   border: none;
 
-  font-family: inherit;
+  font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+
   font-weight: 500;
 
   color: #ffffffe0;
   background: var(--secondary);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
 
   height: 33px;
 
@@ -642,8 +637,9 @@ button, input, optgroup, select, textarea {
 }
 
 /* Bottone SearchBar */
-.div-searchbar {
-  margin-right: 8px;
+.item-searchbar {
+  display: flex;
+  align-items: center;
 }
 
 .button-searchbar {
@@ -652,16 +648,20 @@ button, input, optgroup, select, textarea {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   background-color: var(--secondary);
   border-radius: 20px;
   color: #ffffffe0;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: bold;
   border: none;
   position: relative;
   cursor: pointer;
   transition-duration: .2s;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
   padding: 10px;
   transition-duration: .5s;
 }
@@ -670,6 +670,7 @@ button, input, optgroup, select, textarea {
   height: 30px;
   width: 30px;
   transition-duration: 1.5s;
+  display: flex;
 }
 
 .bell path {

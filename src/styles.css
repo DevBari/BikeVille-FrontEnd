@@ -149,3 +149,18 @@ body::-webkit-scrollbar-track-piece {
   );
 
 }
+
+a {
+
+  text-decoration: none;
+  transition: color 0.3s ease;
+  color: #F5F5F5;
+
+}
+
+html {
+
+	scroll-behavior:smooth; 
+  transition: 3s linear;
+  
+}

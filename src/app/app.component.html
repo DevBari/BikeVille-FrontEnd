@@ -1,5 +1,5 @@
 <!-- header component here -->
-<app-header *ngIf="currentRoute === 'home'" (scrollToHome)="scrollToHome()"></app-header>></app-header>
+<app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
 
 <!-- navbar component here -->
 <app-navbar (routeChanged)="onRouteChange($event)"></app-navbar>

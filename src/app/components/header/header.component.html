@@ -1,17 +1,22 @@
 <header class="header">
 	
-	<video autoplay muted loop class="background-video">
+	<video autoplay muted loop class="background-video" >
 
-		<source src="assets/videos/background_header.mp4" type="video/mp4">
+		<source decoding="async" src="assets/videos/BikeVille.mp4" type="video/mp4">
 		
 	</video>
 	<div class = "overlay"></div>
 	<div class="header-content">
 		<div class="logo">
-			<img src = "assets/images/BikeVille_Trp_logo.png" alt = "Mountain Bike Shop">
+			<img src = "assets/images/BikeVille_Trp_logo.png" alt = "Mountain Bike Shop" decoding="async">
 		</div>
-		<button class="button-86" role="button" (click)="onGetStartedClick()">
-			Get Started
-		</button>
+		<a href="#home">
+
+			<button class="button-86" role="button" >
+				Get Started
+			</button>
+
+		</a>
+		
 	</div>
 </header>

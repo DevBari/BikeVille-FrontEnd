@@ -1,16 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { HomeComponent } from '@components/home/home.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [HomeComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
- @Output() scrollToHome = new EventEmitter<void>();
 
- onGetStartedClick(){
-  this.scrollToHome.emit();
- }
 }

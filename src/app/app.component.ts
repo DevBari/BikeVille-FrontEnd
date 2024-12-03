@@ -2,18 +2,20 @@ import { Component, Directive } from '@angular/core';
 import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ViewChild, ElementRef } from '@angular/core';
 
 import { HeaderComponent } from "@components/header/header.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { NavbarComponent } from "@components/navbar/navbar.component";
 import { LoadRedirectComponent as LoadRedirect} from '@components/load-redirect/load-redirect.component';
+import { HomeComponent } from '@components/home/home.component';
 
 
 @Component({
   
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, FormsModule, CommonModule],
+  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, HomeComponent, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
   
