@@ -22,6 +22,7 @@ import { HomeComponent } from '@components/home/home.component';
 })
 
 export class AppComponent {
+[x: string]: any;
 
   title = 'BikeVille';
 

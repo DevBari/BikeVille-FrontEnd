@@ -10,7 +10,7 @@ import { filter } from 'rxjs/operators';
 
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule,RouterLink, NgStyle, FormsModule, ContactComponent, ProductComponent],
+  imports: [CommonModule, RouterLink, NgStyle, FormsModule, ContactComponent, ProductComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 
@@ -69,6 +69,14 @@ export class NavbarComponent {
 
     this.isLockOpen = state; 
     
+  }
+
+  isDrawerOpen=false;
+
+  toggleSearchBar() {
+
+    this.isDrawerOpen = !this.isDrawerOpen;
+  
   }
 
 }

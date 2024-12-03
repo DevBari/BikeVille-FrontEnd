@@ -332,7 +332,8 @@ button, input, optgroup, select, textarea {
   border: 2px solid #F5F5F5; /* Colore del bordo */
   background-color: transparent; /* Sfondo trasparente */
   padding: 0.625rem; /* Spaziatura interna (10px) */
-  transition: border-color 0.3s ease; /* Transizione per il bordo */
+  transition: border-color 0.4s ease; /* Transizione per il bordo */
+  box-shadow: 10px 15px 50px 5px rgba(0, 14, 50, 0.454);
 }
 
 .button-flag:hover {
@@ -366,7 +367,7 @@ button, input, optgroup, select, textarea {
   align-items: center;
   text-align: center;
 
-  padding: 10px 25px;
+  padding: 10px 20px;
 
   display: inline-flex;
   cursor: pointer;
@@ -382,7 +383,7 @@ button, input, optgroup, select, textarea {
 
   color: #ffffffe0;
   background: var(--secondary);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  box-shadow: 10px 15px 50px 5px rgba(0, 14, 50, 0.454);
 
   height: 33px;
 
@@ -643,7 +644,7 @@ button, input, optgroup, select, textarea {
 }
 
 .button-searchbar {
-  width: 110px;
+  width: auto;
   height: 54px;
   display: flex;
   align-items: center;
@@ -659,11 +660,12 @@ button, input, optgroup, select, textarea {
   position: relative;
   cursor: pointer;
   transition-duration: .2s;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+  box-shadow: 10px 15px 50px 5px rgba(0, 14, 50, 0.454);
   font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   padding: 10px;
   transition-duration: .5s;
+  padding: 10px 20px;
 }
 
 .icon-searchbar {
@@ -671,6 +673,7 @@ button, input, optgroup, select, textarea {
   width: 30px;
   transition-duration: 1.5s;
   display: flex;
+  margin-right: 4px;
 }
 
 .bell path {
@@ -688,8 +691,29 @@ button, input, optgroup, select, textarea {
 }
 
 .button-searchbar:hover .icon-searchbar {
-  transform: rotate(250deg);
+  transform: scale(1.2);
   transition-duration: 1.5s;
+}
+
+.button-searchbar:hover #cuore {
+  animation: pulse 0.8s infinite; 
+  transform-origin: center;
+}
+
+#cuore {
+  box-shadow: 5px 5px 10px rgba(10, 51, 236, 0.116);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Dimensione iniziale */
+  }
+  50% {
+    transform: scale(1.2); /* Cuore più grande */
+  }
+  100% {
+    transform: scale(1); /* Ritorna alla dimensione originale */
+  }
 }
 
 /* Tooltip data-title */
