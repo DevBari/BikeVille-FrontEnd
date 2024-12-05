@@ -50,31 +50,18 @@
 }
 
 .logo img {
-	height : 700px;
-	margin-bottom: -50px;	
-}
-
-.get-started {
-	padding: 10px 20px;
-	font-size: 16px;
-	color: white;
-	background-color: var(--primary);
-	border: none;
-	border-radius: 10px;
-	cursor:pointer;
-	transition: background-color 0.3s ease;
-}
-
-.get-started:hover{
-	background-color: var(--secondary);
+	height : 550px;
+	margin-bottom: -100px;
+	margin-top: -200px;	
 }
 
 .button-86 {
 	all: unset;
-	width: 300px;
+	margin-top: 10px;
+	width: 270px;
 	height: 50px;
 	font-size: 26px;
-	font-family: 'Helvetica';
+	font-family: 'CustomFont', 'Inter-Bold';
 	background: transparent;
 	border: none;
 	position: relative;
