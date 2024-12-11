@@ -97,7 +97,7 @@ button, input, optgroup, select, textarea {
   left: 0;
 
   z-index: 10;
-  width: 100%;
+  min-width: 100svw;
   transition: all 0.3s ease-in-out;
   flex: none;
   opacity: 1;
@@ -674,6 +674,9 @@ button, input, optgroup, select, textarea {
   transition-duration: 1.5s;
   display: flex;
   margin-right: 4px;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .bell path {
@@ -716,35 +719,83 @@ button, input, optgroup, select, textarea {
   }
 }
 
-/* Tooltip data-title */
+/* Theme Checkbox */
+.themeToggle {
+  color: #ffb000;
+  width: 30px !important;
+  height: 30px !important;
+}
 
-[data-title] {
+.st-sunMoonThemeToggleBtn {
   position: relative;
   cursor: pointer;
-  border-radius: 30%;
 }
 
-[data-title]:after {
-  content: attr(data-title); /* Inserisce il contenuto di data-title */
-  background-color: #00FF00;
-  color: #111;
-  font-size: 1.2em;
-  position: absolute;
-  padding: 5px 10px;
-  bottom: -2.5em;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  box-shadow: 1px 1px 3px #222;
+.st-sunMoonThemeToggleBtn .themeToggleInput {
   opacity: 0;
-  visibility: hidden;
-  border-radius: 40%;
-  z-index: 9999;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  width: 100%;
+  aspect-ratio: 1;
 }
 
-[data-title]:hover:after {
-  opacity: 1;
-  visibility: visible;
-  border-radius: 30%;
+.st-sunMoonThemeToggleBtn svg {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+  transform: rotate(40deg);
+}
+
+.st-sunMoonThemeToggleBtn svg .sunMoon {
+  transform-origin: center center;
+  transition: inherit;
+  transform: scale(1);
+}
+
+.st-sunMoonThemeToggleBtn svg .sunRay {
+  transform-origin: center center;
+  transform: scale(0);
+}
+
+.st-sunMoonThemeToggleBtn svg mask > circle {
+  transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+  transform: translate(0px, 0px);
+}
+
+.st-sunMoonThemeToggleBtn svg .sunRay2 {
+  animation-delay: 0.05s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay3 {
+  animation-delay: 0.1s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay4 {
+  animation-delay: 0.17s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay5 {
+  animation-delay: 0.25s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay5 {
+  animation-delay: 0.29s !important;
+}
+
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+  transform: rotate(90deg);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+  transform: translate(16px, -3px);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+  transform: scale(0.55);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+  animation: showRay1832 0.4s ease 0s 1 forwards;
+}
+
+@keyframes showRay1832 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

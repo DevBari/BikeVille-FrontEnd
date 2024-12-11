@@ -1,13 +1,296 @@
-<main>
+<section class="home-container" #home>
 
-	<section class="home" #home>
+	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
 
-		<div id="home">
+    <!-- <div class="card-road-container">
 
-			<h1>Home</h1>
-			
+        <div class="card-container">
+
+            <div class="card-road">
+        
+                <div class="shadow-road">⚠ Always follow traffic rules.</div>
+        
+            </div>
+        
+        </div>
+
+    </div> -->
+
+    <div class="hero">
+
+        <div class="hero-background">
+
+            <div *ngFor="let image of images; let i = index" 
+                class="hero-slide" 
+                [ngStyle]="{'background-image': 'url(' + image + ')'}" 
+                [class.active]="i === currentSlide">
+
+                <div class="hero-overlay">
+
+                    <h1>{{text_title[currentSlide]}}</h1>
+        
+                    <p>{{text_subtitle[currentSlide]}}</p>
+
+                    <a href="">
+
+                        <span>
+                            Scopri di più
+                        </span>
+                        
+                        <svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+
+                            <path fill="#dedede" d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM241 377c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l87-87-87-87c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L345 239c9.4 9.4 9.4 24.6 0 33.9L241 377z"/>
+
+                        </svg>
+
+                    </a>
+        
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-dots">
+
+            <div *ngFor="let image of images; let i = index" 
+                class="hero-dot" 
+                [class.active]="i === currentSlide" 
+                (click)="setCurrentSlide(i)">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="home-storytelling">
+
+        <div class="home-storytelling-layout">
+
+            <div class="storytelling-image">
+
+            </div>
+
+            <div class="storytelling-content">
+
+                <div class="item-topic">
+                    
+                    <div class="item-title">
+
+                            Benvenuti nel futuro della mobilità!
+    
+                            <span>
+    
+                                <svg xmlns="http://www.w3.org/2000/svg" 
+                                    viewBox="0 0 448 512"
+                                    height="80"
+                                    width="80"
+                                >
+    
+                                    <path 
+                                        fill="#2e7d32" 
+                                        d="M0 32c477.6 0 366.6 317.3 367.1 366.3L448 480h-26l-70.4-71.2c-39 4.2-124.4 34.5-214.4-37C47 300.3 52 214.7 0 32zm79.7 46c-49.7-23.5-5.2 9.2-5.2 9.2 45.2 31.2 66 73.7 90.2 119.9 31.5 60.2 79 139.7 144.2 167.7 65 28 34.2 12.5 6-8.5-28.2-21.2-68.2-87-91-130.2-31.7-60-61-118.6-144.2-158.1z"
+                                    />
+                                
+                                </svg>
+    
+                            </span>
+    
+                    </div>
+                    
+                    <div class="item-text">
+    
+                        <p>
+                            Qui, nel cuore della nostra passione per le e-bike, trasformiamo ogni pedalata in un'<b>esperienza di velocità, libertà ed energia pura. 🔋</b> <br>
+                            Crediamo nella <b>sostenibilità</b> come scelta di vita, nel potere del movimento per sentirsi vivi e in quella sensazione unica di piacere <br>
+                            che si prova mentre sfrecci con il vento in faccia. 🍃 <br> <br>
+                            <b> La nostra missione? 🎯</b> scoprire la forza dentro di te, mentre ti muovi verso un mondo più green. <br> 
+                            <b>Sali in sella</b>, accendi l'adrenalina e lasciati trasportare: <b> la strada ti aspetta! 🌍⚡. </b> <br><br> 
+                            <i style="text-decoration: underline;">Team BikeVille.</i> 
+                            <img src="assets/images/logo_BV.png" alt="logo" style="height: 30px; margin-left: 10px;">
+                        </p> 
+    
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+	<div class="home-about-us" style="margin-top: 5px;">
+
+		<div class="home-about-us-layout">
+
+            <div class="about-title">
+
+                Perché scegliere BikeVille?
+
+            </div>
+            
+            <div class="about-text">
+
+                <p>
+
+                    Perché con noi il viaggio inizia già al momento della scelta! 🚀<br>
+                    <b>Gestiamo tutto</b>, dalla progettazione alla produzione, fino alla vendita, per offrirti il massimo in termini di qualità e convenienza. ✨<br>
+                    Il nostro design combina <b>innovazione ed eleganza</b>, trasformando ogni e-bike in un'esperienza unica. 🚲<br>
+                    E con un servizio clienti impeccabile, ti garantiamo un percorso fluido e senza intoppi, <b>dall'ordine alla consegna.</b> 📦<br>
+                    Scegli <b>BikeVille</b>, e lascia che la tua prossima avventura abbia inizio! ⚡
+
+                </p> 
+
+            </div>
+
+			<div class="about-box">
+
+				<div class="item">
+
+					<div class="item-title">
+
+						Progettato per tutte le condizioni di guida
+
+					</div>
+
+					<div class="item-image">
+
+						<img
+							src="//it.fiido.com/cdn/shop/files/c22.png?v=1703580405&amp;width=360"
+							srcset="
+								//it.fiido.com/cdn/shop/files/c22.png?v=1703580405&amp;width=352 352w,
+								//it.fiido.com/cdn/shop/files/c22.png?v=1703580405&amp;width=360 360w
+							"
+							width="360"
+							loading="lazy"
+                            alt="Bici Item Image"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title"></div>
+
+						<div class="item-image">
+							
+							<span style="font-family: 'inter-bold'; font-size: 60px; text-transform: uppercase;"> 450k+</span>
+						
+						</div>
+
+					<div class="item-sub-title">Bikers di tutto il mondo</div>
+
+				</div>
+
+				<div class="item">
+					
+					<div class="item-title">Pagamenti criptati SSL</div>
+					
+					<div class="item-image">
+
+						<img
+							class="image--fade-in lazyloaded"
+							data-src="//it.fiido.com/cdn/shop/files/it_0e538ffa-f055-4d5a-8c8a-e4d54ab7d337.png?v=1703580412"
+							alt=""
+							src="//it.fiido.com/cdn/shop/files/it_0e538ffa-f055-4d5a-8c8a-e4d54ab7d337.png?v=1703580412"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item" style="cursor: pointer">
+
+					<div class="item-title">Garanzia</div>
+
+					<div class="item-image">
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#fff" class="bi bi-patch-check" viewBox="0 0 16 16">
+							
+							<path fill-rule="evenodd" d="M10.354 6.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+							<path d="m10.273 2.513-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911z"/>
+						
+						</svg>
+					
+					</div>
+				
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">Recensioni dei ciclisti</div>
+
+					<div class="item-image">
+						
+						<img
+							class="image--fade-in lazyloaded"
+							data-src="//it.fiido.com/cdn/shop/files/star.png?v=1703580405"
+							alt=""
+							src="//it.fiido.com/cdn/shop/files/star.png?v=1703580405"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">Supporto tecnico a vita</div>
+
+					<div class="item-image">
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#fff" class="bi bi-headset" viewBox="0 0 16 16">
+
+							<path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+
+						</svg>
+
+					</div>
+
+				</div>
+
+				<div class="item" style="cursor: pointer">
+				
+					<div class="item-title">Restituzione di 30 giorni</div>
+
+					<div class="item-image">
+
+						<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-calendar-date" viewBox="0 0 16 16">
+
+							<path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+
+						</svg>
+
+					</div>
+
+				</div>
+
+				<div class="item" style="cursor: pointer">
+
+					<div class="item-title">
+						Spedizione rapida e gratuita a livello nazionale
+					</div>
+
+					<div class="item-image">
+
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="100" height="100">
+
+							<path fill="#fff" d="M112 0C85.5 0 64 21.5 64 48l0 48L16 96c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 208 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 160l-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l16 0 176 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 224l-48 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 144 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 288l0 128c0 53 43 96 96 96s96-43 96-96l128 0c0 53 43 96 96 96s96-43 96-96l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64 0-32 0-18.7c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7L416 96l0-48c0-26.5-21.5-48-48-48L112 0zM544 237.3l0 18.7-128 0 0-96 50.7 0L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/>
+
+						</svg>
+
+					</div>
+
+				</div>
+
+			</div>
+
 		</div>
 
-	</section>
+	</div>
 
-</main>
+</section>

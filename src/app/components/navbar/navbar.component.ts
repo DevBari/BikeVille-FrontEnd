@@ -47,6 +47,11 @@ export class NavbarComponent {
 
       });
 
+      // tema salvato nel localStorage
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    this.isDarkTheme = savedTheme === 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
   }
 
   isDropdownOpen: { [key: string]: boolean } = {
@@ -76,6 +81,27 @@ export class NavbarComponent {
   toggleSearchBar() {
 
     this.isDrawerOpen = !this.isDrawerOpen;
+  
+  }
+
+  isDarkTheme = false;
+
+  switchTheme(event: Event): void {
+
+    const target = event.target as HTMLInputElement; // Explicitly cast the target to HTMLInputElement
+    this.isDarkTheme = target.checked;
+
+    if (target.checked) {
+
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    
+    } else {
+
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    
+    }
   
   }
 
