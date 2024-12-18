@@ -28,7 +28,8 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/aos/dist/aos.css"
             ],
             "scripts": []
           },
@@ -86,9 +87,12 @@
               }
             ],
             "styles": [
+              "node_modules/aos/dist/aos.css", "BikeVille\\node_modules\\aos\\dist\\aos.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/aos/dist/aos.js"
+            ]
           }
         }
       }

@@ -47,7 +47,7 @@ export class NavbarComponent {
 
       });
 
-      // tema salvato nel localStorage
+    // tema salvato nel localStorage
     const savedTheme = localStorage.getItem('theme') || 'light';
     this.isDarkTheme = savedTheme === 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);

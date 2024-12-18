@@ -34,38 +34,91 @@
   --secondary: #ffb000;
   --about: #fff;
   --shades: rgba(238, 238, 238, 1);
+  --card-shadow: linear-gradient(to bottom left, #e1eeef, #ffffff);
   --card: #fff;
   --border: #e0e0e0;
   --box-shadow: 0px 0px 10px 1px #eee;
   --table-header: #f0f0f0;
   --primary-text: #000000;
   --secondary-text: #272727;
-  --sun-color: #004ebd; /* Giallo per il sole */
+  --third-text: #00a6a2;
+
+  --sun-color: #fff; /* Giallo per il sole */
   --moon-color: #ffb000; /* Blu per la luna */
 
 }
 
 [data-theme="dark"] .sunMoon {
+
   fill: var(--moon-color);
+
 }
 
 [data-theme="light"] .sunMoon {
+
   fill: var(--sun-color);
+
 }
 
 /* Dark Theme */
 [data-theme="dark"] {
+
   --background: #212121;
   --primary: #004ebd;
   --secondary: #ffb000;
   --about: #ffae00ca;
   --shades: rgba(40, 40, 40, 1);
+  --card-shadow: linear-gradient(to bottom left, #000000, #201e1e);
   --card: #2d2d2d;
   --border: #212121;
   --box-shadow: 0px 0px 30px 1px  rgba(71, 70, 70, 0.167);
   --table-header: #212121;
   --primary-text: #f6f6f6;
   --secondary-text: #9ca3af;
+  --third-text: #105b59;
+
+}
+
+/* Smartphone (fino a 480px) */
+@media (max-width: 480px) {
+  body {
+      font-size: 14px; /* Dimensione del font per smartphone */
+  }
+  .container {
+      width: 100%; /* Contenitore a larghezza piena */
+      padding: 10px; /* Padding per il contenitore */
+  }
+}
+
+/* Smartphone (in orizzontale) e piccoli tablet (fino a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+      font-size: 15px; /* Dimensione del font per smartphone in orizzontale e tablet */
+  }
+  .container {
+      width: 90%; /* Contenitore con larghezza del 90% */
+      margin: auto; /* Centra il contenitore */
+  }
+}
+
+/* Tablet (fino a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+      font-size: 16px; /* Dimensione del font per tablet */
+  }
+  .container {
+      width: 80%; /* Contenitore con larghezza dell'80% */
+  }
+}
+
+/* Laptop e Desktop (oltre 1024px) */
+@media (min-width: 1025px) {
+  body {
+      font-size: 18px; /* Dimensione del font per laptop e desktop */
+  }
+  .container {
+      width: 70%; /* Contenitore con larghezza del 70% */
+  }
 }
 
 /* General Scrollbar Setup */
@@ -78,12 +131,14 @@ body {
   background-color: var(--background);
   color: var(--primary-text);
 
+  transition: background-color 0.4s ease-in-out !important;
+
 }
 
 /* Scrollbar container */
 body::-webkit-scrollbar {
 
-  width: 15px; /* Dimensione della scrollbar */
+  width: 12px; /* Dimensione della scrollbar */
 
 }
 
@@ -91,6 +146,7 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track {
 
   background: rgb(175, 212, 255);
+
   background: linear-gradient(
 
     180deg,
@@ -173,25 +229,41 @@ a {
 
 }
 
+b {
+  font-family: "inter-bold";
+}
+
 html {
 
 	scroll-behavior:smooth; 
   transition: 3s linear;
   min-height: 100svh;
-  max-width: 100svw;
 
 }
 
-.storytelling-image{
-  background-image: url("assets/images/phone.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: fill;
-}
+.home-storytelling{
 
-.storytelling-content{
   background-image: url("assets/images/pattern-bike.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+}
+
+.home-about-us-layout {
+
+  background-image: url("assets/images/pattern-bike.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.footer_bikes {
+
+  background-image: url("assets/images/bg-bike.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }

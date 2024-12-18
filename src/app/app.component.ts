@@ -1,15 +1,19 @@
-import { Component, Directive } from '@angular/core';
+import { Component, Directive, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ViewChild, ElementRef } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import { HeaderComponent } from "@components/header/header.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { NavbarComponent } from "@components/navbar/navbar.component";
 import { LoadRedirectComponent as LoadRedirect} from '@components/load-redirect/load-redirect.component';
 import { HomeComponent } from '@components/home/home.component';
+
 
 @Component({
   
@@ -21,7 +25,13 @@ import { HomeComponent } from '@components/home/home.component';
   
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  ngOnInit(): void {
+
+    AOS.init();
+    
+  }
 
   title = 'BikeVille';
 

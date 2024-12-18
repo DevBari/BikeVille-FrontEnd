@@ -8,6 +8,16 @@
   --secondary-text: #9ca3af;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.app-component {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .generic {
 
   display: grid;
@@ -16,11 +26,19 @@
 
 }
 
-.footer{
-  margin-top: 200px;
-}
-
 .router {
   min-height: 100svh;
   box-sizing: border-box;
+}
+
+.footer {
+  box-sizing: border-box;
+}
+
+.prova {
+  background-image: url("https://www.youtube.com/watch?v=VGmiB9ILQDI");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
 }

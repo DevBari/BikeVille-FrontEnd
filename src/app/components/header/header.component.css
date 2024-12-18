@@ -1,7 +1,7 @@
 .header {
 	background-color: var(--primary);
 	position: relative; 
-	height: 100vh;
+	min-height: 100svh;
 	z-index: 0;
 }
 
@@ -41,6 +41,7 @@
 
 .logo img {
 	height : 400px;
+	margin-top: 140px;
 }
 
 /* Bottone */ 
