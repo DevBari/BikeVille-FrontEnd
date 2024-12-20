@@ -3,7 +3,6 @@ import { HomeComponent as Home} from '@components/home/home.component';
 import { ProductComponent as Product} from '@components/product/product.component';
 import { ContactComponent as Contact } from '@components/contact/contact.component';
 import { LoginComponent as Login } from '@components/login/login.component';
-import { SignupComponent as Signup } from '@components/signup/signup.component';
 
 export const routes: Routes = [
 

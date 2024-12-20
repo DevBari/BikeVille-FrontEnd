@@ -1,5 +1,5 @@
 <!-- ========== Navbar menu ========== -->
-<link rel="preload" as="image" href="/assets/images/logo_BikeVille.png" type="image/png" />
+<link rel="preload" as="image" href="/assets/images/logo_BikeVille.svg" type="image/png" />
 
 <div class="navbar sticky">
 
@@ -13,7 +13,7 @@
     
         <div class="logo-container">
 
-          <img decoding="async" data-nimg="fill"  src="/assets/images/BikeVille_Trp_logo.png" alt="BikeVille Logo" class="logo-img">
+          <img decoding="async" data-nimg="fill"  src="/assets/images/BikeVille-brand.png" alt="BikeVille Logo" class="logo-img">
 
         </div>
 
@@ -81,6 +81,58 @@
     </div>
 
     <div class="menu-button-container-dx">
+
+      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}"> 
+
+        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls="" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder (click)="switchTheme($event)" >
+          
+          <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn" type="checkbox">
+
+            <input type="checkbox" id="themeToggle" class="themeToggleInput" (click)="switchTheme($event)" [checked]="isDarkTheme" />
+            
+            <svg
+
+              width="18"
+              height="18"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              stroke="none"
+
+            >
+
+              <circle
+                class="sunMoon"
+                cx="10"
+                cy="10"
+                r="8"
+                mask="url(#moon-mask)"
+              ></circle>
+
+              <g>
+
+                <circle class="sunRay sunRay1" cx="18" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay2" cx="14" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay3" cx="6" cy="16.928" r="1.5"></circle>
+                <circle class="sunRay sunRay4" cx="2" cy="10" r="1.5"></circle>
+                <circle class="sunRay sunRay5" cx="6" cy="3.1718" r="1.5"></circle>
+                <circle class="sunRay sunRay6" cx="14" cy="3.1718" r="1.5"></circle>
+
+              </g>
+
+              <mask id="moon-mask">
+
+                <rect x="0" y="0" width="20" height="20" fill="white"></rect>
+                <circle cx="11" cy="3" r="8" fill="black"></circle>
+                
+              </mask>
+
+            </svg>
+
+          </label>
+
+        </button>
+
+      </div> 
 
       <div [ngStyle]="{'margin-right': '8px'}" class="dropdown">
 

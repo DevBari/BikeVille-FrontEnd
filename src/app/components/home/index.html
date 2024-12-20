@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albero di Natale Animato</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .tree {
+            position: relative;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 300px solid #2e8b57;
+            margin-top: 50px;
+        }
+
+        .trunk {
+            position: absolute;
+            bottom: -50px;
+            left: -25px;
+            width: 50px;
+            height: 50px;
+            background-color: #8b4513;
+        }
+
+        .lights {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .lights:nth-child(1) { top: 50px; left: -70px; animation-delay: 0s; }
+        .lights:nth-child(2) { top: 100px; left: -50px; animation-delay: 0.2s; }
+        .lights:nth-child(3) { top: 150px; left: -90px; animation-delay: 0.4s; }
+        .lights:nth-child(4) { top: 200px; left: -20px; animation-delay: 0.6s; }
+        .lights:nth-child(5) { top: 250px; left: -60px; animation-delay: 0.8s; }
+        .lights:nth-child(6) { top: 50px; left: 50px; animation-delay: 1s; }
+        .lights:nth-child(7) { top: 100px; left: 70px; animation-delay: 1.2s; }
+        .lights:nth-child(8) { top: 150px; left: 90px; animation-delay: 1.4s; }
+        .lights:nth-child(9) { top: 200px; left: 30px; animation-delay: 1.6s; }
+        .lights:nth-child(10) { top: 250px; left: 70px; animation-delay: 1.8s; }
+
+        @keyframes glow {
+            0% {
+                background-color: yellow;
+                box-shadow: 0 0 5px yellow;
+            }
+            100% {
+                background-color: orange;
+                box-shadow: 0 0 15px orange;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tree">
+        <div class="trunk"></div>
+        <!-- Luci sull'albero -->
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+        <div class="lights"></div>
+    </div>
+</body>
+</html>

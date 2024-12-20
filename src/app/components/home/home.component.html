@@ -1,13 +1,889 @@
-<main>
+<section class="home-container" #home>
 
-	<section class="home" #home>
+	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
 
-		<div id="home">
+    <!-- <div class="card-road-container">
 
-			<h1>Home</h1>
-			
+        <div class="card-container">
+
+            <div class="card-road">
+        
+                <div class="shadow-road">⚠ Always follow traffic rules.</div>
+        
+            </div>
+        
+        </div>
+
+    </div> -->
+
+    <div class="slider" data-aos="fade-up" data-aos-duration="2000">
+
+        <div class="slider-background" fetchpriority="high">
+
+            <div *ngFor="let image of images; let i = index" 
+                class="slider-slide"
+                [ngStyle]="{'background-image': 'url(' + image + ')'}" 
+                [class.active]="i === currentSlide">
+
+                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider">
+
+                    <h1>{{text_title[currentSlide]}}</h1>
+        
+                    <p>{{text_subtitle[currentSlide]}}</p>
+
+					<div class="slider-button-container">
+
+						<a href="" class="slider-button">
+
+							<span class="slider-button-text">
+								Scopri di più
+							</span>
+							
+							<svg viewBox="0 0 42 42" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="42" height="42" class="slider-button-icon">
+								
+								<mask id="carousel-bullet-mask-359">
+									<circle cx="21" cy="21" r="19" stroke-width="2px" stroke="#FFFFFF" fill="none"></circle>
+								</mask>
+
+								<g mask="url(#carousel-bullet-mask-359)">
+									<circle class="bullet-bg" cx="21" cy="21" r="20" fill="#FFFFFF"></circle>
+									<circle class="bullet-progress-circle" cx="21" cy="21" r="19" stroke-width="3px" fill="none" style="stroke-dashoffset: 0px;"></circle>
+								</g>
+
+								<g transform="translate(17, 13) scale(1)">
+									<path d="M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z" fill="#FFFFFF"></path>
+								</g>
+
+							</svg>
+	
+						</a>
+
+					</div>
+        
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="slider-dots">
+
+            <div *ngFor="let image of images; let i = index" 
+				class="slider-dot" 
+				[class.active]="i === currentSlide" 
+				(click)="setCurrentSlide(i)">
+
+				<svg 
+					baseProfile="full" 
+					viewBox="-40 -40 580 580" 
+					xmlns="http://www.w3.org/2000/svg" 
+					xmlns:xlink="http://www.w3.org/1999/xlink" 
+					width="20" 
+					height="20"
+				>
+
+					<circle	*ngIf="i === currentSlide"
+						id="a"
+						cx="250"
+						cy="250"
+						r="225"
+						stroke="#858688"
+						stroke-width="70"
+						fill="transparent"
+						stroke-dasharray="1413.72"
+						stroke-dashoffset="1413.72"
+						transform="matrix(0 -1 -1 0 500 500)"
+						shape-rendering="geometricPrecision"
+					></circle>
+				
+					<circle
+						*ngIf="i === currentSlide"
+						id="b"
+						cx="250"
+						cy="250"
+						r="225"
+						stroke="var(--secondary)"
+						stroke-width="70"
+						fill="transparent"
+						stroke-dasharray="1413.72"
+						stroke-dashoffset="1413.72"
+						transform="rotate(-90 250 250)"
+						shape-rendering="geometricPrecision"
+					></circle>
+
+				</svg>
+
+			</div>
+
+        </div>
+
+    </div>
+
+	<div class="home-sell-container" data-aos="zoom-in-up" data-aos-duration="1500">
+
+		<div class="home-collections seo-style">
+
+			<div class="home-collections-layout">
+	
+	
+				<div class="product-box">
+	
+	
+					<div class="item">
+	
+						<div class="left-icon">
+							<a href="/collections/carbon-fiber-electric-bike"><img class="image--fade-in lazyloaded"
+								src="assets/images/BikeVille-visual.svg"></a>						
+						</div>
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+								<div class="item-title">
+									<a href="/collections/folding-electric-bikes">
+										<h2>Bici Elettrica Pieghevole &amp; Pendolare</h2>
+									</a>
+								</div>
+								<div class="item-sub-title">
+									La tua migliore compagna di viaggio
+								</div>
+							</div>
+	
+	
+							<div class="img-box">
+								<a href="/collections/folding-electric-bikes">
+	
+									<img src="//it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=352 352w, //it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+	
+									<a href="/collections/folding-electric-bikes" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+					<div class="item">
+	
+						<div class="left-icon">
+	
+							<a href="/collections/carbon-fiber-electric-bike"><img class="image--fade-in lazyloaded"
+									src="assets/images/BikeVille-visual.svg"></a>
+	
+						</div>
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+	
+								<div class="item-title">
+	
+									<a href="/collections/carbon-fiber-electric-bike">
+										<h2>Bici Elettrica Carbonio</h2>
+									</a>
+	
+								</div>
+	
+								<div class="item-sub-title">
+									Easy-go e leggero
+								</div>
+	
+							</div>
+	
+	
+							<div class="img-box">
+	
+								<a href="/collections/carbon-fiber-electric-bike">
+	
+									<img src="//it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=352 352w, //it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+	
+									<a href="/collections/carbon-fiber-electric-bike" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+					<div class="item">
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+	
+								<div class="item-title">
+	
+									<a href="/collections/electric-off-road-bikes">
+	
+										<h2>Bici Elettrica Fuoristrada &amp; Da Turismo</h2>
+	
+									</a>
+	
+								</div>
+	
+								<div class="item-sub-title">
+	
+									Pneumatici a lungo raggio
+
+								</div>
+	
+							</div>
+
+							<div class="img-box">
+	
+								<a href="/collections/electric-off-road-bikes">
+	
+									<img src="//it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=352 352w, //it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+	
+									<a href="/collections/electric-off-road-bikes" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+					<div class="item">
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+	
+								<div class="item-title">
+	
+									<a href="/collections/fat-tire-electric-bikes">
+										<h2>Bicicletta Elettrica Fat E Da Carico</h2>
+									</a>
+	
+								</div>
+	
+								<div class="item-sub-title">
+	
+									Trasporta ciò che la maggior parte non trasporta
+								</div>
+	
+							</div>
+	
+							<div class="img-box">
+	
+								<a href="/collections/fat-tire-electric-bikes">
+	
+									<img src="//it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=352 352w, //it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+	
+									<a href="/collections/fat-tire-electric-bikes" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+					<div class="item">
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+								<div class="item-title">
+									<a href="/collections/lightweight-electric-bikes">
+										<h2>Bici Elettrica Leggera &amp; Città</h2>
+									</a>
+								</div>
+								<div class="item-sub-title">
+									Economico &amp; confortevole
+								</div>
+							</div>
+
+							<div class="img-box">
+								<a href="/collections/lightweight-electric-bikes">
+	
+									<img src="//it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=352 352w, //it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+									<a href="/collections/lightweight-electric-bikes" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+					<div class="item">
+	
+						<div class="item-info">
+	
+							<div class="top-box">
+	
+								<div class="item-title">
+	
+									<a href="/products/fiido-kidz-electric-balance-bike">
+										<h2>Bike Kidz</h2>
+									</a>
+								</div>
+	
+								<div class="item-sub-title">
+									Divertente e sicuro
+								</div>
+	
+							</div>
+	
+	
+							<div class="img-box">
+	
+								<a href="/products/fiido-kidz-electric-balance-bike">
+	
+									<img src="//it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=450"
+										srcset="//it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=352 352w, //it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=450 450w"
+										width="450">
+	
+								</a>
+	
+								<div class="bottom-box">
+	
+									<a href="/products/fiido-kidz-electric-balance-bike" class="lm-btn">
+	
+										Esplora
+	
+									</a>
+	
+								</div>
+	
+							</div>
+	
+						</div>
+	
+					</div>
+	
+				</div>
+	
+			</div>
+	
+		</div>
+	
+	</div>
+
+    <div class="home-storytelling" data-aos="zoom-in">
+
+        <div class="home-storytelling-layout">
+
+            <div class="storytelling-image" decode="async" fetchpriority="high" prefetch="auto" preload="high" id="home-storytelling" data-aos-once="false">
+
+				<img src="assets/images/phone.svg" alt="Storytelling Phone" loading="lazy" data-aos="flip-up" data-aos-delay="700" data-aos-duration="1000" data-aos-anchor="#home-storytelling">
+
+            </div>
+
+            <div class="storytelling-content">
+
+                <div class="item-topic">
+                    
+                    <div class="item-title">
+
+                            Benvenuti nel futuro della mobilità!
+    
+                            <span>
+    
+                                <img src="assets/images/leaf.svg" alt="Leaf Svg">
+    
+                            </span>
+    
+                    </div>
+                    
+                    <div class="item-text">
+    
+                        <p>
+                            Qui, nel cuore della nostra passione per le e-bike, trasformiamo ogni pedalata in un'<b>esperienza di velocità, libertà ed energia pura. 🔋</b> <br>
+                            Crediamo nella <b>sostenibilità</b> come scelta di vita, nel potere del movimento per sentirsi vivi e in quella sensazione unica di piacere <br>
+                            che si prova mentre sfrecci con il vento in faccia. 🍃 <br> <br>
+                            <b> La nostra missione? 🎯</b> scoprire la forza dentro di te, mentre ti muovi verso un mondo più green. <br> 
+                            <b>Sali in sella</b>, accendi l'adrenalina e lasciati trasportare: <b> la strada ti aspetta! 🌍⚡. </b> <br><br> 
+                            <i style="text-decoration: underline;">Team BikeVille.</i>
+							
+							<span>
+								<img src="assets/images/BikeVille-visual.png" alt="logo" style="height: 30px; margin-left: 10px;">
+							</span>
+
+                        </p> 
+    
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+	<div class="home-about-us" data-aos="fade-up" data-aos-duration="1000">
+
+		<div class="home-about-us-layout">
+
+            <div class="about-title-text">
+
+                Perché scegliere BikeVille? 🤔
+
+            </div>
+            
+            <div class="about-text">
+
+                <p style="text-align: center; width: 100%;">
+
+                    Perché con noi il viaggio inizia già al momento della scelta! 🚀<br>
+                    <b>Gestiamo tutto</b>, dalla progettazione alla produzione, fino alla vendita, per offrirti il massimo in termini di qualità e convenienza. ✨<br>
+                    Il nostro design combina <b>innovazione ed eleganza</b>, trasformando ogni e-bike in un'esperienza unica. 🚲<br>
+                    E con un servizio clienti impeccabile, ti garantiamo un percorso fluido e senza intoppi, <b>dall'ordine alla consegna.</b> 📦<br>
+                    Scegli <b>BikeVille</b>, e lascia che la tua prossima avventura abbia inizio! ⚡
+
+                </p> 
+
+            </div>
+
+			<div class="about-box">
+
+				<div class="item">
+
+					<div class="item-title">
+
+						Progettato per tutte le condizioni di guida
+
+					</div>
+
+					<div class="item-image">
+
+						<img
+							src="https://it.fiido.com/cdn/shop/files/c22.png?v=1703580405&width=360"
+							srcset="
+								//it.fiido.com/cdn/shop/files/c22.png?v=1703580405&amp;width=352 352w,
+								//it.fiido.com/cdn/shop/files/c22.png?v=1703580405&amp;width=360 360w
+							"
+							width="360"
+							loading="lazy"
+                            alt="Bici Item Image"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title"></div>
+
+						<div class="item-image">
+							
+							<span style="font-family: 'inter-bold'; font-size: 60px; text-transform: uppercase;"> 450k+</span>
+						
+						</div>
+
+					<div class="item-sub-title">Bikers di tutto il mondo</div>
+
+				</div>
+
+				<div class="item">
+					
+					<div class="item-title">Pagamenti criptati SSL</div>
+					
+					<div class="item-image">
+
+						<img
+							style="width: 250px; height: auto;"
+							alt="Payments"
+							src="../../../assets/images/payments.svg"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">Garanzia</div>
+
+					<div class="item-image">
+
+						<img src="../../../assets/images/certified.svg" alt="Guarantee" style="width: 300px; height: auto;">
+					
+					</div>
+				
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">Recensioni dei ciclisti</div>
+
+					<div class="item-image">
+						
+						<img
+							class="image--fade-in lazyloaded"
+							data-src="//it.fiido.com/cdn/shop/files/star.png?v=1703580405"
+							alt=""
+							src="//it.fiido.com/cdn/shop/files/star.png?v=1703580405"
+						/>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">Supporto tecnico a vita</div>
+
+					<div class="item-image">
+
+						<img style="width: 250px; height: auto; margin-top: -20px;" src="../../../assets/videos/support.gif" alt="">
+
+					</div>
+
+				</div>
+
+				<div class="item">
+				
+					<div class="item-title">Restituzione di 30 giorni</div>
+
+					<div class="item-image">
+
+						<img 
+							src="../../../assets/images/calendarsvg.svg" 
+							alt="Calendar"
+						>
+
+					</div>
+
+				</div>
+
+				<div class="item">
+
+					<div class="item-title">
+						Spedizione rapida e gratuita a livello nazionale
+					</div>
+
+					<div class="item-image">
+
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="black" width="100" height="100">
+
+							<path d="M112 0C85.5 0 64 21.5 64 48l0 48L16 96c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 208 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 160l-16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l16 0 176 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 224l-48 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l48 0 144 0c8.8 0 16 7.2 16 16s-7.2 16-16 16L64 288l0 128c0 53 43 96 96 96s96-43 96-96l128 0c0 53 43 96 96 96s96-43 96-96l32 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l0-64 0-32 0-18.7c0-17-6.7-33.3-18.7-45.3L512 114.7c-12-12-28.3-18.7-45.3-18.7L416 96l0-48c0-26.5-21.5-48-48-48L112 0zM544 237.3l0 18.7-128 0 0-96 50.7 0L544 237.3zM160 368a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm272 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/>
+
+						</svg>
+
+					</div>
+
+				</div>
+
+			</div>
+
 		</div>
 
-	</section>
+	</div>
 
-</main>
+	<!-- Review Container -->
+
+	<div class="home-review-container">
+
+		<div class="home-review-layout">
+
+			<div class="review-title">
+	
+				<h1>
+
+					Recensioni dei ciclisti
+
+					<span>
+	
+						<img src="../../../assets/images/review.svg" alt="Review Icon" style="width: 70px;">
+					
+					</span>
+
+				</h1>
+	
+			</div>
+	
+			<div class="review-slider-container" data-aos="zoom-in">
+	
+				<!-- Freccia sinistra -->
+				<button class="arrow left" (click)="prevReview()">&#10094;</button>
+	
+				<!-- Card della recensione -->
+				<div class="review-card">
+	
+					<img [src]="imagesR[currentRev]" alt="Review Image" class="review-image" />
+
+					<h3 class="review-title">{{ text_titleR[currentRev] }}</h3>
+
+					<p class="review-subtitle">{{ text_subtitleR[currentRev] }}</p>
+
+	
+				</div>
+	
+				<!-- Freccia destra -->
+				<button class="arrow right" (click)="nextReview()">&#10095;</button>
+	
+			</div>
+	
+		</div>
+
+	</div>
+
+	<!-- Sponsor Slider Container -->
+	<div class="slider" data-aos="fade-up" data-aos-duration="2000">
+
+        <div class="slider-background" fetchpriority="high">
+
+            <div *ngFor="let image of imagesSp; let i = index" 
+                class="slider-slide"
+                [ngStyle]="{'background-image': 'url(' + image + ')'}" 
+                [class.active]="i === currentSlide">
+
+                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider">
+
+                    <h1>I Nostri Partner, la Nostra Forza 🚴‍♂️💨</h1>
+        
+                    <p>Scopri la grande famiglia BikeVille! 👩🏼‍👧🏼‍👦🏼</p>
+
+					<div class="slider-button-container">
+
+						<a href="" class="slider-button">
+
+							<span class="slider-button-text">
+								Scopri di più
+							</span>
+							
+							<svg viewBox="0 0 42 42" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="42" height="42" class="slider-button-icon">
+								
+								<mask id="carousel-bullet-mask-359">
+									<circle cx="21" cy="21" r="19" stroke-width="2px" stroke="#FFFFFF" fill="none"></circle>
+								</mask>
+
+								<g mask="url(#carousel-bullet-mask-359)">
+									<circle class="bullet-bg" cx="21" cy="21" r="20" fill="#FFFFFF"></circle>
+									<circle class="bullet-progress-circle" cx="21" cy="21" r="19" stroke-width="3px" fill="none" style="stroke-dashoffset: 0px;"></circle>
+								</g>
+
+								<g transform="translate(17, 13) scale(1)">
+									<path d="M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z" fill="#FFFFFF"></path>
+								</g>
+
+							</svg>
+	
+						</a>
+
+					</div>
+        
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="slider-dots">
+
+            <div *ngFor="let image of imagesSp; let i = index" 
+				class="slider-dot" 
+				[class.active]="i === currentSlide" 
+				(click)="setCurrentSlide(i)">
+
+				<svg 
+					baseProfile="full" 
+					viewBox="-40 -40 580 580" 
+					xmlns="http://www.w3.org/2000/svg" 
+					xmlns:xlink="http://www.w3.org/1999/xlink" 
+					width="20" 
+					height="20"
+				>
+
+					<circle	*ngIf="i === currentSlide"
+						id="a"
+						cx="250"
+						cy="250"
+						r="225"
+						stroke="#858688"
+						stroke-width="70"
+						fill="transparent"
+						stroke-dasharray="1413.72"
+						stroke-dashoffset="1413.72"
+						transform="matrix(0 -1 -1 0 500 500)"
+						shape-rendering="geometricPrecision"
+					></circle>
+				
+					<circle
+						*ngIf="i === currentSlide"
+						id="b"
+						cx="250"
+						cy="250"
+						r="225"
+						stroke="var(--secondary)"
+						stroke-width="70"
+						fill="transparent"
+						stroke-dasharray="1413.72"
+						stroke-dashoffset="1413.72"
+						transform="rotate(-90 250 250)"
+						shape-rendering="geometricPrecision"
+					></circle>
+
+				</svg>
+
+			</div>
+
+        </div>
+
+    </div>
+
+	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
+
+	<!-- Video Banner Container -->
+
+	<div class="video-banner-container">
+
+		<div class="video-banner">
+
+			<video autoplay loop muted [volume]="0" class="video" data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="500">
+
+				<source src="assets\videos\banner-video.mp4" type="video/mp4" alt="Video" class="video ">
+			
+			</video>
+
+		</div>
+
+	</div>
+
+	<div class="home-accessory-category">
+
+		<div class="acc-coll-items">
+
+			<div class="acc-item" data-aos="slide-left" data-aos-duration="1000"> 
+
+				<div class="top-box">
+
+					<div class="title">
+
+						<a href="/collections/accessori-aggiunti"><h2>Accessori BikeVille 🪄</h2></a>
+
+					</div>
+
+					<div class="s-btn">
+
+						<a href="/collections/accessori-aggiunti">Mostra di più</a>
+					
+					</div>
+
+				</div>
+
+				<div class="img-boxs">
+
+					<div class="img-box">
+
+						<a href="/collections/ricambi-e-componenti">
+							
+							<img 
+								class="lazyloaded" 
+								src="assets/images/accessory.webp"
+								alt="Accessori bike" 
+                            >
+
+						</a>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="acc-item" data-aos="slide-right" data-aos-duration="1000" data-aos-delay="100"> 
+
+				<div class="top-box">
+
+					<div class="title">
+
+						<a href="/collections/ricambi-e-componenti"><h2>Ricambi originali ⚙️</h2></a>
+
+					</div>
+
+					<div class="s-btn">
+
+
+						<a href="/collections/ricambi-e-componenti">Mostra di più</a>
+
+					</div>
+
+				</div>
+
+				<div class="img-boxs">
+
+					<div class="img-box">
+
+						<a href="/collections/ricambi-e-componenti">
+
+							<img 
+								class="lazyloaded" 
+								src="assets/images/ricambi-ai.jpg"
+								alt="Accessori bike" 
+                            >
+
+						</a>     
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
