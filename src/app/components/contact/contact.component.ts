@@ -5,12 +5,11 @@ import 'aos/dist/aos.css';
 
 
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { RecaptchaModule } from 'ng-recaptcha-2';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FocusDirective, ReactiveFormsModule, RecaptchaModule],
+  imports: [FocusDirective, ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
