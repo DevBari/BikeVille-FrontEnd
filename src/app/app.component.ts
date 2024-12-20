@@ -9,13 +9,15 @@ import { FooterComponent } from "@components/footer/footer.component";
 import { NavbarComponent } from "@components/navbar/navbar.component";
 import { LoadRedirectComponent as LoadRedirect} from '@components/load-redirect/load-redirect.component';
 import { HomeComponent } from '@components/home/home.component';
+import { LoginComponent } from '@components/login/login.component';
+
 
 
 @Component({
   
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, HomeComponent, FormsModule, CommonModule],
+  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, LoginComponent, HomeComponent, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
   
@@ -27,7 +29,7 @@ export class AppComponent {
   title = 'BikeVille';
 
   currentRoute: string = '';
-
+  
   // Metodo per aggiornare la route corrente
   onRouteChange(route: string) {
 

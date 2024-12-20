@@ -124,10 +124,11 @@
       </div> 
         
         <a
+        *ngIf="!isAuthenticated"
           aria-label="register"
           class="button-register"
           [ngStyle]="{ 'font-weight': 'bold' }"
-          routerLink="contact"
+          routerLink="login"
 
           [ngClass]="{ 'lock-open': isLockOpen }"
           (mouseenter)="toggleLock(true)"
@@ -163,6 +164,23 @@
         Accedi
 
       </a>  
+      
+      <!-- Icona Profilo -->
+  <div *ngIf="isAuthenticated" class="profile-menu">
+    <div class="profile-icon" (click)="toggleProfileDropdown()">
+      <img src="assets/images/user_1077114.png" alt="Profilo" />
+    </div>
+    <div *ngIf="showDropdown" class="dropdown-menu">
+      <ul>
+        <li>
+          <a routerLink="/cart">Carrello</a>
+        </li>
+        <li>
+          <button (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
     </div>
 

@@ -5,6 +5,7 @@ import { Router, RouterLink, NavigationEnd } from '@angular/router';
 import { ContactComponent } from '@components/contact/contact.component';
 import { ProductComponent } from '@components/product/product.component';
 import { filter } from 'rxjs/operators';
+import { AuthService } from '../../service/auth/auth.service';
 
 @Component({
 
@@ -18,12 +19,14 @@ import { filter } from 'rxjs/operators';
 
 export class NavbarComponent {
 
+  isAuthenticated: boolean = false;
+  showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
 
   // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
   
-  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef) {
+  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef, private authService: AuthService) {
 
     window.addEventListener('resize', () => {
 
@@ -37,6 +40,7 @@ export class NavbarComponent {
 
   ngOnInit() {
 
+    this.checkAuthentication(); // Controlla se l'utente è autenticato
     // Sottoscrizione agli eventi del router
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -47,6 +51,20 @@ export class NavbarComponent {
 
       });
 
+  }
+
+  checkAuthentication() {
+    const token = localStorage.getItem('token');
+    this.isAuthenticated = !!token; // Verifica se il token esiste
+  }
+
+  toggleProfileDropdown() {
+    this.showDropdown = !this.showDropdown;
+  }
+
+  logout() {
+    this.authService.runLogout();
+    this.isAuthenticated = false; // Aggiorna lo stato
   }
 
   isDropdownOpen: { [key: string]: boolean } = {
