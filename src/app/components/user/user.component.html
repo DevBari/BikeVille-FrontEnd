@@ -1,0 +1,39 @@
+<section class="user-profile container">
+    <div class="profile-header">
+      <div class="profile-image">
+        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="profile-pic">
+      </div>
+      <div class="profile-info">
+        <h4>{{authUser.firstName}} {{authUser.lastName}}</h4>
+        <p class="role">{{authUser.role}}</p>
+      </div>
+    </div>
+    <div class="profile-details">
+      <div class="profile-card">
+        <h6>Nome</h6>
+        <p>{{authUser.firstName}} {{authUser.lastName}}</p>
+      </div>
+      <div class="profile-card">
+        <h6>Email</h6>
+        <p>{{authUser.emailAddress}}</p>
+      </div>
+      <div class="profile-card">
+        <h6>Cell</h6>
+        <p>{{authUser.phone}}</p>
+      </div>
+      <div class="profile-card">
+        <h6>Ruolo</h6>
+        <p>{{authUser.role}}</p>
+      </div>
+    </div>
+    <div class="profile-actions">
+      <button class="btn" (click)="sendRecoverPasswordEmail()">
+        Recupera password
+      </button>    
+      <button class="btn" *ngIf="!isResetPasswordRoute()" (click)="toggleResetPasswordForm()">
+        Reset Password          
+        </button>
+    </div>
+      <router-outlet></router-outlet>
+</section>
+  

@@ -33,11 +33,9 @@ export class AuthService{
  
   // Metodo per effettuare il login
   loginPost(credentials: Credentials): Observable<any> {
-     
     return this.http.post('https://localhost:7167/LoginJwt/Login', credentials, {
-        observe: 'response',
-      });
-   
+      observe: 'response',
+    });
   }
   
   // Metodo per effettuare il logout
@@ -67,8 +65,7 @@ export class AuthService{
   formattaNumero(numero: string ): string {
     
     const numeroStr = numero.toString();
-
-   
+    
     if (numeroStr.length !== 10 || !/^\d{10}$/.test(numeroStr)) {
         return "Errore: il numero deve avere 10 cifre.";
     }

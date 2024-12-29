@@ -225,6 +225,9 @@
     <div *ngIf="showDropdown" class="dropdown-menu">
       <ul>
         <li>
+          <a routerLink="/profile/{{authUser.emailAddress}}">Profilo</a>
+        </li>
+        <li>
           <a routerLink="/cart">Carrello</a>
         </li>
         <li>

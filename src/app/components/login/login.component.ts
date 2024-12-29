@@ -131,30 +131,11 @@ export class LoginComponent implements OnInit {
   }
 
   // Metodo per gestire la registrazione
-  runRegister() {
-    console.log('runRegister called');
-    if (this.registerForm.invalid) {
-      this.notify.error('Compila correttamente i campi!');
-      return;
-    }
-
-    // Implementa la logica di registrazione qui
-  }
-
-
-
-  passwordsMatch(controls: FormGroup): ValidationErrors | null {
-    const password = controls.get('password')?.value;
-    const confirmedPassword = controls.get('confirmedPassword')?.value;
-    if (password !== confirmedPassword) {
-      controls.get('confirmedPassword')?.setErrors({ mismatch: true });
-      return { mismatch: true };
-    }
-    return null;
-  }
-
   addUser() {
-    if (this.registerForm.valid) {
+    if (this.registerForm.invalid) {
+      this.notify.error('Compila correttamente i campi');
+      return;
+    } else if (this.registerForm.valid) {
       this.authService
         .register({
           FirstName: this.registerForm.value.firstName,
@@ -171,10 +152,22 @@ export class LoginComponent implements OnInit {
         this.notify.error('Registrazione fallita');
       }
       setTimeout(() => {
-        window.location.replace('/login');
+        window.location.replace('/home');
       }, 1000);  
     }
 
+
+  passwordsMatch(controls: FormGroup): ValidationErrors | null {
+    const password = controls.get('password')?.value;
+    const confirmedPassword = controls.get('confirmedPassword')?.value;
+    if (password !== confirmedPassword) {
+      controls.get('confirmedPassword')?.setErrors({ mismatch: true });
+      return { mismatch: true };
+    }
+    return null;
+  }
+
+  
 
     
 

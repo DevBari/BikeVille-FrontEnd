@@ -1,11 +1,12 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, NavigationEnd } from '@angular/router';
+import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
 import { ContactComponent } from '@components/contact/contact.component';
 import { ProductComponent } from '@components/product/product.component';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth/auth.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
 
@@ -17,21 +18,40 @@ import { AuthService } from '../../service/auth/auth.service';
 
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
+
 
   isAuthenticated: boolean = false;
+  authUser: any
+  jwtDecode :any
   showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
 
   // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
   
-  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef, private authService: AuthService) {
-
+  constructor(
+    public router: Router, 
+    private renderer: Renderer2, 
+    private el: ElementRef, 
+    private authService: AuthService
+  ){
     window.addEventListener('resize', () => {
-
       this.isXlScreen = window.innerWidth >= 1280;
+    });
 
+    this.router.events.subscribe((event) => {
+      
+      if (event instanceof NavigationStart) {
+        if (localStorage.getItem('token')) {
+          if(localStorage.getItem('token') && !this.authService.checkValidToken(localStorage.getItem('token')||'') ){
+            this.logout()
+            this.isAuthenticated=false
+            this.authUser=null
+            window.location.replace('/');
+          }
+        }
+      }
     });
     
   }
@@ -40,7 +60,19 @@ export class NavbarComponent {
 
   ngOnInit() {
 
-    this.checkAuthentication(); // Controlla se l'utente è autenticato
+    // Controlla se l'utente è autenticato
+    this.checkAuthentication(); 
+    this.isAuthenticated = localStorage.getItem('token') ? true : false
+    
+    if(this.isAuthenticated){
+      this.jwtDecode=jwtDecode(localStorage.getItem('token')||'')
+      this.authService.getAuthUser(this.jwtDecode.unique_name).subscribe((data: any) => {
+        this.authUser=data
+      });
+    }
+
+    
+    
     // Sottoscrizione agli eventi del router
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -57,7 +89,8 @@ export class NavbarComponent {
     document.documentElement.setAttribute('data-theme', savedTheme);
 
   }
-
+  
+  // Metodo per controllare l'autenticazione
   checkAuthentication() {
     const token = localStorage.getItem('token');
     this.isAuthenticated = !!token; // Verifica se il token esiste

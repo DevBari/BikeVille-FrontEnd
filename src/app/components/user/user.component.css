@@ -1,0 +1,94 @@
+*{
+font-family: "Inter-Regular";    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image {
+    margin-right: 20px;
+  }
+  
+  .profile-pic {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-info h4 {
+    font-family: "inter-Bold";
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .profile-info .role {
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info .btn {
+    padding: 10px 20px;
+    background-color: #f57500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .profile-card {
+    flex: 1 1 calc(50% - 20px);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-card h6 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+    font-family: "inter-Bold";
+  }
+  
+  .profile-card p {
+    margin: 0;
+    color: #666;
+  }
+  
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .profile-actions .btn {
+    padding: 10px 20px;
+    background-color: #f57500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+  }

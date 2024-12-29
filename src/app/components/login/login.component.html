@@ -3,7 +3,7 @@
   
   <div class="form-container sign-up" *ngIf="showRegister">
     
-    <form [formGroup]="registerForm" (ngSubmit)="runRegister()">
+    <form [formGroup]="registerForm" (ngSubmit)="addUser()">
           <h1>Crea Account</h1>
           <div class="social-icons">
               <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
@@ -87,7 +87,7 @@
               <button class="hidden" (click)="showLoginForm()">Accedi</button>
           </div>
           <div class="toggle-panel toggle-right">
-              <h2>Hey, BikeViller!</h2>
+              <h2>Hey, Benvenuto!</h2>
               <p>Sei nuovo? Crea il tuo account</p>
               <button class="hidden" (click)="showRegisterForm()">Registrati</button>
           </div>
