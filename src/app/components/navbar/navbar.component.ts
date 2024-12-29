@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, HostListener } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
@@ -41,19 +41,26 @@ export class NavbarComponent implements OnInit{
     });
 
     this.router.events.subscribe((event) => {
-      
+          
+      // Verifica se l'evento è di tipo NavigationStart (inizio navigazione)
       if (event instanceof NavigationStart) {
+    
+        // Controlla se esiste un token nel localStorage
         if (localStorage.getItem('token')) {
+    
+          // Se esiste un token, verifica se NON è valido usando il servizio authService
+          // Nota: la doppia verifica del token serve come ulteriore sicurezza
           if(localStorage.getItem('token') && !this.authService.checkValidToken(localStorage.getItem('token')||'') ){
-            this.logout()
-            this.isAuthenticated=false
-            this.authUser=null
-            window.location.replace('/');
+            
+            // Se il token non è valido:
+            this.logout()                    // Esegue il logout
+            this.isAuthenticated=false       // Imposta lo stato di autenticazione a false
+            this.authUser=null              // Rimuove i dati dell'utente
+            window.location.replace('/');    // Reindirizza alla home page
           }
         }
       }
     });
-    
   }
 
   @Output() routeChanged = new EventEmitter<string>();
@@ -96,7 +103,8 @@ export class NavbarComponent implements OnInit{
     this.isAuthenticated = !!token; // Verifica se il token esiste
   }
 
-  toggleProfileDropdown() {
+  toggleProfileDropdown(event: MouseEvent) {
+    event.stopPropagation(); // Ferma la propagazione dell'evento
     this.showDropdown = !this.showDropdown;
   }
 
@@ -155,5 +163,23 @@ export class NavbarComponent implements OnInit{
     }
   
   }
-
+   // Decoratore che ascolta gli eventi del click sul documento
+  @HostListener('document:click', ['$event'])
+  
+  // Metodo che gestisce il click sul documento, riceve l'evento del mouse
+  onDocumentClick(event: MouseEvent) {
+      // Seleziona l'elemento del menu profilo dal DOM
+      const profileMenu = document.querySelector('.profile-menu');
+      
+      // Converte l'elemento cliccato in un HTMLElement
+      const targetElement = event.target as HTMLElement;
+  
+      // Verifica se:
+      // 1. esiste il profileMenu E
+      // 2. l'elemento cliccato NON è contenuto nel profileMenu
+      if (profileMenu && !profileMenu.contains(targetElement)) {
+          // Chiude il dropdown impostando showDropdown a false
+          this.showDropdown = false;
+      }
+  }
 }

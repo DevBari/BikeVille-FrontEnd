@@ -219,7 +219,7 @@
       
       <!-- Icona Profilo -->
   <div *ngIf="isAuthenticated" class="profile-menu">
-    <div class="profile-icon" (click)="toggleProfileDropdown()">
+    <div class="profile-icon" (click)="toggleProfileDropdown($event)">
       <img src="assets/images/user_1077114.png" alt="Profilo" />
     </div>
     <div *ngIf="showDropdown" class="dropdown-menu">
