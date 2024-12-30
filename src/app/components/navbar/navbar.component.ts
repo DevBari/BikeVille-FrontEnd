@@ -7,6 +7,7 @@ import { ProductComponent } from '@components/product/product.component';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth/auth.service';
 import { jwtDecode } from 'jwt-decode';
+import { CategoriesService } from '../../service/category/categories.service';
 
 @Component({
 
@@ -20,38 +21,43 @@ import { jwtDecode } from 'jwt-decode';
 
 export class NavbarComponent implements OnInit{
 
-
+  categories: any[]= [];
   isAuthenticated: boolean = false;
   authUser: any
   jwtDecode :any
   showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
+  
+  isDropdownOpen: { [key: string]: boolean } = {
 
-  // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
+    home: false,
+    category: false,
+    contact: false
+
+  };
   
   constructor(
     public router: Router, 
     private renderer: Renderer2, 
     private el: ElementRef, 
-    private authService: AuthService
+    private authService: AuthService,
+    private categoryService: CategoriesService
+    
   ){
     window.addEventListener('resize', () => {
+      // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
       this.isXlScreen = window.innerWidth >= 1280;
     });
 
-    this.router.events.subscribe((event) => {
-          
+    this.router.events.subscribe((event) => {      
       // Verifica se l'evento è di tipo NavigationStart (inizio navigazione)
       if (event instanceof NavigationStart) {
-    
         // Controlla se esiste un token nel localStorage
         if (localStorage.getItem('token')) {
-    
           // Se esiste un token, verifica se NON è valido usando il servizio authService
           // Nota: la doppia verifica del token serve come ulteriore sicurezza
           if(localStorage.getItem('token') && !this.authService.checkValidToken(localStorage.getItem('token')||'') ){
-            
             // Se il token non è valido:
             this.logout()                    // Esegue il logout
             this.isAuthenticated=false       // Imposta lo stato di autenticazione a false
@@ -66,9 +72,13 @@ export class NavbarComponent implements OnInit{
   @Output() routeChanged = new EventEmitter<string>();
 
   ngOnInit() {
+    // Recupera le categorie dal servizio
+    this.categoryService.getCategories().subscribe((data: any) => {
+      this.categories = data.$values.filter((item: any) => !item.$ref);
+    });
+  
 
-    // Controlla se l'utente è autenticato
-    this.checkAuthentication(); 
+    // Controlla se l'utente è autenticato   
     this.isAuthenticated = localStorage.getItem('token') ? true : false
     
     if(this.isAuthenticated){
@@ -78,8 +88,6 @@ export class NavbarComponent implements OnInit{
       });
     }
 
-    
-    
     // Sottoscrizione agli eventi del router
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -96,36 +104,30 @@ export class NavbarComponent implements OnInit{
     document.documentElement.setAttribute('data-theme', savedTheme);
 
   }
-  
-  // Metodo per controllare l'autenticazione
-  checkAuthentication() {
-    const token = localStorage.getItem('token');
-    this.isAuthenticated = !!token; // Verifica se il token esiste
-  }
 
+  // Metodo per mostrare/nascondere il dropdown del profilo
   toggleProfileDropdown(event: MouseEvent) {
     event.stopPropagation(); // Ferma la propagazione dell'evento
     this.showDropdown = !this.showDropdown;
   }
 
+  // Metodo per eseguire il logout
   logout() {
     this.authService.runLogout();
     this.isAuthenticated = false; // Aggiorna lo stato
   }
 
-  isDropdownOpen: { [key: string]: boolean } = {
 
-    home: false,
-    product: false,
-    contact: false
-
-  };
-
-  toggleDropdown(choice: string) {
-
-    this.isDropdownOpen[choice] = !this.isDropdownOpen[choice];
-
+// Metodo per aprire e chiudere i dropdown
+toggleDropdown(choice: string, event: MouseEvent) {
+  event.stopPropagation();
+  for (let key in this.isDropdownOpen) {
+    if (key !== choice) {
+      this.isDropdownOpen[key] = false;
+    }
   }
+  this.isDropdownOpen[choice] = !this.isDropdownOpen[choice];
+}
   
   isLockOpen = false;
 
@@ -165,21 +167,25 @@ export class NavbarComponent implements OnInit{
   }
    // Decoratore che ascolta gli eventi del click sul documento
   @HostListener('document:click', ['$event'])
-  
+
   // Metodo che gestisce il click sul documento, riceve l'evento del mouse
   onDocumentClick(event: MouseEvent) {
-      // Seleziona l'elemento del menu profilo dal DOM
-      const profileMenu = document.querySelector('.profile-menu');
-      
-      // Converte l'elemento cliccato in un HTMLElement
-      const targetElement = event.target as HTMLElement;
-  
+    // Converte l'elemento cliccato in un HTMLElement
+    const targetElement = event.target as HTMLElement;  
+    // Seleziona l'elemento del menu profilo dal DOM
+    const profileMenu = this.el.nativeElement.querySelector('.profile-menu');
+    // Seleziona l'elemento del menu categoria dal DOM
+    const categoryMenu = this.el.nativeElement.querySelector('.category-menu');
       // Verifica se:
       // 1. esiste il profileMenu E
       // 2. l'elemento cliccato NON è contenuto nel profileMenu
       if (profileMenu && !profileMenu.contains(targetElement)) {
           // Chiude il dropdown impostando showDropdown a false
           this.showDropdown = false;
+      }
+       
+      if (categoryMenu && !categoryMenu.contains(targetElement)) {
+          this.isDropdownOpen['category'] = false;
       }
   }
 }

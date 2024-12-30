@@ -5,12 +5,15 @@ import { ContactComponent as Contact } from '@components/contact/contact.compone
 import { LoginComponent as Login } from '@components/login/login.component';
 import { UserComponent as User } from '@components/user/user.component';
 import { ResetPasswordComponent } from '@components/user/userChild/reset-password/reset-password.component';
+import { CategoryComponent } from '@components/category/categorycomponent';
+
 
 export const routes: Routes = [
 
     { path: 'home', component: Home }, // Home component
     { path: 'product', component: Product }, // Prodotti component 
     { path: 'contact', component: Contact }, // Contatti component
+    {path: 'categories/:id',component: CategoryComponent},
     { path: 'profile/:email', component: User, children: [
         {path: 'resetPassword/:id',component: ResetPasswordComponent}
     ]}, // User component

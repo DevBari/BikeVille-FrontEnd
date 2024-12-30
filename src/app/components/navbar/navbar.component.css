@@ -264,7 +264,7 @@ button, input, optgroup, select, textarea {
 }
 
 .nav__items a:hover {
-  color: rgba(255, 255, 255, 0.8); /* Lighter hover effect */
+  color: rgba(163, 163, 163, 0.799); /* Lighter hover effect */
   transition: color 0.3s ease;
 }
 
@@ -276,7 +276,7 @@ button, input, optgroup, select, textarea {
 
 .nav__link {
   
-  color: var(--shades); /* Colore variabile per il testo */
+  color: var(--primary-text); /* Colore variabile per il testo */
   text-decoration: none; /* Rimuove la sottolineatura */
   padding: 10px 15px; /* Spaziatura interna */
   display: flex; /* Allinea gli elementi come flexbox */
@@ -824,7 +824,7 @@ button, input, optgroup, select, textarea {
   position: absolute;
   top: 50px;
   right: 0;
-  background-color: white;
+  background-color: var(--shades);
   border: 1px solid #ccc;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -850,10 +850,44 @@ button, input, optgroup, select, textarea {
 .dropdown-menu li a,
 .dropdown-menu li button {
   text-decoration: none;
-  color: #333;
+  color: var(--primary-text);
   background: none;
   border: none;
   cursor: pointer;
   width: 100%;
   text-align: left;
+}
+
+
+.category-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--shades);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.category-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-menu li {
+  padding: 0;
+}
+
+.category-menu .category-item {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.category-menu .category-item:hover {
+  background-color: #020202;
 }

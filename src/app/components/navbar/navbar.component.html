@@ -23,7 +23,7 @@
 
         <ul data-orientation="horizontal" class="nav__items" dir="ltr">
 
-          <li class="nav__item" (mouseenter)="toggleDropdown('home')" (mouseleave)="toggleDropdown('home')">
+          <li class="nav__item" (click)="toggleDropdown('home', $event)">
 
             <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
 
@@ -40,24 +40,32 @@
 
           </li>
 
-          <li class="nav__item" (mouseenter)="toggleDropdown('product')" (mouseleave)="toggleDropdown('product')">
+          <li class="nav__item" (click)="toggleDropdown('category', $event)">
 
             <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
 
-              <a routerLink="product">Prodotti</a>
+              <a>Categorie</a>
 
               <svg xmlns="http://www.w3.org/2000/svg" class="icon-dropdown" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
-                [ngStyle]="{'transform': isDropdownOpen['product'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
+                [ngStyle]="{'transform': isDropdownOpen['category'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
                 
                 <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
               
               </svg>
 
             </button>
-
+            <div class="category-menu" *ngIf="isDropdownOpen['category']">
+              <ul>
+                <li *ngFor="let category of categories">
+                  <a class="dropdown-item nav__link" routerLink="/categories/{{category.productCategoryId}}">
+                    {{category.name}}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
 
-          <li class="nav__item" (mouseenter)="toggleDropdown('contact')" (mouseleave)="toggleDropdown('contact')">
+          <li class="nav__item" (click)="toggleDropdown('contact', $event)">
 
             <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
 
