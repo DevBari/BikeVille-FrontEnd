@@ -1,0 +1,284 @@
+/* General Styles */
+.home {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.category-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-family: "Inter-bold";
+}
+
+/* Container Layout */
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Stili per il Bottone di Reset Prezzo */
+.reset-price-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #ffcc00; /* Giallo per indicare un'azione di reset */
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-price-button:hover {
+    background-color: #e6b800; /* Giallo scuro al passaggio del mouse */
+}
+/* Filters Sidebar */
+.filters {
+    flex:  0 1 auto;
+    width: 170px; 
+    height: fit-content;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.accordion {
+    width: 100%;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-button {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    color: #333;
+    cursor: pointer;
+}
+
+.accordion-button:hover {
+    color: #007BFF;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Accordion Content */
+.accordion-content {
+    margin-top: 10px;
+}
+
+.price-range-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.filter-option input {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.filter-option span {
+    font-size: 1rem;
+    color: #333;
+    font-family: "inter-regular";
+}
+
+.price-label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    font-family: "inter-regular";
+}
+
+.price-range {
+    width: 100%;
+
+}
+
+/* Products Display Area */
+.products {
+    flex: 3 1 600px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Product Card */
+.product-card {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-container {
+    padding: 15px;
+}
+
+.product-top {
+    height: 150px;
+    background-color: #eaeaea;
+    margin-bottom: 15px;
+}
+
+.product-info, .product-mid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name {
+    font-size: 1.1rem;
+    font-family: "Inter-Regular";
+    margin: 0;
+    color: #333;
+}
+
+.product-price {
+    font-size: 1rem;
+    margin: 5px 0 0 0;
+    color: #666;
+    font-family: "Inter-Regular";
+}
+
+.add-to-cart-btn {
+    background-color: #004ebd;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #ff0000;
+}
+
+.product-details-info {
+    display: flex;
+    padding: 10px;
+    background-color: #f1f1f1;
+    font-family: "Inter-Regular";
+    font-size: 7x;
+}
+
+.info-icon {
+    margin-right: 10px;
+    color: #007BFF;
+}
+
+.info-contents table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-contents th, .info-contents td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.info-contents th {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Stili per la Paginazione */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #004ebd;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .category-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filters {
+        max-width: 100%;
+    }
+
+    .products {
+        flex: 1 1 100%;
+    }
+
+    .product-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}

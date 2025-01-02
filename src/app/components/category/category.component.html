@@ -1,1 +1,146 @@
-<p>categories works!</p>
+<section class="home">
+    <h2 class="category-title">{{ category.name }}</h2>
+    <div class="category-container">
+        <!-- Filters Sidebar -->
+        <aside class="filters">
+            <div class="accordion">
+
+                <!-- Sub Category Accordion Item -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('subCategory')" tabindex="0" (keydown.enter)="toggleAccordion('subCategory')" (keydown.space)="toggleAccordion('subCategory')">
+                        <button class="accordion-button" type="button" [attr.aria-expanded]="isAccordionOpen['subCategory']">
+                            Sub Category
+                            <span class="accordion-icon">
+                                {{ isAccordionOpen['subCategory'] ? '-' : '+' }}
+                            </span>
+                        </button>
+                    </div>
+                    <div class="accordion-content" *ngIf="isAccordionOpen['subCategory']">
+                        <label class="filter-option">
+                            <input type="radio" name="category" (click)="setCategoryRadio(null)" [checked]="selectedSubCategoryId === null">
+                            <span>Tutte</span>
+                        </label>
+                        <label class="filter-option" *ngFor="let subCategory of category.inverseParentProductCategory.$values">
+                            <input type="radio" name="category" (click)="setCategoryRadio(subCategory.productCategoryId)"[checked]="selectedSubCategoryId === subCategory.productCategoryId">
+                            <span>{{ subCategory.name }}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Accordion Item -->
+                <div class="accordion-item">
+                    <div class="accordion-header" (click)="toggleAccordion('price')" tabindex="0" 
+                         (keydown.enter)="toggleAccordion('price')" (keydown.space)="toggleAccordion('price')">
+                        <button class="accordion-button" type="button" [attr.aria-expanded]="isAccordionOpen['price']">
+                            Prezzo
+                            <span class="accordion-icon">
+                                {{ isAccordionOpen['price'] ? '-' : '+' }}
+                            </span>
+                        </button>
+                    </div>
+                    <div class="accordion-content" *ngIf="isAccordionOpen['price']">
+                        <div class="filter-option" *ngFor="let range of priceRanges">
+                            <input type="radio" name="price" (click)="setPriceRange(range)" [checked]="selectedPriceRange?.min === range.min && selectedPriceRange?.max === range.max">
+                            <span>{{ range.label }}</span>
+                        </div>
+                        <!-- Bottone di Reset Prezzo -->
+                        <button class="reset-price-button" type="button" (click)="resetPriceFilter()">
+                            Reset Prezzo
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Products Display Area -->
+        <main class="products" *ngIf="showFilterProducts; else allProducts">
+            <div class="product-card" *ngFor="let product of paginatedProducts">
+                <div class="product-container">
+                    <div class="product-top"></div>
+                    <div class="product-info">
+                        <div class="product-details">
+                            <p class="product-name">{{ product.name }}</p>
+                            <p class="product-price">{{ product.listPrice }}$</p>
+                        </div>
+                        <button class="add-to-cart-btn" (click)="addProductToCart(product.productId)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
+                            <i class="fa-solid fa-cart-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="product-details-info">
+                    <div class="info-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <div class="info-contents">
+                        <table>
+                            <tr>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Weight</th>
+                            </tr>
+                            <tr>
+                                <td>{{ product.color || "N/A" }}</td>
+                                <td>{{ product.size || "N/A" }}</td>
+                                <td>{{ product.weight || "N/A" }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+           
+        </main>
+
+        <!-- All Products Display Area -->
+        <ng-template #allProducts>
+            <main class="products">
+                <div class="product-card" *ngFor="let product of paginatedProducts">
+                    <div class="product-container">
+                        <div class="product-top"></div>
+                        <div class="product-mid">
+                            <div class="product-details">
+                                <p class="product-name">{{ product.name }}</p>
+                                <p class="product-price">{{ product.listPrice }}$</p>
+                            </div>
+                            <button class="add-to-cart-btn" (click)="addProductToCart(product.productId)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
+                                <i class="fa-solid fa-cart-plus" id="addToCart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-details-info">
+                        <div class="info-icon">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </div>
+                        <div class="info-contents">
+                            <table>
+                                <tr>
+                                    <th>Color</th>
+                                    <th>Size</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ product.color || "N/A" }}</td>
+                                    <td>{{ product.size || "N/A" }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Weight</th>
+                                </tr>
+                                <tr>
+                                    <td>{{ product.weight || "N/A" }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+            </main>
+            
+        </ng-template>
+    </div>
+    <!-- Controlli di Paginazione -->
+        <div class="pagination">
+           <button (click)="prevPage()" [disabled]="currentPage === 1">Precedente</button>
+           <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
+           <button (click)="nextPage()" [disabled]="currentPage === totalPages">Successiva</button>
+       </div>
+</section>

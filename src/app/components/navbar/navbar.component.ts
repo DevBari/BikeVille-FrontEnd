@@ -28,7 +28,8 @@ export class NavbarComponent implements OnInit{
   showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
-  
+  searchQuery: string = ''; // Inizializza la stringa di ricerca
+
   isDropdownOpen: { [key: string]: boolean } = {
 
     home: false,
@@ -137,12 +138,30 @@ toggleDropdown(choice: string, event: MouseEvent) {
     
   }
 
-  isDrawerOpen=false;
+  isDrawerOpen: boolean =false;
 
   toggleSearchBar() {
-
     this.isDrawerOpen = !this.isDrawerOpen;
-  
+    if (this.isDrawerOpen) {
+      // Focus sull'input di ricerca quando si apre
+      setTimeout(() => {
+        const searchInput = this.el.nativeElement.querySelector('.search-input');
+        if (searchInput) {
+          searchInput.focus();
+        }
+      }, 300); // Assicura che la transizione CSS sia completata
+    } else {
+      this.searchQuery = ''; // Pulisce la query quando chiude
+    }
+  }
+
+  // Metodo per eseguire la ricerca
+  performSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/search'], { queryParams: { q: this.searchQuery } });
+      this.isDrawerOpen = false;
+      this.searchQuery = '';
+    }
   }
 
   isDarkTheme = false;
@@ -187,5 +206,12 @@ toggleDropdown(choice: string, event: MouseEvent) {
       if (categoryMenu && !categoryMenu.contains(targetElement)) {
           this.isDropdownOpen['category'] = false;
       }
+      // Chiudi la search bar se clicchi fuori
+    const searchBar = this.el.nativeElement.querySelector('.button-searchbar');
+    if (searchBar && !searchBar.contains(targetElement)) {
+      if (this.isDrawerOpen) {
+        this.toggleSearchBar();
+      }
+    }
   }
 }

@@ -642,21 +642,91 @@ button, input, optgroup, select, textarea {
   position: relative;
 }
 
+
+/* Nascondi il testo "Cerca" quando espanso */
+.button-searchbar.expanded .item-searchbar span {
+  display: none;
+}
+
+/* Input search Style */
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  background-color: transparent;
+  font-size: 16px;
+  color: #333;
+  opacity: 0;
+  width: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mostra e espandi l'input quando la barra è aperta */
+.button-searchbar.expanded .search-input {
+  width: 150px;
+  opacity: 1;
+}
+
+/* Pulsante Search Icon */
+.button-searchbar svg {
+  transition: transform 0.3s ease;
+}
+
+.button-searchbar.expanded svg {
+  transform: rotate(360deg);
+}
+
+/* Pulsante Chiudi (Opzionale) */
+.button-searchbar.expanded::after {
+  position: absolute;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-searchbar.expanded:hover::after {
+  opacity: 1;
+}
+
+/* Focus Input */
+.search-input:focus {
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .button-searchbar.expanded {
+    width: 150px;
+  }
+
+  .button-searchbar.expanded .search-input {
+    width: 100px;
+  }
+}
+
 /* Bottone SearchBar */
 .item-searchbar {
   display: flex;
   align-items: center;
+  justify-content:center;
+  width:100%;
+  transition: opacity 0.3s ease;
 }
 
 .button-searchbar {
   width: auto;
-  height: 54px;
+  transition: width 0.3s ease;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background-color: var(--secondary);
   border-radius: 20px;
-  color: #ffffffe0;
+  color: #fbfbfbe0;
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
@@ -891,3 +961,5 @@ button, input, optgroup, select, textarea {
 .category-menu .category-item:hover {
   background-color: #020202;
 }
+
+

@@ -144,7 +144,11 @@
 
       <div [ngStyle]="{'margin-right': '8px'}" class="dropdown">
 
-        <button class="button-searchbar" type="button" aria-expanded="false" (click)="toggleSearchBar()">
+        <button class="button-searchbar" 
+        [class.expanded]="isDrawerOpen" 
+        type="button" 
+        [attr.aria-expanded]="isDrawerOpen"
+        (click)="toggleSearchBar()">
 
           <div class="item-searchbar">
 
@@ -154,11 +158,18 @@
               <path d="M13 6.5a6.47 6.47 0 0 1-1.258 3.844q.06.044.115.098l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1-.1-.115h.002A6.5 6.5 0 1 1 13 6.5M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11"/>
             
             </svg>
-  
-            Cerca
-            
+            <span *ngIf="!isDrawerOpen">Cerca</span>
           </div>   
-
+       <!-- Campo di Input della Search Bar -->
+    <input 
+      type="text" 
+      class="search-input" 
+      placeholder="Cerca..." 
+      [(ngModel)]="searchQuery" 
+      (keyup.enter)="performSearch()" 
+      aria-label="Search"
+      [class.visible]="isDrawerOpen"
+    />
         </button>
 
       </div>  
