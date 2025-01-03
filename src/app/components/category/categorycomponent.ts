@@ -12,7 +12,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })
+
 export class CategoryComponent implements OnInit {
+
   constructor(
     private categoryService: CategoriesService,
     private route: ActivatedRoute
@@ -198,4 +200,5 @@ export class CategoryComponent implements OnInit {
     // cart logic here
     console.log(`Product with ID ${productId} added to cart.`);
   }
+
 }

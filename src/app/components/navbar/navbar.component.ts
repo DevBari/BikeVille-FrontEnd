@@ -1,10 +1,13 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, HostListener } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
 import { ContactComponent } from '@components/contact/contact.component';
 import { ProductComponent } from '@components/product/product.component';
 import { filter } from 'rxjs/operators';
+import { AuthService } from '../../service/auth/auth.service';
+import { jwtDecode } from 'jwt-decode';
+import { CategoriesService } from '../../service/category/categories.service';
 
 @Component({
 
@@ -16,26 +19,75 @@ import { filter } from 'rxjs/operators';
 
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
+  categories: any[]= [];
+  isAuthenticated: boolean = false;
+  authUser: any
+  jwtDecode :any
+  showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
+  searchQuery: string = ''; // Inizializza la stringa di ricerca
 
-  // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
+  isDropdownOpen: { [key: string]: boolean } = {
+
+    home: false,
+    category: false,
+    contact: false
+
+  };
   
-  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef) {
-
-    window.addEventListener('resize', () => {
-
-      this.isXlScreen = window.innerWidth >= 1280;
-
-    });
+  constructor(
+    public router: Router, 
+    private renderer: Renderer2, 
+    private el: ElementRef, 
+    private authService: AuthService,
+    private categoryService: CategoriesService
     
+  ){
+    window.addEventListener('resize', () => {
+      // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
+      this.isXlScreen = window.innerWidth >= 1280;
+    });
+
+    this.router.events.subscribe((event) => {      
+      // Verifica se l'evento è di tipo NavigationStart (inizio navigazione)
+      if (event instanceof NavigationStart) {
+        // Controlla se esiste un token nel localStorage
+        if (localStorage.getItem('token')) {
+          // Se esiste un token, verifica se NON è valido usando il servizio authService
+          // Nota: la doppia verifica del token serve come ulteriore sicurezza
+          if(localStorage.getItem('token') && !this.authService.checkValidToken(localStorage.getItem('token')||'') ){
+            // Se il token non è valido:
+            this.logout()                    // Esegue il logout
+            this.isAuthenticated=false       // Imposta lo stato di autenticazione a false
+            this.authUser=null              // Rimuove i dati dell'utente
+            window.location.replace('/');    // Reindirizza alla home page
+          }
+        }
+      }
+    });
   }
 
   @Output() routeChanged = new EventEmitter<string>();
 
   ngOnInit() {
+    // Recupera le categorie dal servizio
+    this.categoryService.getCategories().subscribe((data: any) => {
+      this.categories = data.$values.filter((item: any) => !item.$ref);
+    });
+  
+
+    // Controlla se l'utente è autenticato   
+    this.isAuthenticated = localStorage.getItem('token') ? true : false
+    
+    if(this.isAuthenticated){
+      this.jwtDecode=jwtDecode(localStorage.getItem('token')||'')
+      this.authService.getAuthUser(this.jwtDecode.unique_name).subscribe((data: any) => {
+        this.authUser=data
+      });
+    }
 
     // Sottoscrizione agli eventi del router
     this.router.events
@@ -53,27 +105,6 @@ export class NavbarComponent {
     document.documentElement.setAttribute('data-theme', savedTheme);
 
   }
-
-  ngOnUpdate(): void { this.updateScreenSize(); }
-
-  isTabletScreen: boolean = false;
-
-  @HostListener('window:resize', [])
-
-  onResize(): void {
-    this.updateScreenSize();
-  }
-
-  private updateScreenSize(): void {
-    const screenWidth = document.documentElement.clientWidth;
-    this.isTabletScreen = screenWidth < 1024;
-  }
-
-  constructor(public router: Router, private renderer: Renderer2, private el: ElementRef) {
-    console.log('Screen size:', window.innerWidth, 'isTablet:', this.isTabletScreen)
-  }
-
-  @Output() routeChanged = new EventEmitter<string>();
 
   // Metodo per mostrare/nascondere il dropdown del profilo
   toggleProfileDropdown(event: MouseEvent) {
@@ -153,5 +184,34 @@ toggleDropdown(choice: string, event: MouseEvent) {
     }
   
   }
+   // Decoratore che ascolta gli eventi del click sul documento
+  @HostListener('document:click', ['$event'])
 
+  // Metodo che gestisce il click sul documento, riceve l'evento del mouse
+  onDocumentClick(event: MouseEvent) {
+    // Converte l'elemento cliccato in un HTMLElement
+    const targetElement = event.target as HTMLElement;  
+    // Seleziona l'elemento del menu profilo dal DOM
+    const profileMenu = this.el.nativeElement.querySelector('.profile-menu');
+    // Seleziona l'elemento del menu categoria dal DOM
+    const categoryMenu = this.el.nativeElement.querySelector('.category-menu');
+      // Verifica se:
+      // 1. esiste il profileMenu E
+      // 2. l'elemento cliccato NON è contenuto nel profileMenu
+      if (profileMenu && !profileMenu.contains(targetElement)) {
+          // Chiude il dropdown impostando showDropdown a false
+          this.showDropdown = false;
+      }
+       
+      if (categoryMenu && !categoryMenu.contains(targetElement)) {
+          this.isDropdownOpen['category'] = false;
+      }
+      // Chiudi la search bar se clicchi fuori
+    const searchBar = this.el.nativeElement.querySelector('.button-searchbar');
+    if (searchBar && !searchBar.contains(targetElement)) {
+      if (this.isDrawerOpen) {
+        this.toggleSearchBar();
+      }
+    }
+  }
 }

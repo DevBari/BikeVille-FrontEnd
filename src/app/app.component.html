@@ -1,5 +1,6 @@
 
     <app-navbar (routeChanged)="onRouteChange($event)"></app-navbar>
+    
     <app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
 
     <!-- Route outlet for dynamic content -->
