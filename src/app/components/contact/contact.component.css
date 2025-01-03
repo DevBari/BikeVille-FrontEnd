@@ -1,14 +1,15 @@
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: inter-bold, inter-regular;
+*, *::after, *::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: inter-bold, inter-regular;
 }
 
 div{
 	display: block;
 	unicode-bidi: isolate;
+	max-width: 100%;
 }
 
 /* main banner div */
@@ -24,8 +25,8 @@ div{
 
 @media (min-width: 576px) {
 	.lt-container {
-		padding-right: calc(var(--grid-gutter-width) * 2);
-		padding-left: calc(var(--grid-gutter-width) * 2);
+		padding-right: 20;
+		padding-left: 20;
 	}
 }
 
@@ -101,8 +102,8 @@ div{
 
 /* Aggiungi margini al testo per schermi di 1024px */
 @media (max-width: 1024px) {
-	.lt-hero-unit {
-		margin: 0 1rem; /* Aggiungi margini laterali */
+	.lt-container {
+		padding: 0 1rem; /* Aggiungi margini laterali */
 	}
 }
 
@@ -117,7 +118,7 @@ div{
 /* form elements */
 
 .container {
-	position: relative;
+		position: relative;
 		width: 100%;
 		min-height: 100svh;
 		padding: 3rem;
@@ -132,6 +133,7 @@ div{
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		
 	}
 	
 	.form {
@@ -148,6 +150,7 @@ div{
 		overflow: hidden;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
+		box-sizing: content-box;
 	}
 	
 	.contact-form {

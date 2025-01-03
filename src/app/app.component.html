@@ -1,21 +1,9 @@
 
-    <app-navbar (routeChanged)="onRouteChange($event)" class="navbar"></app-navbar>
+    <app-navbar (routeChanged)="onRouteChange($event)"></app-navbar>
     <app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
-    
-    <div class="router" >
 
-        <!-- Route outlet for dynamic content -->
-        <router-outlet></router-outlet>
+    <!-- Route outlet for dynamic content -->
+    <router-outlet></router-outlet>
 
-    </div>
-
-    <div class="footer">
-
-        <!-- footer component here -->
-        <app-footer></app-footer>
-
-        <section class="prova">
-
-        </section>
-
-    </div>
+    <!-- footer component here -->
+    <app-footer></app-footer>

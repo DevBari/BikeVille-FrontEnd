@@ -9,6 +9,7 @@ import {
   ViewChild,
   OnDestroy,
   OnInit,
+  HostListener,
 } from '@angular/core';
 
 import AOS from 'aos';
@@ -148,5 +149,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     'assets/images/lebron.png',
     'assets/images/bolt.png',
   ];
+
+  ngOnUpdate(): void { this.updateScreenSize(); }
+  
+  isTabletScreen: boolean = false;
+
+  @HostListener('window:resize', [])
+
+  onResize(): void {
+    this.updateScreenSize();
+  }
+
+  private updateScreenSize(): void {
+    const screenWidth = document.documentElement.clientWidth;
+    this.isTabletScreen = screenWidth <= 1024;
+  }
 
 }
