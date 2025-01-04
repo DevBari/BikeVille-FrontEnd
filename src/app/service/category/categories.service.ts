@@ -5,6 +5,7 @@ import { Observable, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoriesService {
 
   constructor(private http: HttpClient) { }
@@ -20,4 +21,5 @@ export class CategoriesService {
   getCategoryWithOutProducts() {
     return this.http.get('https://localhost:7167/ProductCategories/IndexWhithOutProducts');
   }
+
 }

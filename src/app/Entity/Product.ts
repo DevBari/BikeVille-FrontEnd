@@ -1,6 +1,7 @@
 export class Product {
-    
+
     constructor(
+
         public productId :number|null,
         public name: string,
         public productNumber: string,
@@ -12,5 +13,8 @@ export class Product {
         public productCategoryId: number,
         public productModelId: number,
         public sellStartDate: Date,
-        public sellEndDate: Date,){}
-  }
+        public sellEndDate: Date,
+
+    ) {}
+
+}

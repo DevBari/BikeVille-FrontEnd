@@ -1,14 +1,17 @@
 /* footer */
-*,
-*::before,
-*::after {
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: inter-bold, inter-regular;
 }
 
 .footer_bikes {
   justify-content: center;
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
   position: relative;
   min-height: 100svh;
   unicode-bidi: isolate;
@@ -16,7 +19,7 @@
     "Segoe UI Symbol", "Noto Color Emoji";
   transition: all 0.3s;
   transition: all 0.3s;
-  min-height: 100svh;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -28,7 +31,7 @@
   align-items: center;
   display: flex;
   position: relative;
-  width: 100%;
+  width: 95%;
 }
 
 .footer_bikes, .div-block-3 {
@@ -152,10 +155,11 @@ a {
   align-items: center;
   padding: 0.729vw 1.042vw;
   display: flex;
-  width: 290px;
-  -webkit-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
-  -moz-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
-  box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
+  width: 305px;
+  height: 72px;
+  -webkit-box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
+  -moz-box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
+  box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
 }
 
 .html-embed-2 {
@@ -169,16 +173,40 @@ a {
   overflow: hidden;
 }
 
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .html-embed-2 {
+    bottom: 0px;
+  }  
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .html-embed-2 {
+    bottom: -0px;
+  }  
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  .html-embed-2 {
+    bottom: -40px;
+  }  
+}
+
+
+@media only screen and (max-width: 1440px) {
+  .html-embed-2 {
+    bottom: -23px;
+  }  
+}
+
+@media only screen and (max-width: 1920px) {
+  .html-embed-2 {
+    bottom: -0px;
+  }  
+}
+
 @media screen and (min-width: 1920px) {
   .html-embed-2 {
-    z-index: 3;
-    pointer-events: none;
-    width: 40svw;
-    position: absolute;
-    bottom: -37px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+    bottom: -100px;
   }  
 }
 
@@ -605,7 +633,6 @@ input {
 form {
   background: radial-gradient(circle, rgba(0,78,189,0.6643032212885154) 5%, rgba(0,115,189,0.8687850140056023) 65%);
 	display: flex;
-	align-items: self-start;
 	justify-content: flex-start;
 	flex-direction: column;
 	padding: 25px;
@@ -617,6 +644,36 @@ form {
   -moz-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
   box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
   position: relative;
+}
+
+#form {
+
+  background: radial-gradient(circle, rgba(0,78,189,0.6643032212885154) 5%, rgba(0,115,189,0.8687850140056023) 65%);
+	display: block;
+	justify-content: flex-start;
+	flex-direction: column;
+
+	padding: 25px;
+
+	height: fit-content;
+	text-align: center;
+
+  border-radius: 20px;
+  -webkit-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
+  -moz-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
+  box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
+  position: relative;
+
+  width: 300px !important;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#container {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .div-copyright {
@@ -635,9 +692,9 @@ form {
   font-weight: lighter;
   font-size: 16px;
   font-family: inter-regular;
-  -webkit-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
-  -moz-box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
-  box-shadow: 0px 10px 25px 1px rgba(105, 46, 0, 0.500);
+  -webkit-box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
+  -moz-box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
+  box-shadow: 0px 0px 15px rgba(105, 46, 0, 0.500);
 }
 
 .payment-list {

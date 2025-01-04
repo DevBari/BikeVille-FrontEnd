@@ -25,20 +25,3 @@ body, html {
   min-height: 100svh;
 
 }
-
-.router {
-  min-height: 100svh;
-  box-sizing: border-box;
-}
-
-.footer {
-  box-sizing: border-box;
-}
-
-.prova {
-  background-image: url("https://www.youtube.com/watch?v=VGmiB9ILQDI");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 1;
-}

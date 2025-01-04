@@ -4,10 +4,10 @@ import { Credentials } from '../../Entity/Credentials';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 
-
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService{
 
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
@@ -19,19 +19,26 @@ export class AuthService{
   isAuth!:Boolean
 
   // Metodo per controllare se un token è valido
- checkValidToken(token: string) {
-    const exp=jwtDecode(token).exp||0;
-    console.log(exp);
-    console.log(Math.floor(Date.now() / 1000));
+  checkValidToken(token: string) {
 
-      if(exp < Math.floor(Date.now() / 1000)){
-      return false
-      }else{
-        return true
-      }
- }
- 
-  // Metodo per effettuare il login
+      const exp=jwtDecode(token).exp||0;
+
+      console.log(exp);
+      console.log(Math.floor(Date.now() / 1000));
+
+        if(exp < Math.floor(Date.now() / 1000)){
+
+          return false
+
+        }else{
+
+          return true
+
+        }
+
+  }
+  
+    // Metodo per effettuare il login
   loginPost(credentials: Credentials): Observable<any> {
     return this.http.post('https://localhost:7167/LoginJwt/Login', credentials, {
       observe: 'response',
@@ -72,5 +79,5 @@ export class AuthService{
     const formato = `${numeroStr.slice(0, 3)}-${numeroStr.slice(3, 6)}-${numeroStr.slice(6)}`;
     return formato;
   }
+
 }
- 
