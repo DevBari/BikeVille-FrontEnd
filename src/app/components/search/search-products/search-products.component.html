@@ -1,0 +1,53 @@
+<section class="search-results">
+    <h2>Risultati della Ricerca per "{{ searchTerm }}"</h2>
+    
+    <div *ngIf="productsFiltered.length > 0; else noResults">
+      <div class="category-container">
+        <!-- Products Display Area -->
+        <main class="products">
+          <div class="product-card" *ngFor="let product of productsFiltered">
+            <div class="product-container">
+              <div class="product-top">
+                <!-- Immagine del prodotto -->
+                <img [src]="product.imageUrl || 'path/to/default-image.jpg'" alt="{{ product.name }}" class="product-image">
+              </div>
+              <div class="product-info">
+                <div class="product-details">
+                  <p class="product-name">{{ product.name }}</p>
+                  <p class="product-price">{{ product.listPrice }}€</p>
+                </div>
+                <button class="add-to-cart-btn" 
+                        (click)="addProductToCart(product.productId)" 
+                        [attr.aria-label]="'Aggiungi ' + product.name + ' al carrello'">
+                  <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="product-details-info">
+              <div class="info-icon">
+                <i class="fa-solid fa-circle-info"></i>
+              </div>
+              <div class="info-contents">
+                <table>
+                  <tr>
+                    <th>Color</th>
+                    <th>Size</th>
+                    <th>Weight</th>
+                  </tr>
+                  <tr>
+                    <td>{{ product.color || "N/A" }}</td>
+                    <td>{{ product.size || "N/A" }}</td>
+                    <td>{{ product.weight || "N/A" }}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    
+    <ng-template #noResults>
+      <p>Nessun prodotto trovato per "{{ searchTerm }}".</p>
+    </ng-template>
+  </section>

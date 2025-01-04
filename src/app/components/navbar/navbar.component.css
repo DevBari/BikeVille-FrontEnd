@@ -642,18 +642,11 @@ button, input, optgroup, select, textarea {
   position: relative;
 }
 
-
-/* Nascondi il testo "Cerca" quando espanso */
-.button-searchbar.expanded .item-searchbar span {
-  display: none;
-}
-
 /* Input search Style */
 .search-input {
   flex: 1;
   border: none;
   outline: none;
-  padding: 0 10px;
   background-color: transparent;
   font-size: 16px;
   color: #333;
@@ -677,20 +670,6 @@ button, input, optgroup, select, textarea {
   transform: rotate(360deg);
 }
 
-/* Pulsante Chiudi (Opzionale) */
-.button-searchbar.expanded::after {
-  position: absolute;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-  color: #333;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.button-searchbar.expanded:hover::after {
-  opacity: 1;
-}
 
 /* Focus Input */
 .search-input:focus {
@@ -743,16 +722,18 @@ button, input, optgroup, select, textarea {
   padding: 10px 20px;
 }
 
-.icon-searchbar {
-  height: 30px;
-  width: 30px;
-  transition-duration: 1.5s;
+/* Pulsante di Ricerca */
+.search-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
   display: flex;
-  margin-right: 4px;
   align-items: center;
   justify-content: center;
-
+  transition: transform 0.3s ease;
 }
+
 
 .bell path {
   fill: rgb(0, 78, 189);
