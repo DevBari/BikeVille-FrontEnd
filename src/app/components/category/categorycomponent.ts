@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-category',
@@ -17,7 +18,8 @@ export class CategoryComponent implements OnInit {
 
   constructor(
     private categoryService: CategoriesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller // Iniezione del servizio
   ) {}
 
   search: string = '';
@@ -164,6 +166,7 @@ export class CategoryComponent implements OnInit {
 
     // Assegna i prodotti della pagina corrente a 'paginatedProducts'
     this.paginatedProducts = source.slice(start, end);
+    this.scrollToTop(); // Scrolla in cima dopo la paginazione
   }
 
   // Naviga alla pagina precedente
@@ -190,6 +193,10 @@ export class CategoryComponent implements OnInit {
     }
   }
 
+
+scrollToTop(): void {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
   // Toggle accordion sections
   toggleAccordion(section: string) {
     this.isAccordionOpen[section] = !this.isAccordionOpen[section];

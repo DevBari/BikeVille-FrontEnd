@@ -1,11 +1,11 @@
 <section class="search-results">
     <h2>Risultati della Ricerca per "{{ searchTerm }}"</h2>
     
-    <div *ngIf="productsFiltered.length > 0; else noResults">
+    <div *ngIf="paginatedProducts.length > 0; else noResults">
       <div class="category-container">
         <!-- Products Display Area -->
         <main class="products">
-          <div class="product-card" *ngFor="let product of productsFiltered">
+          <div class="product-card" *ngFor="let product of paginatedProducts">
             <div class="product-container">
               <div class="product-top">
                 <!-- Immagine del prodotto -->
@@ -50,4 +50,17 @@
     <ng-template #noResults>
       <p>Nessun prodotto trovato per "{{ searchTerm }}".</p>
     </ng-template>
+    <!-- Controlli di Paginazione -->
+    <div class="pagination">
+      <button (click)="prevPage()" [disabled]="currentPage === 1">Precedente</button>
+       
+      <button
+        *ngFor="let page of [].constructor(totalPages); let i = index" 
+        (click)="goToPage(i + 1)" 
+        [class.active]="currentPage === (i + 1)">
+        {{ i + 1 }}
+      </button>
+      
+      <button (click)="nextPage()" [disabled]="currentPage === totalPages">Successiva</button>
+    </div>
   </section>

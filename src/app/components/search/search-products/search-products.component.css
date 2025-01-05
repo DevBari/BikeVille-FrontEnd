@@ -172,3 +172,44 @@
         max-width: 400px;
     }
 }
+
+/* Stili per la Paginazione */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    border: 1px solid #004ebd; /* Bordo blu */
+    background-color: white;
+    color: #0c0c0c;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+}
+
+/* Hover Effect per Pulsanti Non Attivi */
+.pagination button:hover:not(.active) {
+    background-color: #b6cff5; /* Sfondo leggermente blu al passaggio del mouse */
+}
+
+/* Pulsante Active */
+.pagination button.active {
+    background-color: #004ebd; /* Sfondo blu */
+    color: #ffffff; /* Testo bianco */
+}
+
+/* Pulsanti Disabilitati */
+.pagination button:disabled {
+    background-color: #ccc;
+    color: #666;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
