@@ -642,98 +642,77 @@ button, input, optgroup, select, textarea {
   position: relative;
 }
 
-/* Input search Style */
-.search-input {
-  flex: 1;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  font-size: 16px;
-  color: #333;
-  opacity: 0;
-  width: 0;
-  transition: width 0.3s ease, opacity 0.3s ease;
-}
+/* Search Bar */
 
-/* Mostra e espandi l'input quando la barra è aperta */
-.button-searchbar.expanded .search-input {
-  width: 150px;
-  opacity: 1;
-}
-
-/* Pulsante Search Icon */
-.button-searchbar svg {
-  transition: transform 0.3s ease;
-}
-
-.button-searchbar.expanded svg {
-  transform: rotate(360deg);
-}
-
-
-/* Focus Input */
-.search-input:focus {
-  outline: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .button-searchbar.expanded {
-    width: 150px;
-  }
-
-  .button-searchbar.expanded .search-input {
-    width: 100px;
-  }
-}
-
-/* Bottone SearchBar */
-.item-searchbar {
+.input-wrapper {
   display: flex;
   align-items: center;
-  justify-content:center;
-  width:100%;
-  transition: opacity 0.3s ease;
-}
-
-.button-searchbar {
-  width: auto;
-  transition: width 0.3s ease;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: var(--secondary);
-  border-radius: 20px;
-  color: #fbfbfbe0;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-decoration: bold;
-  border: none;
   position: relative;
-  cursor: pointer;
-  transition-duration: .2s;
-  box-shadow: 10px 15px 50px 5px rgba(0, 14, 50, 0.454);
-  font-family: "inter-bold", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  padding: 10px;
-  transition-duration: .5s;
-  padding: 10px 20px;
+  gap: 15px;
 }
 
-/* Pulsante di Ricerca */
-.search-icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0 5px;
+.input {
+  border-style: none;
+  width: 0px;
+  height: 32px;
+  padding: 10px;
+  outline: 2px solid white;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+  background-color: #ffb000;
+  box-shadow: 0px 0px 3px #1557c0;
+  padding-right: 40px;
+  color: #fff;
+}
+
+.input::placeholder {
+  color: #f0eeee;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 17px;
+}
+
+.icon {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  right: 0px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-style: none;
+  border-radius: 50%;
+  pointer-events: painted;
+  background-color: transparent;
+  transition: 0.2s linear;
+}
+
+.icon:focus ~ .input,
+.input:focus {
+  box-shadow: none;
+  width: 250px;
+  border-radius: 100px;
+  background-color: transparent;
+  border-bottom: 3px solid #1557c0;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+.input-wrapper .input:focus {
+  width: 250px;
+  border-radius: 100;
+  background-color: transparent;
+  border-bottom: 3px solid #1557c0;
+}
+
+.input-wrapper .icon svg {
   transition: transform 0.3s ease;
 }
 
+.input-wrapper .icon:hover svg {
+  transform: scale(1.1);
+}
 
 .bell path {
   fill: rgb(0, 78, 189);
