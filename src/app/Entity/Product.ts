@@ -14,6 +14,7 @@ export class Product {
         public productModelId: number,
         public sellStartDate: Date,
         public sellEndDate: Date,
+        public imageUrl?: string
 
     ) {}
 

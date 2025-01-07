@@ -2,22 +2,22 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, HostLis
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
-import { ContactComponent } from '@components/contact/contact.component';
-import { ProductComponent } from '@components/product/product.component';
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth/auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { CategoriesService } from '../../service/category/categories.service';
+import { CartService } from '../../service/cart/cart.service';
+import { CartItem } from '../../Entity/CartItem';
 
 @Component({
-  
+
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterLink, NgStyle, FormsModule, ContactComponent, ProductComponent],
+  imports: [CommonModule,RouterLink,NgStyle,FormsModule],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   categories: any[] = [];
   isAuthenticated: boolean = false;
   authUser: any;
@@ -26,6 +26,9 @@ export class NavbarComponent implements OnInit{
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
   searchQuery: string = ''; // Inizializza la stringa di ricerca
+  isCartOpen: boolean = false;
+  cartItems: CartItem [] = [];
+  cartCount: number = 0;
 
   isDropdownOpen: { [key: string]: boolean } = {
     home: false,
@@ -38,8 +41,9 @@ export class NavbarComponent implements OnInit{
     private renderer: Renderer2,
     private el: ElementRef,
     private authService: AuthService,
-    private categoryService: CategoriesService
-  ){
+    private categoryService: CategoriesService,
+    public cartService: CartService
+  ) {
     window.addEventListener('resize', () => {
       // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
       this.isXlScreen = window.innerWidth >= 1280;
@@ -72,9 +76,9 @@ export class NavbarComponent implements OnInit{
   @Output() routeChanged = new EventEmitter<string>();
 
   ngOnInit() {
-    // Recupera le categorie dal servizio
-    this.categoryService.getCategories().subscribe((data: any) => {
-      this.categories = data.$values.filter((item: any) => !item.$ref);
+      // Recupera le categorie dal servizio
+      this.categoryService.getCategories().subscribe((data: any) => {
+      this.categories = data.$values.filter((item: any) => !item.$ref);   
     });
 
     // Controlla se l'utente è autenticato
@@ -101,6 +105,12 @@ export class NavbarComponent implements OnInit{
     const savedTheme = localStorage.getItem('theme') || 'light';
     this.isDarkTheme = savedTheme === 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Sottoscrizione agli aggiornamenti del carrello
+    this.cartService.getCartItemsObservable().subscribe((items: CartItem[]) => {
+      this.cartItems = items;
+      this.cartCount = this.cartService.cartCount.value;
+    });
   }
 
   // Metodo per mostrare/nascondere il dropdown del profilo
@@ -195,22 +205,56 @@ export class NavbarComponent implements OnInit{
     if (categoryMenu && !categoryMenu.contains(targetElement)) {
       this.isDropdownOpen['category'] = false;
     }
-  const searchInput = this.el.nativeElement.querySelector('.search-input');
-  const searchButton = this.el.nativeElement.querySelector('.search-icon');
-  const toggleButton = this.el.nativeElement.querySelector('.button-searchbar');
-  // Chiudi la barra di ricerca se il click è fuori dall'input di ricerca e dal pulsante di ricerca
-  if (
-    searchInput &&
-    !searchInput.contains(targetElement) &&
-    searchButton &&
-    !searchButton.contains(targetElement) &&
-    toggleButton &&
-    !toggleButton.contains(targetElement)
-  ) {
-    // Aggiungi controllo per l'elemento attivo
-    if (this.isDrawerOpen && document.activeElement !== searchInput) {
-      this.toggleSearchBar();
+    const searchInput = this.el.nativeElement.querySelector('.search-input');
+    const searchButton = this.el.nativeElement.querySelector('.search-icon');
+    const toggleButton = this.el.nativeElement.querySelector('.button-searchbar');
+    // Chiudi la barra di ricerca se il click è fuori dall'input di ricerca e dal pulsante di ricerca
+    if (
+      searchInput &&
+      !searchInput.contains(targetElement) &&
+      searchButton &&
+      !searchButton.contains(targetElement) &&
+      toggleButton &&
+      !toggleButton.contains(targetElement)
+    ) {
+      // Aggiungi controllo per l'elemento attivo
+      if (this.isDrawerOpen && document.activeElement !== searchInput) {
+        this.toggleSearchBar();
+      }
     }
   }
+
+  // Metodo per aprire/nascondere il carrello
+  toggleCart(): void {
+    this.isCartOpen = !this.isCartOpen;
   }
+
+  // Metodo per chiudere il carrello
+  closeCart(): void {
+    this.isCartOpen = false;
+  }
+
+  // Metodo per rimuovere un articolo dal carrello
+  removeItem(productId: number): void {
+    this.cartService.removeFromCart(productId);
+  }
+
+  // Metodo per aggiornare la quantità di un articolo nel carrello
+  updateQuantity(productId: number, quantity: number): void {
+    this.cartService.updateQuantity(productId, quantity);
+  }
+
+  // Metodo per svuotare il carrello
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
+
+/**
+ * Calcola il totale del carrello.
+ * @returns Il totale aggregato dei prezzi degli articoli.
+ */
+calculateTotal(): number {
+  return this.cartItems.reduce((acc, item) => acc + (item.product.listPrice * item.quantity), 0);
+}
+
 }

@@ -17,7 +17,7 @@
                   <p class="product-price">{{ product.listPrice }}€</p>
                 </div>
                 <button class="add-to-cart-btn" 
-                        (click)="addProductToCart(product.productId)" 
+                        (click)="addProductToCart(product)" 
                         [attr.aria-label]="'Aggiungi ' + product.name + ' al carrello'">
                   <i class="fa-solid fa-cart-plus"></i>
                 </button>

@@ -5,7 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { CartService } from '../../../service/cart/cart.service';
 import { Subscription } from 'rxjs'
-import { ViewportScroller } from '@angular/common';;
+import { ViewportScroller } from '@angular/common';
+import { Product } from '../../../Entity/Product';
+import { CartItem } from '../../../Entity/CartItem';
 
 @Component({
   selector: 'app-search-products',
@@ -95,8 +97,7 @@ export class SearchProductsComponent implements OnInit {
     this.viewportScroller.scrollToPosition([0, 0]);
   }
 
-  addProductToCart(productId: number) {
-    this.cartService.addToCart(productId);
-    this.cartService.cartCount.next(this.cartService.cartCount.getValue() + 1);
+  addProductToCart(product: Product): void {
+    this.cartService.addToCart(product, 1);
   }
 }

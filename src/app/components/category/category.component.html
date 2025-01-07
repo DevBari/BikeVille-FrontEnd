@@ -1,6 +1,6 @@
 <section class="home">
 
-    <h2 class="category-title">{{ category.name }}</h2>
+    <h2 class="category-title">{{ category?.name }}</h2>
 
     <div class="category-container">
 
@@ -67,7 +67,7 @@
                             <p class="product-name">{{ product.name }}</p>
                             <p class="product-price">{{ product.listPrice }}$</p>
                         </div>
-                        <button class="add-to-cart-btn" (click)="addProductToCart(product.productId)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
+                        <button class="add-to-cart-btn" (click)="addProductToCart(product)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
                             <i class="fa-solid fa-cart-plus"></i>
                         </button>
                     </div>
@@ -107,7 +107,7 @@
                                 <p class="product-name">{{ product.name }}</p>
                                 <p class="product-price">{{ product.listPrice }}$</p>
                             </div>
-                            <button class="add-to-cart-btn" (click)="addProductToCart(product.productId)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
+                            <button class="add-to-cart-btn" (click)="addProductToCart(product)" [attr.aria-label]="'Add ' + product.name + ' to cart'">
                                 <i class="fa-solid fa-cart-plus" id="addToCart"></i>
                             </button>
                         </div>

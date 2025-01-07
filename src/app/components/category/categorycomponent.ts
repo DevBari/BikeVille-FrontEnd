@@ -5,6 +5,10 @@ import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ViewportScroller } from '@angular/common';
+import { Product } from '../../Entity/Product'; 
+import { CartItem } from '../../Entity/CartItem';
+import { CartService } from '../../service/cart/cart.service';
+
 
 @Component({
   selector: 'app-category',
@@ -19,7 +23,8 @@ export class CategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoriesService,
     private route: ActivatedRoute,
-    private viewportScroller: ViewportScroller // Iniezione del servizio
+    private viewportScroller: ViewportScroller, // Iniezione del servizio
+    public cartService: CartService
   ) {}
 
   search: string = '';
@@ -202,10 +207,13 @@ scrollToTop(): void {
     this.isAccordionOpen[section] = !this.isAccordionOpen[section];
   }
 
-  // Example method to add product to cart
-  addProductToCart(productId: number) {
-    // cart logic here
-    console.log(`Product with ID ${productId} added to cart.`);
+  /**
+   * Metodo per aggiungere un prodotto al carrello.
+   * Mappa un oggetto Product a CartItem prima di aggiungerlo.
+   * @param product Il prodotto da aggiungere al carrello.
+   */
+  addProductToCart(product: Product): void {
+    this.cartService.addToCart(product, 1);
   }
 
 }
