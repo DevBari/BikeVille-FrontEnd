@@ -84,7 +84,7 @@ export class CartService {
       item.quantity = quantity;
       this.saveCartToLocalStorage();
       this.updateCartState();
-      this.notify.error('Quantità aggiornata');
+      this.notify.success('Quantità aggiornata');
     }
   }
 
@@ -95,7 +95,7 @@ export class CartService {
     this.cartItems = [];
     this.saveCartToLocalStorage();
     this.updateCartState();
-    this.notify.info('Carrello svuotato');
+    this.notify.error('Carrello svuotato');
   }
 
   /**
