@@ -25,6 +25,7 @@ a {
 }
 
 .container {
+
     background-color: var(--card);
     border-radius: 40px;
     box-shadow: 0 0px 70px rgba(0, 0, 0, 0.252);
@@ -37,6 +38,7 @@ a {
     display: flex; /* Use flexbox */
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
+
 }
 
 .container span {
