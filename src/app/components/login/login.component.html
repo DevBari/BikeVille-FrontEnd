@@ -1,97 +1,97 @@
-<body>
-<div class="container" [ngClass]="{'active': showRegister}">
-  
-  <div class="form-container sign-up" *ngIf="showRegister">
+<body class="body-login">
+  <div class="container" [ngClass]="{'active': showRegister}">
     
-    <form [formGroup]="registerForm" (ngSubmit)="addUser()">
-          <h1>Crea Account</h1>
-          <div class="social-icons">
-              <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-          </div>
-          <span>Oppure usa la tua Email per registrati</span>
-          <div class="input-container" [ngClass]="{'has-error': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
-          <input formControlName="firstName" type="text" placeholder="Nome">
-          <div class="error-message" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
-            <small *ngIf="registerForm.get('firstName')?.errors?.['required']">Campo obbligatorio</small>
-            <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']">Nome deve essere almeno di 3 caratteri</small>
-            <small *ngIf="registerForm.get('firstName')?.errors?.['maxlength']">Massimo 10 caratteri</small>
-          </div>
-        </div>
-
-          <div class="input-container" [ngClass]="{'has-error': registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched}">
-          <input formControlName="lastName" type="text" placeholder="Cognome">
-          <div class="error-message" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
-            <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Campo obbligatorio</small>
-            <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Cognome deve essere almeno di 3 caratteri</small>
-            <small *ngIf="registerForm.get('lastName')?.errors?.['maxlength']">Massimo 10 caratteri</small>
-          </div>
-        </div>
-
-        <div class="input-container" [ngClass]="{'has-error': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
-          <input formControlName="email" type="email" placeholder="Email">
-          <div class="error-message" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-            <small *ngIf="registerForm.get('email')?.errors?.['required']">Campo obbligatorio</small>
-            <small *ngIf="registerForm.get('email')?.errors?.['email']">Inserisci una Email valida</small>
-          </div>
-        </div>
+    <div class="form-container sign-up" *ngIf="showRegister">
       
-        <div class="input-container" [ngClass]="{'has-error': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
-          <input formControlName="password" type="password" placeholder="Password">
-          <div class="error-message" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-            <small *ngIf="registerForm.get('password')?.errors?.['required']">Campo obbligatorio</small>
-            <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Inserisci almeno 8 caratteri</small>
-          </div>
-        </div>
-
-        <div class="input-container" [ngClass]="{'has-error': registerForm.get('confirmedPassword')?.invalid && registerForm.get('confirmedPassword')?.touched}">
-          <input formControlName="confirmedPassword" type="Password" placeholder="Conferma Password">
-          <div class="error-message" *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmedPassword')?.touched">
-            <small>Le password non coincidono</small>
-          </div>
-        </div>
-          <button type="submit">Registrati</button>
-      </form>
-  </div>
-  <div class="form-container sign-in" *ngIf="showLogin">
-      <form [formGroup]="loginForm" (ngSubmit)="runLogin()">
-          <h1>Accedi</h1>
-          <div class="social-icons">
-              <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-          </div>
-          <span>Utilizza email e password per accedere</span>
-          <div class="input-container" [ngClass]="{'has-error':loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
-          <input formControlName="email" type="email" placeholder="Email" required>
-            <div class="error-message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
-              <small *ngIf="loginForm.get('email')?.errors?.['required']">Campo obbligatorio</small>
-              <small *ngIf="loginForm.get('email')?.errors?.['email']">Inserisci una email valida</small>
+      <form [formGroup]="registerForm" (ngSubmit)="addUser()">
+            <h1>Crea Account ⛓️‍💥</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            </div>
+            <span>Oppure usa la tua Email per registrati</span>
+            <div class="input-container" [ngClass]="{'has-error': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
+            <input formControlName="firstName" type="text" placeholder="Nome">
+            <div class="error-message" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+              <small *ngIf="registerForm.get('firstName')?.errors?.['required']">Campo obbligatorio</small>
+              <small *ngIf="registerForm.get('firstName')?.errors?.['minlength']">Nome deve essere almeno di 3 caratteri</small>
+              <small *ngIf="registerForm.get('firstName')?.errors?.['maxlength']">Massimo 10 caratteri</small>
             </div>
           </div>
-          
-          <div class="input-container" [ngClass]="{'has-error':loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
-          <input formControlName="password" type="password" placeholder="Password" required>
-          <div class="error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-            <small *ngIf="loginForm.get('password')?.errors?.['required']">Campo obbligatorio</small>
+
+            <div class="input-container" [ngClass]="{'has-error': registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched}">
+            <input formControlName="lastName" type="text" placeholder="Cognome">
+            <div class="error-message" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+              <small *ngIf="registerForm.get('lastName')?.errors?.['required']">Campo obbligatorio</small>
+              <small *ngIf="registerForm.get('lastName')?.errors?.['minlength']">Cognome deve essere almeno di 3 caratteri</small>
+              <small *ngIf="registerForm.get('lastName')?.errors?.['maxlength']">Massimo 10 caratteri</small>
+            </div>
           </div>
+
+          <div class="input-container" [ngClass]="{'has-error': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
+            <input formControlName="email" type="email" placeholder="Email">
+            <div class="error-message" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              <small *ngIf="registerForm.get('email')?.errors?.['required']">Campo obbligatorio</small>
+              <small *ngIf="registerForm.get('email')?.errors?.['email']">Inserisci una Email valida</small>
+            </div>
+          </div>
+        
+          <div class="input-container" [ngClass]="{'has-error': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+            <input formControlName="password" type="password" placeholder="Password">
+            <div class="error-message" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+              <small *ngIf="registerForm.get('password')?.errors?.['required']">Campo obbligatorio</small>
+              <small *ngIf="registerForm.get('password')?.errors?.['minlength']">Inserisci almeno 8 caratteri</small>
+            </div>
+          </div>
+
+          <div class="input-container" [ngClass]="{'has-error': registerForm.get('confirmedPassword')?.invalid && registerForm.get('confirmedPassword')?.touched}">
+            <input formControlName="confirmedPassword" type="Password" placeholder="Conferma Password">
+            <div class="error-message" *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('confirmedPassword')?.touched">
+              <small>Le password non coincidono</small>
+            </div>
+          </div>
+            <button type="submit">Registrati</button>
+        </form>
+    </div>
+    <div class="form-container sign-in" *ngIf="showLogin">
+        <form [formGroup]="loginForm" (ngSubmit)="runLogin()">
+            <h1>Accedi 🔗</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+            </div>
+            <span>Utilizza email e password per accedere</span>
+            <div class="input-container" [ngClass]="{'has-error':loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+            <input formControlName="email" type="email" placeholder="Email" required>
+              <div class="error-message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                <small *ngIf="loginForm.get('email')?.errors?.['required']">Campo obbligatorio</small>
+                <small *ngIf="loginForm.get('email')?.errors?.['email']">Inserisci una email valida</small>
+              </div>
+            </div>
+            
+            <div class="input-container" [ngClass]="{'has-error':loginForm.get('password')?.invalid && loginForm.get('password')?.touched}">
+            <input formControlName="password" type="password" placeholder="Password" required>
+            <div class="error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+              <small *ngIf="loginForm.get('password')?.errors?.['required']">Campo obbligatorio</small>
+            </div>
+          </div>
+            <a href="#" style="text-decoration: underline;">Password dimenticata?</a>
+            <button type="submit">Accedi</button>
+        </form>
+    </div>
+    
+    
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h2 style="margin: 1rem 0">Bentornato in BikeVille! 🚴🏽</h2>
+                <p>Continua il tuo viaggio 🗺️</p>
+                <button class="hidden" (click)="showLoginForm()" style="margin: 1rem 0">Accedi</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h2 style="margin: 1rem 0">Benvenuto in BikeVille! 🚴🏽</h2>
+                <p>Sei nuovo? Crea il tuo account e inizia a pedalare 💪🏽</p>
+                <button class="hidden" (click)="showRegisterForm()" style="margin: 1rem 0">Registrati</button>
+            </div>
         </div>
-          <a href="#" style="text-decoration: underline;">Password dimenticata?</a>
-          <button type="submit">Accedi</button>
-      </form>
+    </div>
   </div>
-  
-  
-  <div class="toggle-container">
-      <div class="toggle">
-          <div class="toggle-panel toggle-left">
-              <h2>Bentornato in BikeVille!</h2>
-              <p>Accedi alle funzionalità del sito</p>
-              <button class="hidden" (click)="showLoginForm()">Accedi</button>
-          </div>
-          <div class="toggle-panel toggle-right">
-              <h2>Hey, Benvenuto!</h2>
-              <p>Sei nuovo? Crea il tuo account</p>
-              <button class="hidden" (click)="showRegisterForm()">Registrati</button>
-          </div>
-      </div>
-  </div>
-</div>
 </body>

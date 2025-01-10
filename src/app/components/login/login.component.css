@@ -1,31 +1,39 @@
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 a {
-    font-family: "Inter-Regular";
+    font-family: "inter-regular";
 }
-body {
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+
+.body-login {
+    background-color: var(--background);
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
-    
+    min-height: 90svh;
+
+    padding: 2rem 2rem;
+
+    font-family: "inter-regular";
+
+    overflow-y: hidden;
 }
 
 .container {
-    background-color: #fff;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    background-color: var(--card);
+    border-radius: 40px;
+    box-shadow: 0 0px 70px rgba(0, 0, 0, 0.252);
+    font-family: "inter-bold";
     position: relative;
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 600px;
     display: flex; /* Use flexbox */
     align-items: center; /* Center items vertically */
     justify-content: center; /* Center items horizontally */
@@ -36,20 +44,20 @@ body {
 }
 
 .container a {
-    color: #333;
+    color: var(--primary-text);
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .container button {
-    background-color: #0f50b3;
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 45px;
+    background-color: var(--secondary);
+    color: var(--primary-text);
+    font-size: 15px;
+    padding: 10px 45px;;
     border: 1px solid transparent;
-    border-radius: 8px;
-    font-weight: 600;
+    border-radius: 20px;
+    font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     margin-top: 10px;
@@ -58,11 +66,12 @@ body {
 
 .container button.hidden {
     background-color: transparent;
-    border-color: #fff;
+    border-color: var(--primary);
+    color: #f5f5f5;
 }
 
 .container form {
-    background-color: #fff;
+    background-color: var(--card);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -77,30 +86,31 @@ body {
     margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
-    border-radius: 8px;
+    border-radius: 20px;
     width: 100%;
     outline: none;
 }
 
 .input-container {
-  position: relative;
-  width: 100%;
-  font-family: "Inter-Regular";
-  font-size: 10px;
+    position: relative;
+    width: 100%;
+    font-family: "Inter-Regular";
+    font-size: 10px;
 }
 
 .input-container.has-error input {
-  border: 2px solid red;
+    border: 2px solid red;
 }
 
 .input-container .error-message {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  color: red;
-  font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: red;
+    font-size: 12px;
 }
+
 .form-container {
     position: absolute;
     top: 0;
@@ -176,16 +186,18 @@ body {
 }
 
 .toggle {
-    background-color: #512da8;
+
+    background-color: rgb(251,133,6);
+	background: linear-gradient(342deg, rgba(251,133,6,0.9360119047619048) 25%, rgba(255,176,0,1) 55%);
+
     height: 100%;
-    background:  radial-gradient(circle, rgba(0,78,189,0.6643032212885154) 5%, rgba(0,115,189,0.8687850140056023) 65%);
-    color: #fff;
+    color: var(--primary-text);
     position: relative;
     left: -100%;
     height: 100%;
     width: 200%;
     transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+    transition: translateX 0.6s ease-in-out;
 }
 
 .container.active .toggle {
@@ -204,7 +216,7 @@ body {
     text-align: center;
     top: 0;
     transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+    transition: traslateX 0.6s ease-in-out;
 }
 
 .toggle-left {
@@ -226,7 +238,6 @@ body {
 
 h1{
   font-family:"Inter-Bold";
-  
 }
 
 h2{

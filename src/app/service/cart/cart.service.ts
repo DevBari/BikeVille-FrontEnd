@@ -8,6 +8,7 @@ import { Product } from '../../Entity/Product';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CartService {
   private cartItems: CartItem[] = [];
   public cartCount: BehaviorSubject<number> = new BehaviorSubject<number>(0);
@@ -121,5 +122,5 @@ export class CartService {
  
   getCartProducts(id: number){
     return this.http.get('https://localhost:7167/Products/addCart/'+id)
-    }
+  }
 }

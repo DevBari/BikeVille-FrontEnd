@@ -1,5 +1,5 @@
 import { Component, Directive, EventEmitter, HostListener, OnInit, Output, Renderer2 } from '@angular/core';
-import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { RouterOutlet, Router, NavigationStart, NavigationEnd, NavigationError, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ViewChild, ElementRef } from '@angular/core';
@@ -15,6 +15,8 @@ import { LoadRedirectComponent as LoadRedirect} from '@components/load-redirect/
 import { HomeComponent } from '@components/home/home.component';
 import { LoginComponent } from '@components/login/login.component';
 
+import { CartService } from './service/cart/cart.service';
+
 
 
 @Component({
@@ -29,10 +31,15 @@ import { LoginComponent } from '@components/login/login.component';
 
 export class AppComponent implements OnInit {
 
+  email: string | null = null;
+
   ngOnInit(): void {
 
     AOS.init();
     
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url; // Ottieni l'intera URL corrente
+    });
   }
 
   title = 'BikeVille';
@@ -49,7 +56,11 @@ export class AppComponent implements OnInit {
 
   loading = false; // flag per il caricamento
 
-  constructor(private router: Router) {
+  ShowFooter(): boolean {
+    return !(this.currentRoute === '/login' || this.currentRoute.startsWith('/profile/'));
+  }
+
+  constructor(private router: Router, private cartService: CartService, private route: ActivatedRoute) {
 
     this.router.events.subscribe((event) => {
 

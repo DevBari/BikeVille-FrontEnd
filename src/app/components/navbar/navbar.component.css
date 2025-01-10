@@ -643,7 +643,6 @@ button, input, optgroup, select, textarea {
 }
 
 /* Search Bar */
-
 .input-wrapper {
   display: flex;
   align-items: center;
@@ -657,23 +656,22 @@ button, input, optgroup, select, textarea {
   width: 0px;
   height: 32px;
   padding: 10px;
-  outline: 2px solid white;
-  border-radius: 50%;
+  border-radius: 20px;
   transition: all 0.5s ease-in-out;
-  background-color: #ffb000;
-  box-shadow: 0px 0px 3px #1557c0;
+  background-color: var(--secondary);
+  box-shadow: 0 5px 10px rgba(19, 56, 119, 0.2);
+  outline: 2px solid #f5f5f5;
   padding-right: 40px;
   color: #fff;
 }
 
 .input::placeholder {
   color: #f0eeee;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "inter-regular";
   font-size: 17px;
 }
 
-.icon {
+.button-search {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -681,30 +679,43 @@ button, input, optgroup, select, textarea {
   right: 0px;
   cursor: pointer;
   width: 50px;
-  height: 50px;
+  height: 100%;
   outline: none;
-  border-style: none;
-  border-radius: 50%;
+  border: none;
+  border-radius: 20px;
   pointer-events: painted;
   background-color: transparent;
   transition: 0.2s linear;
+  
+  border: 2px solid #F5F5F5; /* Colore del bordo */
+  background-color: transparent; /* Sfondo trasparente */
+  padding: 0.625rem; /* Spaziatura interna (10px) */
+  transition: border-color 0.4s ease; /* Transizione per il bordo */
+  box-shadow: 10px 15px 50px 5px rgba(0, 14, 50, 0.454);
+
 }
 
-.icon:focus ~ .input,
+.button-search:hover {
+  border-color: #ff7a00; /* Cambia il colore del bordo al passaggio */
+  box-shadow: 0 0 3px 0 #ffae0098;
+}
+
+.button-search:focus ~ .input,
 .input:focus {
   box-shadow: none;
   width: 250px;
-  border-radius: 100px;
+  border-radius: 20px;
   background-color: transparent;
-  border-bottom: 3px solid #1557c0;
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+
+  outline: none; /* Rimuove il contorno di default */
+  box-shadow: 0 0 0 2px #ff7a00, 0 0 0 4px #F5F5F5; /* Evidenziazione al focus */
 }
 
 .input-wrapper .input:focus {
   width: 250px;
-  border-radius: 100;
+  border-radius: 20px;
   background-color: transparent;
-  border-bottom: 3px solid #1557c0;
 }
 
 .input-wrapper .icon svg {
@@ -713,46 +724,6 @@ button, input, optgroup, select, textarea {
 
 .input-wrapper .icon:hover svg {
   transform: scale(1.1);
-}
-
-.bell path {
-  fill: rgb(0, 78, 189);
-}
-
-.button-searchbar:hover {
-  background-color: #ffbf00;
-  transition-duration: .5s;
-}
-
-.button-searchbar:active {
-  transform: scale(0.97);
-  transition-duration: .2s;
-}
-
-.button-searchbar:hover .icon-searchbar {
-  transform: scale(1.2);
-  transition-duration: 1.5s;
-}
-
-.button-searchbar:hover #cuore {
-  animation: pulse 0.8s infinite; 
-  transform-origin: center;
-}
-
-#cuore {
-  box-shadow: 5px 5px 10px rgba(10, 51, 236, 0.116);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1); /* Dimensione iniziale */
-  }
-  50% {
-    transform: scale(1.2); /* Cuore più grande */
-  }
-  100% {
-    transform: scale(1); /* Ritorna alla dimensione originale */
-  }
 }
 
 /* Theme Checkbox */
@@ -841,8 +812,8 @@ button, input, optgroup, select, textarea {
 }
 
 .profile-icon {
-  width: 40px;
-  height: 40px;
+  width: 54px;
+  height: 54px;
   cursor: pointer;
 }
 
@@ -856,9 +827,8 @@ button, input, optgroup, select, textarea {
   top: 50px;
   right: 0;
   background-color: var(--shades);
-  border: 1px solid #ccc;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  border-radius: 10px;
   width: 150px;
   z-index: 10;
 }
@@ -871,7 +841,6 @@ button, input, optgroup, select, textarea {
 
 .dropdown-menu li {
   padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
 }
 
 .dropdown-menu li:last-child {
@@ -895,11 +864,12 @@ button, input, optgroup, select, textarea {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--shades);
+  background-color: var(--shades);
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   border-radius: 4px;
   min-width: 200px;
   z-index: 1000;
+  border-radius: 10px;
 }
 
 .category-menu ul {
@@ -933,13 +903,16 @@ button, input, optgroup, select, textarea {
   display: flex;
   align-items: center;
   margin-right: 8px;
+  width: 54px;
+  height: 54px;
+  border: 2px solid #F5F5F5; /* Colore del bordo */
 }
 
 .cart-count {
   position: absolute;
   top: -5px;
   right: -10px;
-  background-color: #ff7a00;
+  background-color: #ffa200;
   color: white;
   border-radius: 50%;
   padding: 2px 6px;
@@ -952,21 +925,24 @@ button, input, optgroup, select, textarea {
   top: 0;
   left: 0;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
   z-index: 1000;
+  border-radius: 20px;
 }
 
 .cart-container {
-  background-color: #fff;
+  background-color: var(--shades);
   width: 25em;
   height: 25em;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0,0,0,0.3);
   position: relative;
   overflow-y: auto;
+  border-radius: 20px;
+  color: var(--primary-text);
+  top: 220px;
 }
 
 .close-button {
@@ -990,8 +966,8 @@ button, input, optgroup, select, textarea {
 }
 
 .cart-item-image {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
   margin-right: 10px;
   border-radius: 4px;
@@ -1008,14 +984,20 @@ button, input, optgroup, select, textarea {
 }
 
 .quantity-control button {
-  width: 25px;
-  height: 25px;
-  background-color: #004ebd;
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%;
   cursor: pointer;
 }
+
+.quantity-control button:hover {
+  transition: background-color 0.2s ease;
+  background-color: #0766ff;
+}
+
 
 .quantity-control span {
   margin: 0 10px;
@@ -1032,11 +1014,17 @@ button, input, optgroup, select, textarea {
 .clear-cart {
   width: 100%;
   padding: 10px;
-  background-color: #ff7a00;
-  color: #fff;
+  background-color: var(--secondary);
+  color: var(--primary-text);
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
+}
+
+.clear-cart:hover {
+  background-color: #ffa600;
+  scale: 1.05;
+  transition: all 0.3s ease-in-out;
 }
 
 .empty-cart-message {
@@ -1048,5 +1036,63 @@ button, input, optgroup, select, textarea {
 .total-price {
   font-weight: bold;
   margin-top: 10px;
-  color: #020202;
+  color: var(--primary-text);
+  text-shadow: 0px 0px 2px #86868697;
+}
+
+/* Remove button */
+.remove-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-text);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: var(--background);
+}
+
+.remove-button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.remove-button:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.remove-button::before {
+  position: absolute;
+  top: -27px;
+  content: "Rimuovi";
+  color: var(--background);
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.remove-button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
 }

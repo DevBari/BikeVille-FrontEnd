@@ -17,6 +17,12 @@
       }
     ],
     "no-inline-styles": "off",
-    "detect-css-reflows/composite": "off"
+    "detect-css-reflows/composite": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "button-name": "off"
+      }
+    ]
   }
 }

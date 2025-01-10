@@ -8,12 +8,13 @@ import { ViewportScroller } from '@angular/common';
 import { Product } from '../../Entity/Product'; 
 import { CartItem } from '../../Entity/CartItem';
 import { CartService } from '../../service/cart/cart.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports: [NgFor, FormsModule, NgIf],
+  imports: [NgFor, FormsModule, NgIf, CommonModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })
@@ -36,7 +37,7 @@ export class CategoryComponent implements OnInit {
 
   // Paginazione
   currentPage: number = 1;
-  itemsPerPage: number = 9;
+  itemsPerPage: number = 10;
   totalPages: number = 0;
   paginatedProducts: any[] = [];
 
@@ -67,6 +68,7 @@ export class CategoryComponent implements OnInit {
         this.getCategory(id);
       }
     });
+    this.shuffledImages = this.shuffleImages(); // Mescola le immagini all'inizio
   }
 
   ngOnDestroy(): void {
@@ -86,7 +88,10 @@ export class CategoryComponent implements OnInit {
       );
       console.log(this.category);
       console.log(this.products);
+      const categoryKey = this.category.name.toLowerCase();
+      this.images = this.imageCategories[categoryKey] || []; // Se la categoria non esiste, usa un array vuoto
       this.applyFilters(); // Applica i filtri  dopo aver caricato i prodotti
+      this.assignImagesToProducts();
     });
   }
 
@@ -171,7 +176,7 @@ export class CategoryComponent implements OnInit {
 
     // Assegna i prodotti della pagina corrente a 'paginatedProducts'
     this.paginatedProducts = source.slice(start, end);
-    this.scrollToTop(); // Scrolla in cima dopo la paginazione
+    this.scrollToElement(); // Scrolla in cima dopo la paginazione
   }
 
   // Naviga alla pagina precedente
@@ -198,10 +203,14 @@ export class CategoryComponent implements OnInit {
     }
   }
 
-
-scrollToTop(): void {
-    this.viewportScroller.scrollToPosition([0, 0]);
+  // Scrolla all'inizio della pagina
+  scrollToElement(): void {
+    const element = document.querySelector('#title');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
+
   // Toggle accordion sections
   toggleAccordion(section: string) {
     this.isAccordionOpen[section] = !this.isAccordionOpen[section];
@@ -214,6 +223,63 @@ scrollToTop(): void {
    */
   addProductToCart(product: Product): void {
     this.cartService.addToCart(product, 1);
+  }
+
+  recognizedColors: string[] = ['silver', 'red', 'black', 'blue', 'green', 'yellow', 'purple', 'white', 'gray'];
+
+  isRecognizedColor(color: string | undefined): boolean {
+      if (!color) {
+          return false;
+      }
+      return this.recognizedColors.includes(color.toLowerCase());
+  }
+
+  images = [
+    'https://cdn.shopify.com/s/files/1/0813/6091/2701/files/coll-c11-green.png?v=1709088899',
+    'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-d3pro.png',
+    'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-l3.png',
+    'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-d11-s6.png?v=1721704941',
+    'https://fiido.ie/wp-content/uploads/2023/05/coll-m25.png',
+  ];
+
+  imageCategories: { [key: string]: string[] } = {
+    'bici': [
+      'https://cdn.shopify.com/s/files/1/0813/6091/2701/files/coll-c11-green.png?v=1709088899',
+      'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-d3pro.png',
+      'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-l3.png',
+      'https://cdn.shopify.com/s/files/1/0606/7539/1649/files/coll-d11-s6.png?v=1721704941',
+      'https://fiido.ie/wp-content/uploads/2023/05/coll-m25.png',
+    ],
+    'accessori': [
+        'https://example.com/image3.jpg',
+        'https://example.com/image4.jpg',
+    ],
+    // Aggiungi altre categorie e le loro immagini qui
+  };
+
+  shuffledImages: string[] = [];
+
+  shuffleImages(): string[] {
+    const shuffledImages = [...this.images]; // Crea una copia dell'array di immagini
+    for (let i = shuffledImages.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledImages[i], shuffledImages[j]] = [shuffledImages[j], shuffledImages[i]]; // Scambia le immagini
+    }
+    return shuffledImages;
+  }
+
+  getRandomImage(): string {
+    const randomIndex = Math.floor(Math.random() * this.shuffledImages.length);
+    return this.shuffledImages[randomIndex];
+}
+
+  // Funzione per assegnare immagini ai prodotti
+  assignImagesToProducts(): void {
+      const productElements = document.querySelectorAll('.product-top');
+      productElements.forEach((element, index) => {
+        const imageUrl = this.shuffledImages[index % this.shuffledImages.length]; // Usa l'indice per assegnare l'immagine
+        (element as HTMLElement).style.backgroundImage = `url(${imageUrl})`;
+    });
   }
 
 }

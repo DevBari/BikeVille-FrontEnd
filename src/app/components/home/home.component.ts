@@ -2,6 +2,7 @@ import { NgStyle, CommonModule } from '@angular/common';
 import { FooterComponent } from '@components/footer/footer.component';
 import { NavbarComponent } from '@components/navbar/navbar.component';
 import { HeaderComponent } from '@components/header/header.component';
+import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
 
 import {
   Component,
@@ -23,12 +24,14 @@ import AOS from 'aos';
     HeaderComponent,
     NgStyle,
     CommonModule,
+    RouterLink
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
+
   images: string[] = [
     'assets/images/bici-overlay.jpg',
     'assets/images/accessori.jpg',

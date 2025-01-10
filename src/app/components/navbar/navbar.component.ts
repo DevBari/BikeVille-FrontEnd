@@ -16,7 +16,9 @@ import { CartItem } from '../../Entity/CartItem';
   imports: [CommonModule,RouterLink,NgStyle,FormsModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
+
 })
+
 export class NavbarComponent implements OnInit {
   categories: any[] = [];
   isAuthenticated: boolean = false;
@@ -183,6 +185,7 @@ export class NavbarComponent implements OnInit {
       localStorage.setItem('theme', 'light');
     }
   }
+
   // Decoratore che ascolta gli eventi del click sul documento
   @HostListener('document:click', ['$event'])
 
@@ -249,12 +252,12 @@ export class NavbarComponent implements OnInit {
     this.cartService.clearCart();
   }
 
-/**
- * Calcola il totale del carrello.
- * @returns Il totale aggregato dei prezzi degli articoli.
- */
-calculateTotal(): number {
-  return this.cartItems.reduce((acc, item) => acc + (item.product.listPrice * item.quantity), 0);
-}
+  /**
+   * Calcola il totale del carrello.
+   * @returns Il totale aggregato dei prezzi degli articoli.
+   */
+  calculateTotal(): number {
+    return this.cartItems.reduce((acc, item) => acc + (item.product.listPrice * item.quantity), 0);
+  }
 
 }

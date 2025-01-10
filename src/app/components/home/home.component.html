@@ -1,22 +1,8 @@
-<section class="home-container" #home>
+<section class="home-container">
 
 	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
 
-    <!-- <div class="card-road-container">
-
-        <div class="card-container">
-
-            <div class="card-road">
-        
-                <div class="shadow-road">⚠ Always follow traffic rules.</div>
-        
-            </div>
-        
-        </div>
-
-    </div> -->
-
-    <div class="slider" data-aos="fade-up" data-aos-duration="2000">
+    <div class="slider" data-aos="fade-up" data-aos-duration="2000" data-aos-once="false">
 
         <div class="slider-background" fetchpriority="high">
 
@@ -25,7 +11,7 @@
                 [ngStyle]="{'background-image': 'url(' + image + ')'}" 
                 [class.active]="i === currentSlide">
 
-                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider">
+                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider" data-aos-once="false">
 
                     <h1>{{text_title[currentSlide]}}</h1>
         
@@ -33,9 +19,9 @@
 
 					<div class="slider-button-container">
 
-						<a href="" class="slider-button">
+						<a routerLink="/categories/1" class="slider-button">
 
-							<span class="slider-button-text">
+							<span class="slider-button-text" routerLink="/categories/1">
 								Scopri di più
 							</span>
 							
@@ -119,20 +105,20 @@
 
     </div>
 
-	<div class="home-sell-container" data-aos="zoom-in-up" data-aos-duration="1500">
+	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
+
+	<div class="home-sell-container" data-aos="zoom-in-up" data-aos-duration="1500" data-aos-once="false">
 
 		<div class="home-collections seo-style">
 
 			<div class="home-collections-layout">
 	
-	
 				<div class="product-box">
-	
 	
 					<div class="item">
 	
 						<div class="left-icon">
-							<a href="/collections/carbon-fiber-electric-bike"><img class="image--fade-in lazyloaded"
+							<a routerLink="/categories/1"><img class="image--fade-in lazyloaded"
 								src="assets/images/BikeVille-visual.svg"></a>						
 						</div>
 	
@@ -140,7 +126,7 @@
 	
 							<div class="top-box">
 								<div class="item-title">
-									<a href="/collections/folding-electric-bikes">
+									<a routerLink="/categories/1">
 										<h2>Bici Elettrica Pieghevole &amp; Pendolare</h2>
 									</a>
 								</div>
@@ -151,7 +137,7 @@
 	
 	
 							<div class="img-box">
-								<a href="/collections/folding-electric-bikes">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=352 352w, //it.fiido.com/cdn/shop/files/x.png?v=1703580201&amp;width=450 450w"
@@ -161,7 +147,7 @@
 	
 								<div class="bottom-box">
 	
-									<a href="/collections/folding-electric-bikes" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -205,7 +191,7 @@
 	
 							<div class="img-box">
 	
-								<a href="/collections/carbon-fiber-electric-bike">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=352 352w, //it.fiido.com/cdn/shop/files/c31-it.png?v=1723521747&amp;width=450 450w"
@@ -215,7 +201,7 @@
 	
 								<div class="bottom-box">
 	
-									<a href="/collections/carbon-fiber-electric-bike" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -237,7 +223,7 @@
 	
 								<div class="item-title">
 	
-									<a href="/collections/electric-off-road-bikes">
+									<a routerLink="/categories/1">
 	
 										<h2>Bici Elettrica Fuoristrada &amp; Da Turismo</h2>
 	
@@ -255,7 +241,7 @@
 
 							<div class="img-box">
 	
-								<a href="/collections/electric-off-road-bikes">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=352 352w, //it.fiido.com/cdn/shop/files/titan.png?v=1703580202&amp;width=450 450w"
@@ -265,7 +251,7 @@
 	
 								<div class="bottom-box">
 	
-									<a href="/collections/electric-off-road-bikes" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -287,7 +273,7 @@
 	
 								<div class="item-title">
 	
-									<a href="/collections/fat-tire-electric-bikes">
+									<a routerLink="/categories/1">
 										<h2>Bicicletta Elettrica Fat E Da Carico</h2>
 									</a>
 	
@@ -296,13 +282,14 @@
 								<div class="item-sub-title">
 	
 									Trasporta ciò che la maggior parte non trasporta
+
 								</div>
 	
 							</div>
 	
 							<div class="img-box">
 	
-								<a href="/collections/fat-tire-electric-bikes">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=352 352w, //it.fiido.com/cdn/shop/files/T2_95a410be-ffeb-4429-9eaa-f902fa9438fb.png?v=1714390331&amp;width=450 450w"
@@ -312,7 +299,7 @@
 	
 								<div class="bottom-box">
 	
-									<a href="/collections/fat-tire-electric-bikes" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -332,7 +319,7 @@
 	
 							<div class="top-box">
 								<div class="item-title">
-									<a href="/collections/lightweight-electric-bikes">
+									<a routerLink="/categories/1">
 										<h2>Bici Elettrica Leggera &amp; Città</h2>
 									</a>
 								</div>
@@ -342,7 +329,7 @@
 							</div>
 
 							<div class="img-box">
-								<a href="/collections/lightweight-electric-bikes">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=352 352w, //it.fiido.com/cdn/shop/files/C11.png?v=1719568612&amp;width=450 450w"
@@ -351,7 +338,7 @@
 								</a>
 	
 								<div class="bottom-box">
-									<a href="/collections/lightweight-electric-bikes" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -372,7 +359,7 @@
 	
 								<div class="item-title">
 	
-									<a href="/products/fiido-kidz-electric-balance-bike">
+									<a routerLink="/categories/1">
 										<h2>Bike Kidz</h2>
 									</a>
 								</div>
@@ -386,7 +373,7 @@
 	
 							<div class="img-box">
 	
-								<a href="/products/fiido-kidz-electric-balance-bike">
+								<a routerLink="/categories/1">
 	
 									<img src="//it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=450"
 										srcset="//it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=352 352w, //it.fiido.com/cdn/shop/files/kidz.png?v=1703580202&amp;width=450 450w"
@@ -396,7 +383,7 @@
 	
 								<div class="bottom-box">
 	
-									<a href="/products/fiido-kidz-electric-balance-bike" class="lm-btn">
+									<a routerLink="/categories/1" class="lm-btn">
 	
 										Esplora
 	
@@ -418,13 +405,15 @@
 	
 	</div>
 
-    <div class="home-storytelling" data-aos="zoom-in">
+	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
+
+    <div class="home-storytelling" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="500" data-aos-anchor=".home-storytelling" data-aos-once="false">
 
         <div class="home-storytelling-layout">
 
-            <div class="storytelling-image" decode="async" fetchpriority="high" prefetch="auto" preload="high" id="home-storytelling" data-aos-once="false">
+            <div class="storytelling-image" decode="async" fetchpriority="high" prefetch="auto" preload="high" data-aos-once="false">
 
-				<img src="assets/images/phone.svg" alt="Storytelling Phone" loading="lazy" data-aos="flip-up" data-aos-delay="700" data-aos-duration="1000" data-aos-anchor="#home-storytelling">
+				<img src="assets/images/phone.svg" alt="Storytelling Phone" loading="lazy" data-aos="flip-up" data-aos-delay="1000" data-aos-duration="1500" data-aos-anchor=".storytelling-image" data-aos-once="false">
 
             </div>
 
@@ -470,7 +459,7 @@
 
     </div>
 
-	<div class="home-about-us" data-aos="fade-up" data-aos-duration="1000">
+	<div class="home-about-us" data-aos="slide-left" data-aos-duration="1200" data-aos-delay="700"  data-aos-anchor=".home-about-us" data-aos-once="false">
 
 		<div class="home-about-us-layout">
 
@@ -653,7 +642,7 @@
 	
 			</div>
 	
-			<div class="review-slider-container" data-aos="zoom-in">
+			<div class="review-slider-container" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="600" data-aos-once="false"> 
 	
 				<!-- Freccia sinistra -->
 				<button class="arrow left" (click)="prevReview()">&#10094;</button>
@@ -680,7 +669,7 @@
 	</div>
 
 	<!-- Sponsor Slider Container -->
-	<div class="slider" data-aos="fade-up" data-aos-duration="2000">
+	<div class="slider" data-aos="fade-up" data-aos-duration="2000" data-aos-delay="700" data-aos-once="false">
 
         <div class="slider-background" fetchpriority="high">
 
@@ -689,7 +678,7 @@
                 [ngStyle]="{'background-image': 'url(' + image + ')'}" 
                 [class.active]="i === currentSlide">
 
-                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider">
+                <div class="slider-overlay" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".slider" data-aos-once="false">
 
                     <h1>I Nostri Partner, la Nostra Forza 🚴‍♂️💨</h1>
         
@@ -697,7 +686,7 @@
 
 					<div class="slider-button-container">
 
-						<a href="" class="slider-button">
+						<a routerLink="/login" class="slider-button">
 
 							<span class="slider-button-text">
 								Scopri di più
@@ -791,7 +780,7 @@
 
 		<div class="video-banner">
 
-			<video autoplay loop muted [volume]="0" class="video" data-aos="zoom-out-down" data-aos-duration="1000" data-aos-delay="500">
+			<video autoplay loop muted [volume]="0" class="video" data-aos="zoom-out-down" data-aos-duration="2000" data-aos-delay="500" data-aos-once="false" data-aos-anchor=".video-banner-container">
 
 				<source src="assets\videos\banner-video.mp4" type="video/mp4" alt="Video" class="video ">
 			
@@ -805,19 +794,19 @@
 
 		<div class="acc-coll-items">
 
-			<div class="acc-item" data-aos="slide-left" data-aos-duration="1000"> 
+			<div class="acc-item" data-aos="slide-left" data-aos-duration="1500" data-aos-delay="300" data-aos-anchor=".home-accessory-category" data-aos-once="false"> 
 
 				<div class="top-box">
 
 					<div class="title">
 
-						<a href="/collections/accessori-aggiunti"><h2>Accessori BikeVille 🪄</h2></a>
+						<a routerLink="/categories/4"><h2>Accessori BikeVille 🪄</h2></a>
 
 					</div>
 
 					<div class="s-btn">
 
-						<a href="/collections/accessori-aggiunti">Mostra di più</a>
+						<a routerLink="/categories/4">Mostra di più</a>
 					
 					</div>
 
@@ -843,20 +832,20 @@
 
 			</div>
 
-			<div class="acc-item" data-aos="slide-right" data-aos-duration="1000" data-aos-delay="100"> 
+			<div class="acc-item" data-aos="slide-right" data-aos-duration="1500" data-aos-delay="300" data-aos-anchor=".home-accessory-category" data-aos-once="false"> 
 
 				<div class="top-box">
 
 					<div class="title">
 
-						<a href="/collections/ricambi-e-componenti"><h2>Ricambi originali ⚙️</h2></a>
+						<a routerLink="/categories/2"><h2>Ricambi originali ⚙️</h2></a>
 
 					</div>
 
 					<div class="s-btn">
 
 
-						<a href="/collections/ricambi-e-componenti">Mostra di più</a>
+						<a routerLink="/categories/2">Mostra di più</a>
 
 					</div>
 

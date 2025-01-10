@@ -8,17 +8,18 @@
     <div class="menu-container">
 
       <!-- ========== Logo ========== -->
-  
+
       <a href="" aria-label="BikeVille" class="logo-link">
-    
+
         <div class="logo-container">
 
-          <img decoding="async" data-nimg="fill"  src="/assets/images/BikeVille-brand.png" alt="BikeVille Logo" class="logo-img">
+          <img decoding="async" data-nimg="fill" src="/assets/images/BikeVille-brand.png" alt="BikeVille Logo"
+            class="logo-img">
 
         </div>
 
       </a>
-    
+
       <div class="menu-button-container-sx">
 
         <ul data-orientation="horizontal" class="nav__items" dir="ltr">
@@ -29,11 +30,14 @@
 
               <a routerLink="home">Home</a>
 
-              <svg xmlns="http://www.w3.org/2000/svg" id="icon-dropdown" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12" 
+              <svg xmlns="http://www.w3.org/2000/svg" id="icon-dropdown" aria-hidden="true" role="img" class="nav__icon"
+                width="16" height="16" viewBox="0 0 12 12"
                 [ngStyle]="{'transform': isDropdownOpen['home'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
-                
-                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
-              
+
+                <path fill="currentColor"
+                  d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3">
+                </path>
+
               </svg>
 
             </button>
@@ -46,11 +50,14 @@
 
               <a>Categorie</a>
 
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon-dropdown" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon-dropdown" aria-hidden="true" role="img"
+                class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
                 [ngStyle]="{'transform': isDropdownOpen['category'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
-                
-                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
-              
+
+                <path fill="currentColor"
+                  d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3">
+                </path>
+
               </svg>
 
             </button>
@@ -58,7 +65,7 @@
               <ul>
                 <li *ngFor="let category of categories">
                   <a class="dropdown-item nav__link" routerLink="/categories/{{category.productCategoryId}}">
-                    {{category.name}}
+                    {{category.name}} 📍
                   </a>
                 </li>
               </ul>
@@ -71,11 +78,14 @@
 
               <a routerLink="contact">Contatti</a>
 
-              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
+              <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" class="nav__icon" width="16"
+                height="16" viewBox="0 0 12 12"
                 [ngStyle]="{'transform': isDropdownOpen['contact'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
-                
-                <path fill="currentColor" d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3"></path>
-              
+
+                <path fill="currentColor"
+                  d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3">
+                </path>
+
               </svg>
 
             </button>
@@ -89,77 +99,100 @@
     </div>
 
     <div class="menu-button-container-dx">
-            <!-- Icona Carrello nella Navbar -->
-            <button class="cart-button" (click)="toggleCart()">
-              <!-- Icona Carrello SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
-              <span *ngIf="cartCount > 0" class="cart-count">
-                {{ cartCount }}
-              </span>
-            </button>
-          </div>
-      
-            <!-- Carrello Inline nella Navbar -->
-            <div class="cart-overlay" *ngIf="isCartOpen">
-              <div class="cart-container">
-                <h2>Il tuo Carrello</h2>
-                <button class="close-button" (click)="closeCart()">&times;</button>
-                
-                <ng-container *ngIf="cartItems.length > 0; else emptyCart">
-                  <ul class="cart-items">
-                    <li *ngFor="let item of cartItems">
-                      <img [src]="item.product.imageUrl || 'https://it.fiido.com/cdn/shop/files/x.png?v=1703580201&width=450'" alt="{{ item.product.name }}" class="cart-item-image">
-                      <div class="cart-item-details">
-                        <h3>{{ item.product.name }}</h3>            
-                        <p>Prezzo: {{ item.product.listPrice | currency }}</p>
-                        <div class="quantity-control">
-                          <button (click)="updateQuantity(item.product.productId!, item.quantity - 1)" [disabled]="item.quantity <= 1">-</button>
-                          <span>{{ item.quantity }}</span>
-                          <button (click)="updateQuantity(item.product.productId!, item.quantity + 1)">+</button>
-                        </div>
-                        <button class="remove-button" (click)="removeItem(item.product.productId!)">Rimuovi</button>
-                      </div>
-                    </li>
-                  </ul>
-                  <p class="total-price">Totale:{{ calculateTotal() | currency }}</p>
-                  <button class="clear-cart" (click)="clearCart()">Svuota Carrello</button>
-                </ng-container>
+
+      <!-- Icona Carrello nella Navbar -->
+      <button class="cart-button button-flag" (click)="toggleCart()">
+
+        <!-- Icona Carrello SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-cart3"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+        </svg>
+
+        <span *ngIf="cartCount > 0" class="cart-count">
+          {{ cartCount }}
+        </span>
+
+      </button> 
+
+      <div class="cart-container" *ngIf="isCartOpen">
+
+        <h2>Il tuo Carrello 🛒</h2>
+        <button class="close-button" (click)="closeCart()">&times;</button>
+    
+        <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    
+          <ul class="cart-items">
             
-                <ng-template #emptyCart>
-                  <div class="empty-cart-message">
-                    <p>Nessun articolo nel carrello</p>
-                  </div>
-                </ng-template>
+            <li *ngFor="let item of cartItems">
+    
+              <img [src]="item.product.imageUrl || 'https://it.fiido.com/cdn/shop/files/x.png?v=1703580201&width=450'"
+                alt="{{ item.product.name }}" class="cart-item-image">
+    
+              <div class="cart-item-details">
+    
+                <h3>{{ item.product.name }}</h3>
+                <p>Prezzo: {{ item.product.listPrice | currency }}</p>
+    
+                <div class="quantity-control">
+    
+                  <button (click)="updateQuantity(item.product.productId!, item.quantity - 1)"
+                    [disabled]="item.quantity <= 1">-</button>
+    
+                  <span>{{ item.quantity }}</span>
+    
+                  <button (click)="updateQuantity(item.product.productId!, item.quantity + 1)">+</button>
+                
+                </div>
+    
+                <button class="remove-button" (click)="removeItem(item.product.productId!)">
+    
+                  <svg viewBox="0 0 448 512" class="svgIcon">
+    
+                    <path
+                      d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                    </path>
+    
+                  </svg>
+    
+                </button>
+    
               </div>
-            </div>
-      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}"> 
-        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls="" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder (click)="switchTheme($event)" >
-          
+    
+            </li>
+    
+          </ul>
+    
+          <p class="total-price">Totale: {{ calculateTotal() | currency }} 🧾</p>
+          <button class="clear-cart" (click)="clearCart()">Svuota Carrello</button>
+    
+        </ng-container>
+    
+        <ng-template #emptyCart>
+    
+          <div class="empty-cart-message">
+            <p>Nessun articolo nel carrello ❌</p>
+          </div>
+    
+        </ng-template>
+    
+      </div>
+
+      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
+      
+        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
+          aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder
+          (click)="switchTheme($event)">
+
           <label for="themeToggle" class="themeToggle st-sunMoonThemeToggleBtn" type="checkbox">
 
-            <input type="checkbox" id="themeToggle" class="themeToggleInput" (click)="switchTheme($event)" [checked]="isDarkTheme" />
-            
-            <svg
+            <input type="checkbox" id="themeToggle" class="themeToggleInput" (click)="switchTheme($event)"
+              [checked]="isDarkTheme" />
 
-              width="18"
-              height="18"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              stroke="none"
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor" stroke="none">
 
-            >
-
-              <circle
-                class="sunMoon"
-                cx="10"
-                cy="10"
-                r="8"
-                mask="url(#moon-mask)"
-              ></circle>
+              <circle class="sunMoon" cx="10" cy="10" r="8" mask="url(#moon-mask)"></circle>
 
               <g>
 
@@ -176,7 +209,7 @@
 
                 <rect x="0" y="0" width="20" height="20" fill="white"></rect>
                 <circle cx="11" cy="3" r="8" fill="black"></circle>
-                
+
               </mask>
 
             </svg>
@@ -185,100 +218,61 @@
 
         </button>
 
-      </div> 
-
-      
-
-      
+      </div>
 
       <!-- ========== Search Bar ========== -->
 
       <div class="input-wrapper" [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'flex' : 'none')}">
-        <button class="icon" (click)="performSearch()" aria-label="Esegui Ricerca">
-          <svg
-            width="25px"
-            height="25px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+        
+        <button class="button-search" (click)="performSearch()" aria-label="Esegui Ricerca">
+          
+          <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-              stroke="#fff"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-            <path
-              d="M22 22L20 20"
-              stroke="#fff"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
+              stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M22 22L20 20" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
-        </button>
-        <input 
-          type="text" 
-          name="searchQuery" 
-          class="input" 
-          placeholder="Cerca..." 
-          [(ngModel)]="searchQuery"
-          (keyup.enter)="performSearch()"
-          aria-label="Search"
-        />
+
+        </button> 
+
+        <input type="text" name="searchQuery" class="input" placeholder="Cerca..." [(ngModel)]="searchQuery"
+          (keyup.enter)="performSearch()" aria-label="Search" />
+
       </div>
 
-      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}"> 
+      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
 
-        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls="" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder>
-          
-          <div [ngStyle]="{ 'display': 'flex', 'align-items': 'center', 'gap': '0.25rem', 'font-size': '1rem', 'font-weight': 'bold', 'color': '#ffffff'}">
-            
-            <img 
-              id="icon-flag" 
-              src="data:image/png;base64,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" 
-              alt="italy" data-title="title"
-            >
-            
+        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
+          aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder>
+
+          <div
+            [ngStyle]="{ 'display': 'flex', 'align-items': 'center', 'gap': '0.25rem', 'font-size': '1rem', 'font-weight': 'bold', 'color': '#ffffff'}">
+
+            <img id="icon-flag"
+              src="data:image/png;base64,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"
+              alt="italy" data-title="title">
+
             IT
 
           </div>
 
         </button>
 
-      </div> 
-        
-        <a
-        *ngIf="!isAuthenticated"
-          aria-label="register"
-          class="button-register"
-          [ngStyle]="{ 'font-weight': 'bold' }"
-          routerLink="login"
+      </div>
 
-          [ngClass]="{ 'lock-open': isLockOpen }"
-          (mouseenter)="toggleLock(true)"
-          (mouseleave)="toggleLock(false)"
-        >
+      <a *ngIf="!isAuthenticated" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
+        routerLink="login" [ngClass]="{ 'lock-open': isLockOpen }" (mouseenter)="toggleLock(true)"
+        (mouseleave)="toggleLock(false)">
 
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 36 40"
-          class="lock-container"
-        >
+        <svg width="30" height="30" viewBox="0 0 36 40" class="lock-container">
 
           <!-- Corpo del lucchetto -->
-          <path
-            class="lockb"
-            d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z"
-          ></path>
+          <path class="lockb"
+            d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z">
+          </path>
 
           <!-- Asta del lucchetto -->
-          <path
-            class="lock"
-            d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"
-          ></path>
+          <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path>
 
           <!-- Bling -->
           <path class="bling" d="M29 20L31 22"></path>
@@ -289,28 +283,37 @@
 
         Accedi
 
-      </a>  
-      
+      </a>
+
       <!-- Icona Profilo -->
-  <div *ngIf="isAuthenticated" class="profile-menu">
-    <div class="profile-icon" (click)="toggleProfileDropdown($event)">
-      <img src="assets/images/user_1077114.png" alt="Profilo" />
+      <div *ngIf="isAuthenticated" class="profile-menu">
+
+        <div class="profile-icon" (click)="toggleProfileDropdown($event)">
+          <img src="assets/images/profile-icon.svg" alt="Profilo" style="height: 100%; width: 100%"/>
+        </div>
+
+        <div *ngIf="showDropdown" class="dropdown-menu">
+
+          <ul>
+
+            <li>
+              <a routerLink="/profile/{{authUser.emailAddress}}">Profilo</a>
+            </li>
+            <li>
+              <a routerLink="/cart">Carrello</a>
+            </li>
+            <li>
+              <button (click)="logout()">Logout</button>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
     </div>
-    <div *ngIf="showDropdown" class="dropdown-menu">
-      <ul>
-        <li>
-          <a routerLink="/profile/{{authUser.emailAddress}}">Profilo</a>
-        </li>
-        <li>
-          <a routerLink="/cart">Carrello</a>
-        </li>
-        <li>
-          <button (click)="logout()">Logout</button>
-        </li>
-      </ul>
-    </div>
-  </div>
-  
+
   </nav>
 
 </div>

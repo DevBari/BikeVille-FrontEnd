@@ -46,8 +46,12 @@
   --secondary-text: #272727;
   --third-text: #00a6a2;
 
+  --pattern-bike: url("assets/images/pattern-bike.svg");
+
   --sun-color: #fff; /* Giallo per il sole */
   --moon-color: #ffb000; /* Blu per la luna */
+
+  --blur-background: rgba(255, 255, 255, 0.5);
 
 }
 
@@ -71,7 +75,7 @@
   --secondary: #ffb000;
   --about: #ffae00ca;
   --shades: rgba(40, 40, 40, 1);
-  --card-shadow: linear-gradient(to bottom left, #000000, #201e1e);
+  --card-shadow: linear-gradient(to bottom left, #2b2a2a, #1e1d1d);
   --card: #2d2d2d;
   --border: #212121;
   --box-shadow: 0px 0px 30px 1px  rgba(71, 70, 70, 0.167);
@@ -79,6 +83,10 @@
   --primary-text: #f6f6f6;
   --secondary-text: #9ca3af;
   --third-text: #105b59;
+
+  --pattern-bike: url("assets/images/pattern-bike.svg");
+
+  --blur-background: rgba(60, 60, 60, 0.5);
 
 }
 
@@ -136,7 +144,7 @@ body {
   background-color: var(--background);
   color: var(--primary-text);
 
-  transition: background-color 0.4s ease-in-out !important;
+  transition: background-color 0.3s ease-in-out !important;
 
 }
 
@@ -166,7 +174,7 @@ body::-webkit-scrollbar-track {
 }
 
 /* Scrollbar thumb */
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb{
 
   background: linear-gradient(
 
@@ -187,7 +195,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* Hover effect */
-body::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover{
 
   background: linear-gradient(
 
@@ -204,7 +212,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* Active (dragging) effect */
-body::-webkit-scrollbar-thumb:active {
+body::-webkit-scrollbar-thumb:active{
 
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(131, 75, 1, 0.5); /* Effetto più marcato */
@@ -213,7 +221,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 /* Track Decorations */
-body::-webkit-scrollbar-track-piece {
+body::-webkit-scrollbar-track-piece{
 
   background: rgb(190, 220, 255);
   background: linear-gradient(
@@ -224,6 +232,42 @@ body::-webkit-scrollbar-track-piece {
 
   );
 
+}
+
+.cart-container::-webkit-scrollbar,
+.accordion-content::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.cart-container::-webkit-scrollbar-track,
+.accordion-content::-webkit-scrollbar  {
+  background: var(--shades);
+  border-radius: 20px;  
+}
+
+.cart-container::-webkit-scrollbar-thumb,
+.accordion-content::-webkit-scrollbar  {
+  background: linear-gradient(
+
+    to right,
+    #ffb000,
+    #ff9500
+
+  );
+
+  border-radius: 20px; 
+}
+
+.cart-container::-webkit-scrollbar-thumb:hover,
+.accordion-content::-webkit-scrollbar  {
+  background: linear-gradient(
+
+    to right,
+    #ff9500,
+    #ffb000
+
+  ); 
+  cursor: grab;
 }
 
 a {
@@ -248,21 +292,90 @@ html {
 
 .home-storytelling{
 
-  background-image: url("assets/images/pattern-bike.svg");
+  background-image: var(--pattern-bike);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
 }
 
-.home-about-us-layout {
-
-  background-image: url("assets/images/pattern-bike.svg");
+.home-about-us {
+  background-image: var(--pattern-bike);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 24px;
-  box-shadow: 0 0 12px #999999;
+  box-shadow: 0 0 8px #999999;
   color: #FFFFFF;
+}
+
+.body-login {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cart-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.toggle-panel {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-info-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-password-action {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-orders{
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-profile-container{
+  background-image: url("assets/images/profile-container-pattern.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.category-menu {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-page {
+  background-image: url("assets/images/user-background-pattern.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer_bikes {
+  background-image: url("assets/images/bg-bike.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Posizionamento delle Notifiche */
