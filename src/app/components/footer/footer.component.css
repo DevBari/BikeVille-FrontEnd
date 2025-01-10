@@ -210,6 +210,19 @@ a {
   }  
 }
 
+
+@media (width: 1920px) {
+  .html-embed-2 {
+    bottom: -96px;
+  }  
+}
+
+@media (min-width: 1930px) {
+  .html-embed-2 {
+    bottom: -0px;
+  }  
+}
+
 video {
   object-fit: contain;
   overflow-clip-margin: content-box;
