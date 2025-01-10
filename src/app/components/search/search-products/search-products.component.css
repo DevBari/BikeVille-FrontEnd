@@ -32,7 +32,7 @@
     border-radius: 20px;
 
     background-color: var(--secondary);
-    background-image: url("/assets/images/pattern-bike.svg");
+    background-image: url('/assets/images/pattern-bike.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -71,136 +71,6 @@
 
 .reset-price-button:hover {
     background-color: #e6a500; /* Giallo scuro al passaggio del mouse */
-}
-
-/* Filters Sidebar */
-.filters {
-    flex:  0 1 auto;
-    width: 320px; 
-    height: fit-content;
-    background-color: var(--card);
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: var(--card-shadow);
-}
-
-.accordion {
-    width: 100%;
-}
-
-.accordion-item {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-}
-
-.accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.accordion-button {
-    background: none;
-    border: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    width: 100%;
-    text-align: left;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    color: var(--primary-text);
-    cursor: pointer;
-}
-
-.accordion-button:hover {
-    color: var(--secondary);
-}
-
-.accordion-icon {
-    font-size: 1.5rem;
-    transition: transform 0.2s ease-in-out;
-}
-
-/* Accordion Content */
-.accordion-content {
-    margin-top: 10px;
-    max-height: 0;
-    overflow: auto;
-    transition: max-height 0.3s ease-in-out;
-}
-
-.accordion-content.open {
-    max-height: 500px; /* Valore di max-height sufficientemente grande per contenere tutto */
-}
-
-.price-range-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.filter-option {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    cursor: pointer;
-    position: relative;
-}
-
-.filter-option:hover {
-    transform: translateY(-2px);
-    transition: transform 1s;
-} 
-
-.filter-option input[type="radio"] {
-    margin-right: 10px;
-    width: 30px;
-    height: 30px;
-    background-color: var(--secondary);
-    border-radius: 50%;
-    appearance: none;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    background-image: none;  /* No background by default */
-    background-size: contain;  /* Ensure the GIF fits the circle */
-    background-repeat: no-repeat;
-}
-
-.filter-option input[type="radio"]:hover {
- /*   background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");*/
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: transparent; /* Colore di sfondo trasparente */
-}
-
-.filter-option input[type="radio"]:checked {
- /*   background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");*/
-    background-size: contain;
-    background-color: transparent; /* Colore di sfondo trasparente */
-}
-
-.filter-option span {
-    font-size: 1rem;
-    color: var(--primary-text);
-    font-family: "inter-regular";
-    z-index: 1;
-}
-
-.price-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-    font-family: "inter-regular";
-}
-
-.price-range {
-    width: 100%;
-
 }
 
 /* Products Display Area */
