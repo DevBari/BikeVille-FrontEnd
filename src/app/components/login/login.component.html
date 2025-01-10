@@ -1,8 +1,6 @@
 <body class="body-login">
   <div class="container" [ngClass]="{'active': showRegister}">
     
-    <div class="form-container sign-up" *ngIf="showRegister">
-      
       <form [formGroup]="registerForm" (ngSubmit)="addUser()">
             <h1>Crea Account ⛓️‍💥</h1>
             <div class="social-icons">
@@ -32,6 +30,14 @@
             <div class="error-message" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
               <small *ngIf="registerForm.get('email')?.errors?.['required']">Campo obbligatorio</small>
               <small *ngIf="registerForm.get('email')?.errors?.['email']">Inserisci una Email valida</small>
+            </div>
+          </div>
+
+          <div class="input-container" [ngClass]="{'has-error': registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched}">
+            <input formControlName="phone" type="phone" placeholder="Cellulare">
+            <div class="error-message" *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+              <small *ngIf="registerForm.get('phone')?.errors?.['required']">Campo obbligatorio</small>
+              <small *ngIf="registerForm.get('phone')?.errors?.['phone']">Inserisci una Email valida</small>
             </div>
           </div>
         
@@ -93,5 +99,5 @@
             </div>
         </div>
     </div>
-  </div>
+
 </body>

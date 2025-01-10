@@ -59,6 +59,11 @@ export class LoginComponent implements OnInit {
           Validators.maxLength(10),
         ]),
         email: new FormControl(null, [Validators.required, Validators.email]),
+        phone: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+        ]),
         password: new FormControl(null, [
           Validators.required,
           Validators.minLength(8)
@@ -141,11 +146,13 @@ export class LoginComponent implements OnInit {
           FirstName: this.registerForm.value.firstName,
           LastName: this.registerForm.value.lastName,     
           EmailAddress: this.registerForm.value.email,
+          Phone: this.authService.formattaNumero(
+            this.registerForm.value.phone.toString()
+          ),
           Password: this.registerForm.value.password,
           Role: 'USER',
         })
         .subscribe((data: any) => {
-          console.log(data);
           this.notify.success('Registrazione effettuata con successo');
         });
       } else {
