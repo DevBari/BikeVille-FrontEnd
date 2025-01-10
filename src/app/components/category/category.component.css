@@ -161,10 +161,17 @@
 }
 
 .filter-option input[type="radio"]:hover {
+   /* background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");
+    background-size: contain;
+    background-repeat: no-repeat;
+    */
     background-color: transparent; /* Colore di sfondo trasparente */
 }
 
 .filter-option input[type="radio"]:checked {
+   /* background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");
+    background-size: contain;
+    */
     background-color: transparent; /* Colore di sfondo trasparente */
 }
 
