@@ -171,14 +171,14 @@
 }
 
 .filter-option input[type="radio"]:hover {
-    background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");
+ /*   background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");*/
     background-size: contain;
     background-repeat: no-repeat;
     background-color: transparent; /* Colore di sfondo trasparente */
 }
 
 .filter-option input[type="radio"]:checked {
-    background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");
+ /*   background-image: url("C:\\Users\\luigi\\OneDrive\\Desktop\\Betacom\\BikeVille\\BikeVille\\src\\assets\\videos\\wheel.gif");*/
     background-size: contain;
     background-color: transparent; /* Colore di sfondo trasparente */
 }
@@ -509,7 +509,7 @@
     margin: 0; /* Rimuove margini aggiuntivi */
 }
 
-/*accortion tipologie*/
+/* Stili per i Radio Buttons */
 
 .radio-inputs {
   display: flex;
@@ -623,7 +623,7 @@
   width: 1px;
 }
 
-/*searchbar*/
+/* Stili per la Barra di Ricerca */
 .product-search-box {
 
 	padding: 10px 0;

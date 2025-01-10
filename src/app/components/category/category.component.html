@@ -5,7 +5,7 @@
     </div>
 
     <div class="category-title-container">
-        <h1 class="category-title" id="title">{{ category.name }}</h1>
+        <h1 class="category-title" id="title">{{ category?.name }}</h1>
     </div>
 
     <div class="category-container">
@@ -55,7 +55,7 @@
                         <span class="radio-label">Tutte</span>
                         </span>
                     </label>
-                    <label *ngFor="let subCategory of category.inverseParentProductCategory.$values">
+                    <label *ngFor="let subCategory of category?.inverseParentProductCategory?.$values">
                         <input class="radio-input" type="radio" name="category" 
                             (click)="setCategoryRadio(subCategory.productCategoryId)" 
                             [checked]="selectedSubCategoryId === subCategory.productCategoryId">
@@ -63,7 +63,7 @@
                         <span class="radio-icon">
                             <!-- Icona per la sottocategoria -->
                         </span>
-                        <span class="radio-label">{{ subCategory.name }}</span>
+                        <span class="radio-label">{{ subCategory?.name }}</span>
                         </span>
                     </label>
                     </div>
