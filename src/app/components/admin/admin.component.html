@@ -1,27 +1,46 @@
-<div class="admin-container">
-    <!-- Sidebar Amministrativa -->
-    <div id="admin-sidebar" class="admin-sidebar" [class.closed]="isClose">
-        <div class="admin-sidebar-header">
-            <span class="admin-sidebar-title">Admin HUB</span>
-            <button class="toggle-button" (click)="toggleNav()" aria-label="Toggle Sidebar">
-                <i class="fa-solid" [ngClass]="isClose ? 'fa-plus' : 'fa-minus'"></i>
-            </button>
-        </div>
-        <div class="admin-sidebar-content">
-            <a [routerLink]="['/administration', authUser?.emailAddress, 'users']" class="admin-sidebar-button">
-                <i class="fas fa-users"></i><span>Customers</span>
-            </a>
-            <a [routerLink]="['/administration', authUser?.emailAddress, 'products']" class="admin-sidebar-button">
-                <i class="fas fa-shopify"></i><span>Products</span>
-            </a>
-        </div>
+<section class="admin-page">
+
+    <div class="admin-banner">
+
+        <span class="admin-banner-subtitle">Welcome, {{ authUser?.emailAddress }}</span>
+
     </div>
 
-    <!-- Sezione Principale -->
-    <div class="admin-main-section" [class.expanded]="isClose">
-        <div class="admin-content-container">
-            <h1>Admin Hub</h1>
-            <router-outlet></router-outlet>
+    <div class="admin-container">
+    
+        <!-- Sidebar Amministrativa -->
+        <div id="admin-sidebar" class="admin-sidebar" [class.closed]="isClose">
+            
+            <div class="admin-sidebar-header">
+                <span class="admin-sidebar-title">Admin HUB</span>
+                <button class="toggle-button" (click)="toggleNav()" aria-label="Toggle Sidebar">
+                    <i class="fa-solid" [ngClass]="isClose ? 'fa-plus' : 'fa-minus'"></i>
+                </button>
+            </div>
+
+            <div class="admin-sidebar-content">
+                <a [routerLink]="['/administration', authUser?.emailAddress, 'users']" class="admin-sidebar-button">
+                    <i class="fas fa-users"></i><span>Customers</span>
+                </a>
+                <a [routerLink]="['/administration', authUser?.emailAddress, 'products']" class="admin-sidebar-button">
+                    <i class="fas fa-shopify"></i><span>Products</span>
+                </a>
+            </div>
+
         </div>
+    
+        <!-- Sezione Principale -->
+        <div class="admin-main-section" [class.expanded]="isClose">
+
+            <div class="admin-content-container">
+
+                <h1>Admin Hub</h1>
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </div>
+
     </div>
-</div>
+
+</section>

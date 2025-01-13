@@ -262,6 +262,7 @@
 
       </div>
     -->
+
       <a *ngIf="!isAuthenticated" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
         routerLink="login" [ngClass]="{ 'lock-open': isLockOpen }" (mouseenter)="toggleLock(true)"
         (mouseleave)="toggleLock(false)">
@@ -299,13 +300,13 @@
           <ul>
 
             <li>
-              <a routerLink="/profile/{{authUser.emailAddress}}">Profilo</a>
+              <a routerLink="/profile/{{authUser.emailAddress}}">Profilo 🚴🏽</a>
             </li>
             <li *ngIf="authUser.role.trim() == 'ADMIN'">
-              <a routerLink="/administration/{{authUser.emailAddress}}">Administration</a>
+              <a routerLink="/administration/{{authUser.emailAddress}}">Admin Hub 👨🏽‍💻</a>
             </li>
             <li>
-              <button (click)="logout()">Logout</button>
+              <button (click)="logout()">Logout ❌</button>
             </li>
 
           </ul>

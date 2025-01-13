@@ -648,7 +648,7 @@ button, input, optgroup, select, textarea {
   align-items: center;
   position: relative;
   gap: 15px;
-  margin-right: 8px;
+  margin-right: 1rem;
 }
 
 .input {
