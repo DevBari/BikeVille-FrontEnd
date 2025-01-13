@@ -35,7 +35,7 @@
 		<span class="big-circle"></span>
 		<img src="img/shape.png" class="square" alt="" />
 
-		<div class="form" data-aos="zoom-out-down" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor=".form" data-aos-once="false">
+		<div class="form" data-aos="zoom-out-down" data-aos-duration="1200" data-aos-delay="500" data-aos-once="false">
 
 			<div class="contact-info">
 
@@ -116,7 +116,7 @@
 				<span class="circle one"></span>
 				<span class="circle two"></span>
 
-				<form autocomplete="off" action="https://api.web3forms.com/submit" method="POST">
+				<form autocomplete="off" action="https://api.web3forms.com/submit" method="POST" [formGroup]="form">
 					
 					<input type="hidden" name="access_key" value="0fb800a1-e82e-4917-85eb-e40e93396fff" />
 
@@ -156,11 +156,7 @@
 
 					</div>
 
-					<!-- Aggiungi il componente reCAPTCHA -->
-					<!-- <re-captcha
-						[siteKey]="'0fb800a1-e82e-4917-85eb-e40e93396fff'"
-						(resolved)="onCaptchaResolved($event)">
-					</re-captcha> -->
+					<input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
 					<input type="submit" value="Invia" class="btn" />
 
