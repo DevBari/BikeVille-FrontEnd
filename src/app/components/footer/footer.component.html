@@ -33,13 +33,19 @@
 	
 								</div>
 
-								<h1 class="titleNews">Salta in Sella! 🎉 </h1>
+								<h1 class="titleNews">Lavora con noi! 🎉 </h1>
 
 								<span class="subtitle">Unisciti alla nostra <b>community di Bikers</b> e pedala verso il futuro 🚀: <b>offerte esclusive</b> e novità sulle bici elettriche direttamente nella tua mailbox! 📨</span>
 
-								<input type="email" placeholder="Aggiungi Email" required/>
+								<input 
+								type="email" 
+								placeholder="Aggiungi Email" 
+								[(ngModel)]="mail" 
+								name="mail" 
+								required
+							/>
 
-								<button class="button" type="submit">
+								<button class="button" type="button" (click)="requestAdmin()">
 
 									Salta su!
 

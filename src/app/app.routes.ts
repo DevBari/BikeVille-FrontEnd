@@ -9,7 +9,7 @@ import { SearchProductsComponent } from '@components/search/search-products/sear
 import { AdminComponent } from '@components/admin/admin.component';
 import { UsersComponent } from '@components/admin/adminChild/users/users.component';
 import { ProductsComponent } from '@components/admin/adminChild/products/products.component';
-
+import { ToBeAdminComponent } from '@components/admin/to-be-admin/to-be-admin.component';
 
 export const routes: Routes = [
 
@@ -26,6 +26,7 @@ export const routes: Routes = [
         {path: 'products',component: ProductsComponent},
   
       ]},
+    {path: 'toBeAdmin/:email',component: ToBeAdminComponent},
     { path: 'login', component: Login}, // redirect to Login 
     { path: '', redirectTo: 'home', pathMatch: 'full' } // redirect to home
 ];
