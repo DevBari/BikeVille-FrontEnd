@@ -14,7 +14,7 @@ import { NavbarComponent } from "@components/navbar/navbar.component";
 import { LoadRedirectComponent as LoadRedirect} from '@components/load-redirect/load-redirect.component';
 import { HomeComponent } from '@components/home/home.component';
 import { LoginComponent } from '@components/login/login.component';
-
+import { CartItem } from './Entity/CartItem';
 import { CartService } from './service/cart/cart.service';
 
 
@@ -31,20 +31,55 @@ import { CartService } from './service/cart/cart.service';
 
 export class AppComponent implements OnInit {
 
+  title = 'BikeVille'; // Titolo dell'applicazione
+  currentRoute: string = ''; // Route corrente
+  loading = false; // flag per il caricamento
+
+  // Stato del carrello
+  isCartOpen: boolean = false;
+  cartItems: CartItem[] = [];
+  cartCount: number = 0;
+  totalAmount: number = 0;
   email: string | null = null;
 
-  ngOnInit(): void {
+  constructor(
+    private router: Router, 
+    private cartService: CartService, 
+  ) {
 
-    AOS.init();
-    
-    this.router.events.subscribe(() => {
-      this.currentRoute = this.router.url; // Ottieni l'intera URL corrente
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        // Mostra il componente di caricamento
+        this.loading = true;
+      }
+      if (event instanceof NavigationEnd || event instanceof NavigationError) {
+        // Nascondi il componente di caricamento
+        setTimeout(() => {       
+          this.loading = false;
+        }, 1000); // Imposta il ritardo per nascondere l'animazione dopo 1 secondo
+      }
     });
+
   }
 
-  title = 'BikeVille';
+  ngOnInit(): void {
+    // Inizializza AOS
+    AOS.init();
 
-  currentRoute: string = '';
+    // Sottoscrizione agli aggiornamenti della route
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = this.router.url;
+      }
+    });
+
+    // Sottoscrizione agli aggiornamenti del carrello
+    this.cartService.getCartItemsObservable().subscribe((items: CartItem[]) => {
+      this.cartItems = items;
+      this.cartCount = this.cartService.cartCount.value;
+      this.calculateTotal();
+    });
+  }
   
   // Metodo per aggiornare la route corrente
   onRouteChange(route: string) {
@@ -54,36 +89,40 @@ export class AppComponent implements OnInit {
 
   }
 
-  loading = false; // flag per il caricamento
-
   ShowFooter(): boolean {
     return !(this.currentRoute === '/login' || this.currentRoute.startsWith('/profile/'));
   }
 
-  constructor(private router: Router, private cartService: CartService, private route: ActivatedRoute) {
-
-    this.router.events.subscribe((event) => {
-
-      if (event instanceof NavigationStart) {
-
-        // Mostra il componente di caricamento
-        this.loading = true;
-
-      }
-
-      if (event instanceof NavigationEnd || event instanceof NavigationError) {
-
-        // Nascondi il componente di caricamento
-        setTimeout(() => {
-          
-          this.loading = false;
-
-        }, 1000); // Imposta il ritardo per nascondere l'animazione dopo 1 secondo
-
-      }
-
-    });
-
+  toggleCart(): void {
+    console.log('Toggle cart called. Current state:', this.isCartOpen); // Debug
+    this.isCartOpen = !this.isCartOpen;
   }
 
+  // Metodo per chiudere il carrello
+  closeCart(): void {
+    this.isCartOpen = false;
+  }
+
+  // Metodo per rimuovere un articolo dal carrello
+  removeItem(productId: number): void {
+    this.cartService.removeFromCart(productId);
+  }
+
+  // Metodo per aggiornare la quantità di un articolo nel carrello
+  updateQuantity(productId: number, quantity: number): void {
+    this.cartService.updateQuantity(productId, quantity);
+  }
+
+  // Metodo per svuotare il carrello
+  clearCart(): void {
+    this.cartService.clearCart();
+  }
+
+  // Calcola il totale del carrello
+  calculateTotal(): void {
+    this.totalAmount = this.cartItems.reduce(
+      (acc, item) => acc + item.product.listPrice * item.quantity,
+      0
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, Renderer2, HostListener } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, Input, Renderer2, HostListener } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
@@ -7,7 +7,6 @@ import { AuthService } from '../../service/auth/auth.service';
 import { jwtDecode } from 'jwt-decode';
 import { CategoriesService } from '../../service/category/categories.service';
 import { CartService } from '../../service/cart/cart.service';
-import { CartItem } from '../../Entity/CartItem';
 
 @Component({
 
@@ -20,6 +19,10 @@ import { CartItem } from '../../Entity/CartItem';
 })
 
 export class NavbarComponent implements OnInit {
+  @Input() cartCount: number = 0; // Aggiungi questa linea
+  @Output() toggleCartEvent = new EventEmitter<void>();
+  @Output() routeChanged = new EventEmitter<string>();
+
   categories: any[] = [];
   isAuthenticated: boolean = false;
   authUser: any;
@@ -28,9 +31,6 @@ export class NavbarComponent implements OnInit {
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
   searchQuery: string = ''; // Inizializza la stringa di ricerca
-  isCartOpen: boolean = false;
-  cartItems: CartItem [] = [];
-  cartCount: number = 0;
 
   isDropdownOpen: { [key: string]: boolean } = {
     home: false,
@@ -75,7 +75,6 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  @Output() routeChanged = new EventEmitter<string>();
 
   ngOnInit() {
       // Recupera le categorie dal servizio
@@ -108,11 +107,6 @@ export class NavbarComponent implements OnInit {
     this.isDarkTheme = savedTheme === 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
 
-    // Sottoscrizione agli aggiornamenti del carrello
-    this.cartService.getCartItemsObservable().subscribe((items: CartItem[]) => {
-      this.cartItems = items;
-      this.cartCount = this.cartService.cartCount.value;
-    });
   }
 
   // Metodo per mostrare/nascondere il dropdown del profilo
@@ -228,36 +222,8 @@ export class NavbarComponent implements OnInit {
   }
 
   // Metodo per aprire/nascondere il carrello
-  toggleCart(): void {
-    this.isCartOpen = !this.isCartOpen;
+  onCartButtonClick(): void {
+    console.log('Cart button Clicked')
+    this.toggleCartEvent.emit();
   }
-
-  // Metodo per chiudere il carrello
-  closeCart(): void {
-    this.isCartOpen = false;
-  }
-
-  // Metodo per rimuovere un articolo dal carrello
-  removeItem(productId: number): void {
-    this.cartService.removeFromCart(productId);
-  }
-
-  // Metodo per aggiornare la quantità di un articolo nel carrello
-  updateQuantity(productId: number, quantity: number): void {
-    this.cartService.updateQuantity(productId, quantity);
-  }
-
-  // Metodo per svuotare il carrello
-  clearCart(): void {
-    this.cartService.clearCart();
-  }
-
-  /**
-   * Calcola il totale del carrello.
-   * @returns Il totale aggregato dei prezzi degli articoli.
-   */
-  calculateTotal(): number {
-    return this.cartItems.reduce((acc, item) => acc + (item.product.listPrice * item.quantity), 0);
-  }
-
 }

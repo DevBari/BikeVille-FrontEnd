@@ -1,13 +1,45 @@
+<app-navbar 
+  [cartCount]="cartCount" 
+  (toggleCartEvent)="toggleCart()"
+  (routeChanged)="onRouteChange($event)">
+</app-navbar>
 
-    <app-navbar (routeChanged)="onRouteChange($event)"></app-navbar>
-    
-    <app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
+<app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
 
-    <!-- Route outlet for dynamic content -->
-    <router-outlet></router-outlet>
+<!-- Route outlet for dynamic content -->
+<router-outlet></router-outlet>
 
-    <!-- footer component here -->
-    <app-footer *ngIf="ShowFooter()"></app-footer>
+<!-- Finestra del Carrello -->
+<div class="cart-container" [ngClass]="{'visible': isCartOpen, 'hidden': !isCartOpen}">
+  <h2>Il tuo Carrello 🛒</h2>
+  <button class="close-button" (click)="closeCart()">&times;</button>
 
+  <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    <ul class="cart-items">
+      <li *ngFor="let item of cartItems">
+        <img 
+          [src]="item.product.imageUrl || 'https://it.fiido.com/cdn/shop/files/x.png?v=1703580201&width=450'"
+          alt="{{ item.product.name }}" 
+          class="cart-item-image">
+        <div class="cart-item-details">
+          <h3>{{ item.product.name }}</h3>
+          <p>Prezzo: {{ item.product.listPrice | currency }}</p>
+          <p>Quantità: {{ item.quantity }}</p>
+          <button (click)="removeItem(item.product.productId!)">Rimuovi</button>
+        </div>
+      </li>
+    </ul>
+    <div class="cart-summary">
+      <p>Totale: {{ totalAmount | currency }}</p>
+      <button (click)="clearCart()">Svuota Carrello</button>
+      <a routerLink="/checkout" class="button">Procedi al Checkout</a>
+    </div>
+  </ng-container>
 
+  <ng-template #emptyCart>
+    <p>Il carrello è vuoto.</p>
+  </ng-template>
+</div>
 
+<!-- footer component here -->
+<app-footer *ngIf="ShowFooter()"></app-footer>

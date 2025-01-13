@@ -26,3 +26,225 @@ body, html {
 
 }
 
+
+/* Stili per il Bottone del Carrello */
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  width: 54px;
+  height: 54px;
+  border: 2px solid #F5F5F5; /* Colore del bordo */
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ffa200;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Stili per il Carrello */
+.cart-overlay {
+  position: top;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  z-index: 1000;
+  border-radius: 20px;
+}
+
+/* Stati di Visibilità del Carrello */
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+/* Assicurati che .cart-container abbia position corretta e altre proprietà */
+.cart-container {
+    position: fixed;
+    top: 60px; /* Regola in base all'altezza della navbar */
+    right: 20px;
+    width: 300px;
+    background-color: #ffffff; /* O usa var(--shades) se definito */
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    padding: 20px;
+    border-radius: 8px;
+    color: var(--primary-text);
+    overflow-y: auto;
+  /* Le proprietà di base di hidden saranno sovrascritte dalle classi */
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-items li {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.quantity-control button:hover {
+  transition: background-color 0.2s ease;
+  background-color: #0766ff;
+}
+
+
+.quantity-control span {
+  margin: 0 10px;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: #ff0000;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.clear-cart {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--secondary);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.clear-cart:hover {
+  background-color: #ffa600;
+  scale: 1.05;
+  transition: all 0.3s ease-in-out;
+}
+
+.empty-cart-message {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.2rem;
+}
+
+.total-price {
+  font-weight: bold;
+  margin-top: 10px;
+  color: var(--primary-text);
+  text-shadow: 0px 0px 2px #86868697;
+}
+
+/* Remove button */
+.remove-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-text);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: .3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: .3s;
+}
+
+.svgIcon path {
+  fill: var(--background);
+}
+
+.remove-button:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: .3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.remove-button:hover .svgIcon {
+  width: 50px;
+  transition-duration: .3s;
+  transform: translateY(60%);
+}
+
+.remove-button::before {
+  position: absolute;
+  top: -27px;
+  content: "Rimuovi";
+  color: var(--background);
+  transition-duration: .3s;
+  font-size: 2px;
+}
+
+.remove-button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: .3s;
+}
