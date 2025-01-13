@@ -240,6 +240,8 @@
 
       </div>
 
+
+       <!--
       <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
 
         <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
@@ -259,7 +261,7 @@
         </button>
 
       </div>
-
+    -->
       <a *ngIf="!isAuthenticated" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
         routerLink="login" [ngClass]="{ 'lock-open': isLockOpen }" (mouseenter)="toggleLock(true)"
         (mouseleave)="toggleLock(false)">
@@ -299,8 +301,8 @@
             <li>
               <a routerLink="/profile/{{authUser.emailAddress}}">Profilo</a>
             </li>
-            <li>
-              <a routerLink="/cart">Carrello</a>
+            <li *ngIf="authUser.role.trim() == 'ADMIN'">
+              <a routerLink="/administration/{{authUser.emailAddress}}">Administration</a>
             </li>
             <li>
               <button (click)="logout()">Logout</button>

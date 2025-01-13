@@ -1,0 +1,63 @@
+<div class="users-container">
+    <div class="users-table">
+        <div class="table-wrapper">
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th class="text-center">CustomerId</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Company Name</th>
+                        <th class="text-center">Sales Person</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customers">
+                        <td class="text-center">{{customer.customerId}}</td>
+                        <td class="text-center">{{customer.firstName + " " + customer.lastName}}</td>
+                        <td class="text-center">{{customer.companyName}}</td>
+                        <td class="text-center">{{customer.salesPerson}}</td>
+                        <td>
+                            <div class="actions">
+                                <button class="btn-delete" (click)="deleteCustomer(customer.userId)">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                                <button class="btn-view" (click)="getCustomerSalesOrders(customer.customerId)">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div *ngIf="showSalesOrders" class="sales-orders-container">
+        <button class="btn-close" (click)="showSalesOrders=false">
+            <i class="fa-solid fa-eye-slash"></i> Close
+        </button>
+        <div class="table-wrapper">
+            <table class="table-custom">
+                <thead>
+                    <tr>
+                        <th class="text-center">Sales Order Id</th>
+                        <th class="text-center">Sales Order Number</th>
+                        <th class="text-center">Purchase Order Number</th>
+                        <th class="text-center">Order Date</th>
+                        <th class="text-center">Ship Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let salesOrder of salesOrders">
+                        <td class="text-center">{{salesOrder.salesOrderId}}</td>
+                        <td class="text-center">{{salesOrder.salesOrderNumber}}</td>
+                        <td class="text-center">{{salesOrder.purchaseOrderNumber}}</td>
+                        <td class="text-center">{{salesOrder.orderDate}}</td>
+                        <td class="text-center">{{salesOrder.shipDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

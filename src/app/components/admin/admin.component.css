@@ -1,0 +1,149 @@
+*{
+    font-family: "inter-regular";
+}
+/* Contenitore principale con Flexbox */
+.admin-container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1; /* Permette al contenitore di espandersi */
+    box-sizing: border-box;
+    overflow: hidden; /* Previene scrollbar esterne */
+}
+
+/* Sidebar Amministrativa */
+.admin-sidebar {
+    width: 35vh; /* Larghezza della sidebar */
+    max-height: 30vh; /* Altezza massima della sidebar */
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    padding: 2rem;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    transform: translateX(0);
+    z-index: 1000; /* Inferiore alla navbar */
+    flex-shrink: 0; /* Impedisce alla sidebar di ridursi */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+/* Stato chiuso della sidebar */
+.admin-sidebar.closed {
+    transform: translateX(-35vh); /* Allineato con la larghezza della sidebar */
+}
+
+/* Intestazione della Sidebar */
+.admin-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.admin-sidebar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "inter-Bold";
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Contenuto della Sidebar */
+.admin-sidebar-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Occupa lo spazio rimanente */
+    overflow-y: auto; /* Scroll verticale se necessario */
+}
+
+.admin-sidebar-button {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: #343a40;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+    margin-bottom: 0.5rem;
+}
+
+.admin-sidebar-button:hover {
+    background-color: #e9ecef;
+}
+
+.admin-sidebar-button i {
+    margin-right: 0.5rem;
+}
+
+/* Sezione Principale */
+.admin-main-section {
+    flex-grow: 1;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Previene scrollbar esterne */
+}
+
+/* Contenuto della Sezione Principale */
+.admin-content-container {
+    flex: 1;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Previene scrollbar esterne */
+    align-items: center;
+}
+
+/* Responsività */
+@media (max-width: 1200px) {
+    .admin-sidebar {
+        width: 220px;
+    }
+
+    .admin-sidebar.closed {
+        transform: translateX(-220px);
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-sidebar {
+        width: 200px;
+    }
+
+    .admin-sidebar.closed {
+        transform: translateX(-200px);
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%; /* Altezza completa */
+        transform: translateX(-280px);
+    }
+
+    .admin-sidebar.closed {
+        transform: translateX(-280px);
+    }
+
+    .admin-main-section {
+        margin-left: 0;
+    }
+
+    .admin-container {
+        flex-direction: column;
+    }
+
+    .admin-main-section.expanded {
+        padding-left: 1rem;
+    }
+}

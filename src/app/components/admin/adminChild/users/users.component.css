@@ -1,0 +1,181 @@
+/* Contenitore principale */
+.users-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    flex: 1; /* Occupa lo spazio disponibile */
+    overflow: hidden; /* Previene scrollbar esterne */
+}
+
+/* Controlli della Paginazione */
+.controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-nav {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-nav:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.btn-nav:hover:not(:disabled) {
+    background-color: #e9ecef;
+}
+
+/* Tabella dei Clienti e degli Ordini */
+.users-table, .sales-orders-container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Occupa lo spazio disponibile */
+    overflow: hidden; /* Previene scrollbar esterne */
+}
+
+/* Wrapper per lo scrolling della tabella */
+.table-wrapper {
+    flex: 1;
+    overflow-y: scroll;
+    max-height: 500px;
+    padding-right: 20px; /* Evita che la scrollbar copra il contenuto */
+    margin-bottom: 1rem; /* Spazio per evitare sovrapposizione con il footer */
+}
+
+/* Stili della Tabella */
+.table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Migliora la gestione delle colonne */
+}
+
+.table-custom th, .table-custom td {
+    border: 1px solid #dddddd;
+    padding: 12px;
+    text-align: center;
+    word-wrap: break-word; /* Permette di spezzare le parole troppo lunghe */
+}
+
+.table-custom th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Azioni dei Clienti */
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-delete, .btn-view, .btn-close {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    font-size: 1rem;
+}
+
+.btn-delete {
+    color: #dc3545; /* Colore rosso per eliminazione */
+}
+
+.btn-delete:hover {
+    background-color: #f8d7da;
+}
+
+.btn-view {
+    color: #0d6efd; /* Colore blu per visualizzazione */
+}
+
+.btn-view:hover {
+    background-color: #d1e7dd;
+}
+
+.btn-close {
+    background-color: #343a40;
+    color: #ffffff;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-close:hover {
+    background-color: #23272b;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Responsività */
+@media (max-width: 1200px) {
+    .users-table, .sales-orders-container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 992px) {
+    .users-table, .sales-orders-container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .users-table, .sales-orders-container {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .table-custom th, .table-custom td {
+        padding: 8px;
+    }
+
+    .btn-close {
+        padding: 0.5rem;
+    }
+}
+
+/* Personalizzazione della scrollbar */
+.table-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

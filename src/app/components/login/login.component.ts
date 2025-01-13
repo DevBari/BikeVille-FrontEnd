@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgClass, NgIf } from '@angular/common';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  ValidationErrors,
-  Validators,
-} from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators, } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import {  HttpStatusCode } from '@angular/common/http';
 import { AuthService } from '../../service/auth/auth.service';
