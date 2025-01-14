@@ -94,52 +94,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleCart(): void {
-    console.log('Toggle cart called. Current state:', this.isCartOpen); // Debug
     this.isCartOpen = !this.isCartOpen;
-  }
-
-  openCart(): void {
-    this.isCartOpen = true;
-    document.body.classList.add('cart-open'); // Blocca lo scroll della pagina principale
-    this.trackMousePosition(); // Avvia il tracking del mouse
-  }
-
-  /**
-   * Metodo per chiudere il carrello
-   */
-  closeCart(): void {
-    this.isCartOpen = false;
-    document.body.classList.remove('cart-open'); // Ripristina lo scroll della pagina principale
-    this.stopMouseTracking(); // Ferma il tracking del mouse
-  }
-
-  private trackMousePosition(): void {
-    const overlay = document.querySelector('.overlay-background') as HTMLElement;
-
-    const updateMousePosition = (event: MouseEvent) => {
-      const x = event.clientX; // Coordinate X del mouse
-      const y = event.clientY; // Coordinate Y del mouse
-
-      // Aggiorna le variabili CSS per la posizione del mouse
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-    };
-
-    // Aggiunge l'evento "mousemove" sull'overlay
-    overlay?.addEventListener('mousemove', updateMousePosition);
-
-    // Salva la funzione nel nodo DOM per rimuoverla in futuro
-    (overlay as any)._updateMousePosition = updateMousePosition;
-  }
-
-  private stopMouseTracking(): void {
-    const overlay = document.querySelector('.overlay-background') as HTMLElement;
-
-    if (overlay && (overlay as any)._updateMousePosition) {
-      // Rimuove l'evento "mousemove" sull'overlay
-      overlay.removeEventListener('mousemove', (overlay as any)._updateMousePosition);
-      (overlay as any)._updateMousePosition = null;
-    }
   }
 
   // Metodo per rimuovere un articolo dal carrello
