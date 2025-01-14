@@ -243,3 +243,18 @@ body.cart-open {
   transform: translateY(30px);
   transition-duration: .3s;
 }
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-text);
+  transition: color 0.2s ease-in-out;
+}
+.close-button:hover {
+  color: #ff0000; /* Cambia colore al passaggio del mouse */
+}
