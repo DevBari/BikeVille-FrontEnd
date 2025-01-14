@@ -19,6 +19,7 @@ import { CartService } from '../../service/cart/cart.service';
 })
 
 export class NavbarComponent implements OnInit {
+
   @Input() cartCount: number = 0; // Aggiungi questa linea
   @Output() toggleCartEvent = new EventEmitter<void>();
   @Output() routeChanged = new EventEmitter<string>();
@@ -30,6 +31,7 @@ export class NavbarComponent implements OnInit {
   showDropdown: boolean = false;
   isHidden = false; // True per nascondere l'elemento
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
+  isTabletScreen = window.innerWidth <= 799; 
   searchQuery: string = ''; // Inizializza la stringa di ricerca
 
   isDropdownOpen: { [key: string]: boolean } = {
@@ -49,6 +51,7 @@ export class NavbarComponent implements OnInit {
     window.addEventListener('resize', () => {
       // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
       this.isXlScreen = window.innerWidth >= 1280;
+      this.isTabletScreen = window.innerWidth <= 799;
     });
 
     this.router.events.subscribe((event) => {

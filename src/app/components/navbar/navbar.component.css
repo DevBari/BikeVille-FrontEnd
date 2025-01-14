@@ -137,6 +137,7 @@ button, input, optgroup, select, textarea {
 
 /* Navbar Flex */
 .navigation {
+
   display: flex; /* Default display */
   justify-content: space-between; /* Spaziatura tra gli elementi */
   align-items: center; /* Allineamento verticale */
@@ -150,6 +151,15 @@ button, input, optgroup, select, textarea {
   opacity: 1;
   backdrop-filter: blur(0px); /* Effetto sfocato */
   -webkit-backdrop-filter: blur(0px); /* Prefisso per Safari */
+
+    gap: 1rem; /* Spazio tra gli elementi */
+
+}
+
+@media (max-width: 768px) {
+  .navigation {
+      align-items: stretch; /* Allineamento pieno */
+  }
 }
 
 .navigation.hidden {
@@ -243,7 +253,7 @@ button, input, optgroup, select, textarea {
   justify-content: flex-start; /* Allinea gli elementi all'inizio lungo l'asse principale */
   align-items: center; /* Allinea gli elementi al centro lungo l'asse trasversale */
   flex-shrink: 0; /* Impedisce che l'elemento si restringa */
-  width: 100%; /* Imposta la larghezza al 100% del contenitore */
+  width: fit-content; /* Imposta la larghezza al 100% del contenitore */
 }
 
 @media (min-width: 1280px) {
@@ -532,17 +542,7 @@ button, input, optgroup, select, textarea {
 
 @media screen and (max-width: 799px) {
   .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Trasparenza con opacità 50% */
-    backdrop-filter: blur(10px); /* Effetto sfocato */
-    -webkit-backdrop-filter: blur(10px); /* Prefisso per Safari */
-    opacity: 0;
-    transition: all 0.2s ease;
-    box-shadow: none; /* Rimuovi la shadow per mobile */
+    
   }
 
   .nav__items {
@@ -923,3 +923,41 @@ button, input, optgroup, select, textarea {
   font-size: 12px;
 }
 
+/* Hamburger menu */
+
+.hamburger-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.hamburger-menu .line {
+  background: #fff;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+
+.hamburger-menu:hover .line:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger-menu:hover .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu:hover .line:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}

@@ -1,5 +1,5 @@
 <!-- ========== Navbar menu ========== -->
-<link rel="preload" as="image" href="/assets/images/logo_BikeVille.svg" type="image/png" />
+<link rel="preload" as="image" href="/assets/images/logo_BikeVille.svg" type="image/png"/>
 
 <div class="navbar sticky">
 
@@ -22,7 +22,7 @@
 
       <div class="menu-button-container-sx">
 
-        <ul data-orientation="horizontal" class="nav__items" dir="ltr">
+        <ul data-orientation="horizontal" class="nav__items" dir="ltr" *ngIf="!isTabletScreen">
 
           <li class="nav__item" (click)="toggleDropdown('home', $event)">
 
@@ -101,7 +101,7 @@
     <div class="menu-button-container-dx">
 
       <!-- Icona Carrello nella Navbar -->
-      <button class="cart-button button-flag" (click)="onCartButtonClick()">
+      <button class="cart-button button-flag" (click)="onCartButtonClick()" *ngIf="!isTabletScreen">
 
         <!-- Icona Carrello SVG -->
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-cart3"
@@ -116,7 +116,7 @@
 
       </button> 
 
-      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
+      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}" *ngIf="!isTabletScreen">
       
         <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
           aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder
@@ -159,7 +159,7 @@
 
       <!-- ========== Search Bar ========== -->
 
-      <div class="input-wrapper" [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'flex' : 'none')}">
+      <div class="input-wrapper" [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'flex' : 'none')}" *ngIf="!isTabletScreen">
         
         <button class="button-search" (click)="performSearch()" aria-label="Esegui Ricerca">
           
@@ -200,7 +200,7 @@
         </div>
       -->
 
-      <a *ngIf="!isAuthenticated" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
+      <a *ngIf="!isAuthenticated && !isTabletScreen" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
         routerLink="login" [ngClass]="{ 'lock-open': isLockOpen }" (mouseenter)="toggleLock(true)"
         (mouseleave)="toggleLock(false)">
 
@@ -226,7 +226,7 @@
       </a>
 
       <!-- Icona Profilo -->
-      <div *ngIf="isAuthenticated" class="profile-menu">
+      <div *ngIf="isAuthenticated && !isTabletScreen"  class="profile-menu">
 
         <div class="profile-icon" (click)="toggleProfileDropdown($event)">
           <img src="assets/images/profile-icon.svg" alt="Profilo" style="height: 100%; width: 100%"/>
@@ -251,6 +251,14 @@
         </div>
 
       </div>
+
+      <button *ngIf="isTabletScreen" class="hamburger-menu">
+
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+
+      </button>      
 
     </div>
 

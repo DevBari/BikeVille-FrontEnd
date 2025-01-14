@@ -13,134 +13,11 @@
   align-items: center;
   align-content: center;
 
-  perspective: 1000rem;
   min-height: 100svh;
 
   margin: 0 auto; /* Center the container */
   padding: 0 0; /* Add some padding */
 }
-
-/* .card-road-container {
-    max-width: 100svw;
-    justify-content: center;
-	align-items: center;
-	align-content: center;
-    box-sizing: border-box;
-}
-
-.card-container {
-    max-width: 90svw;
-    justify-content: center;
-	align-items: center;
-	align-content: center;
-    margin-left: 60px;
-}
-
-.card-road {
-    max-width: 90svw;
-    height: 130px;
-    background: #353535;
-    transform-style: preserve-3d;
-    transform: perspective(30rem) rotateX(30deg);
-    position: relative;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    margin-bottom: 30px;
-}
-
-.card-road::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0;
-    width: 95%;
-    height: 10px;
-    background: linear-gradient(
-      90deg,
-      #fff 0%,
-      #fff 70%,
-      #353535 70%,
-      #353535 100%
-    );
-    background-size: 120px;
-    animation: animateRoad 0.5s linear infinite;
-}
-
-@keyframes animateRoad {
-    0% {
-      background-position: 0px;
-    }
-    100% {
-      background-position: -120px;
-    }
-}
-
-.card-road::after {
-    content: "";
-    width: 100%;
-    height: 20px;
-    position: absolute;
-    bottom: -20px;
-    background-color: #272727;
-    transform-origin: top;
-    transform: perspective(30rem) rotateX(-30deg);
-    box-shadow: 0 10px 20px -2px #272727;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: #3a3c3c 0px 10px 30px 0px;
-}
-
-.shadow-road {
-    color: #fff;
-    padding: 10px;
-    letter-spacing: 2px;
-    max-width: 100%; 
-    text-shadow: #e7781787 0px 0px 10px;
-    margin: 0 auto; 
-    text-align: center;
-}
-
-
-@media (max-width: 1200px) {
-    .card-road {
-        height: 120px; 
-        margin-left: 25px;
-    }
-    .shadow-road {
-        font-size: 18px; /* Slightly smaller font size 
-    }
-}
-
-@media (max-width: 992px) {
-    .card-road {
-        height: 110px; /* Further adjust height for smaller screens 
-    }
-    .shadow-road {
-        font-size: 16px; /* Smaller font size 
-    }
-}
-
-@media (max-width: 768px) {
-    .card-road {
-        height: 100px; /* Adjust height for mobile screens 
-    }
-    .shadow-road {
-        font-size: 14px; /* Smaller font size 
-        padding: 8px; /* Adjust padding 
-    }
-}
-
-@media (max-width: 576px) {
-    .card-road {
-        height: 90px; /* Adjust height for very small screens 
-        margin-left: 20px;
-    }
-    .shadow-road {
-        font-size: 12px; /* Smaller font size 
-        padding: 6px; /* Adjust padding
-    }
-} */
 
 /* Slider styles */
 
@@ -167,7 +44,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  z-index: 999;
+  z-index: 900;
   margin-top: 600px;
   color: #fff;
   max-width: 100%;
