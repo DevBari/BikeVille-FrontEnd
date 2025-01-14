@@ -7,11 +7,12 @@
 <app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
 
 <!-- Route outlet for dynamic content -->
-<router-outlet>
+<router-outlet></router-outlet>
 
+  <!-- Finestra del Carrello - Spostato fuori dal router-outlet -->
   <div class="cart-overlay" [class.open]="isCartOpen">
 
-    <div class="overlay-background" (click)="closeCart()"></div>
+    <div class="overlay-background" (click)="toggleCart()"></div>
 
     <div class="cart-container">
 
@@ -77,8 +78,6 @@
     </div>
 
   </div>
-
-</router-outlet>
 
 <!-- footer component here -->
 <app-footer *ngIf="ShowFooter()"></app-footer>
