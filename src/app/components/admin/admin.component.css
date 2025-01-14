@@ -1,41 +1,63 @@
 *{
     font-family: "inter-regular";
+    box-sizing: border-box;
 }
 
 .admin-page {
 
     min-height: 100svh;
 
+    max-width: 100%;
+
     z-index: 0;
+
+    background-color: var(--background);
+
+}
+
+.admin-banner{
+
+    width: 100%;
+
+    min-height: 100svh;
 
 }
 
 /* Contenitore principale con Flexbox */
 .admin-container {
+
+    min-height: 100svh;
+
     padding: 5%;
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1; /* Permette al contenitore di espandersi */
-    box-sizing: border-box;
-    overflow: hidden; /* Previene scrollbar esterne */
+
+    display: grid;
+
+    grid-template-columns: 0.3fr 1fr;
 }
 
 /* Sidebar Amministrativa */
 .admin-sidebar {
-    width: 35vh; /* Larghezza della sidebar */
-    max-height: 30vh; /* Altezza massima della sidebar */
-    background-color: #f8f9fa;
-    border-right: 1px solid #dee2e6;
+
+    width: 100%; /* Larghezza della sidebar */
+
+    max-height: 35vh; /* Altezza massima della sidebar */
+
+    background-color: var(--card);
+
+    border-radius: 20px;
+
     padding: 2rem;
     transition: transform 0.3s ease-in-out;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-radius: 25px;
+
+    box-shadow: 0 0px 10px rgba(39, 39, 39, 0.491);
+
     transform: translateX(0);
+
     z-index: 1000; /* Inferiore alla navbar */
-    flex-shrink: 0; /* Impedisce alla sidebar di ridursi */
+
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+
 }
 
 /* Stato chiuso della sidebar */

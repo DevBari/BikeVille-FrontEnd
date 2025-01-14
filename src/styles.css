@@ -132,6 +132,10 @@
   }
 }
 
+*{
+  transition: background-color 0.5s ease-in-out !important;
+}
+
 /* General Scrollbar Setup */
 body {
 
@@ -144,7 +148,9 @@ body {
   background-color: var(--background);
   color: var(--primary-text);
 
-  transition: background-color 0.3s ease-in-out !important;
+  font-family: 'inter-regular', 'inter-bold';
+
+  transition: background-color 0.4s ease-in-out !important;
 
 }
 

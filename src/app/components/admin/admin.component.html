@@ -1,21 +1,21 @@
 <section class="admin-page">
 
-    <div class="admin-banner">
+    <div class="admin-banner"></div>
 
-        <span class="admin-banner-subtitle">Welcome, {{ authUser?.emailAddress }}</span>
-
-    </div>
+    <hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
 
     <div class="admin-container">
     
-        <!-- Sidebar Amministrativa -->
         <div id="admin-sidebar" class="admin-sidebar" [class.closed]="isClose">
-            
+
             <div class="admin-sidebar-header">
-                <span class="admin-sidebar-title">Admin HUB</span>
+
+                <span class="admin-sidebar-title">Admin HUB 👨🏽‍💻</span>
+
                 <button class="toggle-button" (click)="toggleNav()" aria-label="Toggle Sidebar">
                     <i class="fa-solid" [ngClass]="isClose ? 'fa-plus' : 'fa-minus'"></i>
                 </button>
+
             </div>
 
             <div class="admin-sidebar-content">

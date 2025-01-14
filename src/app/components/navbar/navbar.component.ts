@@ -226,4 +226,5 @@ export class NavbarComponent implements OnInit {
     console.log('Cart button Clicked')
     this.toggleCartEvent.emit();
   }
+
 }

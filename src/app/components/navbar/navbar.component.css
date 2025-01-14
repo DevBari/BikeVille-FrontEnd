@@ -631,7 +631,7 @@ button, input, optgroup, select, textarea {
   display: flex; /* Imposta il layout flexbox */
   align-items: center; /* Centra verticalmente il contenuto */
   justify-content: flex-end; /* Allinea il contenuto all'estremità destra */
-  width: 50%; /* Imposta la larghezza al 50% */
+  width: fit-content; /* Imposta la larghezza al 50% */
 }
 
 /* Incona Flag Lingua */
@@ -893,6 +893,10 @@ button, input, optgroup, select, textarea {
   background-color: #020202;
 }
 
+.dropdown-menu li a:hover, .dropdown-menu li button:hover {
+  color: rgba(163, 163, 163, 0.799);
+  transition: color 0.3s ease;
+}
 
 /* Stili per il Bottone del Carrello */
 .cart-button {

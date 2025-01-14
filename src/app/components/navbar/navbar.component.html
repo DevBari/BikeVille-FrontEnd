@@ -65,7 +65,7 @@
               <ul>
                 <li *ngFor="let category of categories">
                   <a class="dropdown-item nav__link" routerLink="/categories/{{category.productCategoryId}}">
-                    {{category.name}} 📍
+                    {{category.name}}
                   </a>
                 </li>
               </ul>
@@ -178,27 +178,27 @@
       </div>
 
 
-       <!--
-      <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
+        <!--
+        <div [ngStyle]="{ 'display': isHidden ? 'none' : (isXlScreen ? 'block' : 'none')}">
 
-        <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
-          aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder>
+          <button class="button-flag" type="button" role="combobox" aria-label="Italian Flag" aria-controls=""
+            aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" data-placegorder>
 
-          <div
-            [ngStyle]="{ 'display': 'flex', 'align-items': 'center', 'gap': '0.25rem', 'font-size': '1rem', 'font-weight': 'bold', 'color': '#ffffff'}">
+            <div
+              [ngStyle]="{ 'display': 'flex', 'align-items': 'center', 'gap': '0.25rem', 'font-size': '1rem', 'font-weight': 'bold', 'color': '#ffffff'}">
 
-            <img id="icon-flag"
-              src="data:image/png;base64,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"
-              alt="italy" data-title="title">
+              <img id="icon-flag"
+                src="data:image/png;base64,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"
+                alt="italy" data-title="title">
 
-            IT
+              IT
 
-          </div>
+            </div>
 
-        </button>
+          </button>
 
-      </div>
-    -->
+        </div>
+      -->
 
       <a *ngIf="!isAuthenticated" aria-label="register" class="button-register" [ngStyle]="{ 'font-weight': 'bold' }"
         routerLink="login" [ngClass]="{ 'lock-open': isLockOpen }" (mouseenter)="toggleLock(true)"
