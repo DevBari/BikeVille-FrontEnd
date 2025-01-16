@@ -1,4 +1,4 @@
-<section class="home-container">
+<section class="home-container" #Home>
 
 	<hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
 
@@ -411,7 +411,7 @@
 
         <div class="home-storytelling-layout">
 
-            <div class="storytelling-image" decode="async" fetchpriority="high" prefetch="auto" preload="high" data-aos-once="false">
+            <div class="storytelling-image" decode="async" fetchpriority="high" prefetch="auto" preload="high" data-aos-once="false" *ngIf="!isMobileScreen">
 
 				<img src="assets/images/phone.svg" alt="Storytelling Phone" loading="lazy" data-aos="flip-up" data-aos-delay="1000" data-aos-duration="1500" data-aos-anchor=".storytelling-image" data-aos-once="false">
 
@@ -483,7 +483,7 @@
 
             </div>
 
-			<div class="about-box" *ngIf="!isTabletScreen">
+			<div class="about-box" *ngIf="!isLargeScreen">
 
 				<div class="item">
 

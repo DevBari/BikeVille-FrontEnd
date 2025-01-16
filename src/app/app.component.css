@@ -72,7 +72,7 @@ body, html {
 .cart-container {
   background-color: var(--shades);
   width: 25em;
-  height: calc(100% - 3rem); /* Altezza ridotta per lasciare spazio */ 
+  height: calc(100% - 2rem); /* Altezza ridotta per lasciare spazio */ 
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
   position: relative;

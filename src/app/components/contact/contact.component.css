@@ -46,9 +46,9 @@ div{
 	transform: translate(-20%, -30%);
 }
 
-@media screen and (max-width: 1800px) {
+@media screen and (min-width: 1925px) {
 	.lt-hero-unit__bg img {
-		width: 40%; /* Larghezza immagine */
+		width: 25%; /* Larghezza immagine */
 		left: 50%; /* Posiziona al centro orizzontale */
 		transform: translate(-20%, -30%);
 	}
@@ -73,6 +73,14 @@ div{
 @media screen and (max-width: 1024px) {
 	.lt-hero-unit__bg img {
 		width: 40%; /* Larghezza immagine */
+		left: 50%; /* Posiziona al centro orizzontale */
+		transform: translate(20%, -25%);
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.lt-hero-unit__bg img {
+		width: 30%; /* Larghezza immagine */
 		left: 50%; /* Posiziona al centro orizzontale */
 		transform: translate(20%, -25%);
 	}

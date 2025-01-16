@@ -46,6 +46,12 @@
     font-family: "contour-generator";
 }
 
+@media screen and (max-width: 425px) {
+    .category-title {
+        font-size: 2rem;
+    }
+}
+
 /* Container Layout */
 .category-container {
     display: flex;

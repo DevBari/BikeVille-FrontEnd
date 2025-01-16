@@ -6,7 +6,7 @@
       
       <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
 
-            <h1>Crea Account</h1>
+            <h1>Crea Account ⛓️‍💥</h1>
             <span>Oppure usa la tua Email per registrati</span>
             <div class="input-container" [ngClass]="{'has-error': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
             <input formControlName="firstName" type="text" placeholder="Nome">
@@ -56,12 +56,12 @@
               <small>Le password non coincidono</small>
             </div>
           </div>
-            <button type="submit">Registrati</button>
+            <button type="submit">Registrati ⛓️‍💥</button>
         </form>
     </div>
     <div class="form-container sign-in" *ngIf="showLogin">
         <form [formGroup]="loginForm" (ngSubmit)="runLogin()">
-            <h1>Accedi</h1>
+            <h1>Accedi 🔗</h1>
             <div class="social-icons">
                 <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
             </div>
@@ -81,7 +81,7 @@
             </div>
           </div>
             <a href="#" style="text-decoration: underline;">Password dimenticata?</a>
-            <button type="submit">Accedi</button>
+            <button type="submit">Accedi 🔗</button>
         </form>
     </div>
     
@@ -96,7 +96,7 @@
             <div class="toggle-panel toggle-right">
                 <h2>Hey, Benvenuto!</h2>
                 <p>Sei nuovo? Crea il tuo account</p>
-                <button class="hidden" (click)="showRegisterForm()">Registrati</button>
+                <button class="hidden" (click)="showRegisterForm()">Registrati ⛓️‍💥</button>
             </div>
         </div>
     </div>
