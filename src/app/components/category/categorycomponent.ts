@@ -62,19 +62,25 @@ export class CategoryComponent implements OnInit {
   private routeSub!: Subscription;
 
   ngOnInit(): void {
+     // Sottoscrizione ai parametri della route per ottenere l'ID della categoria
     this.routeSub = this.route.paramMap.subscribe((params: ParamMap) => {
       const id = Number(params.get('id'));
       if (!isNaN(id)) {
-        this.getCategory(id);
+        this.getCategory(id); // Recupera la categoria con l'ID specificato
       }
     });
     this.shuffledImages = this.shuffleImages(); // Mescola le immagini all'inizio
   }
 
   ngOnDestroy(): void {
+    // Annulla la sottoscrizione ai parametri della route quando il componente viene distrutto
     this.routeSub.unsubscribe();
   }
 
+  /**
+   * Recupera la categoria con l'ID specificato e i relativi prodotti.
+   * @param id L'ID della categoria da recuperare.
+   */
   getCategory(id: number) {
     return this.categoryService.getCategory(id).subscribe((data) => {
       this.category = data;
