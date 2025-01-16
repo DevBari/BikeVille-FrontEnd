@@ -926,38 +926,40 @@ button, input, optgroup, select, textarea {
 /* Hamburger menu */
 
 .hamburger-menu {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 50px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
+  width: 40px;
+  height: 30px;
   background: none;
   border: none;
   cursor: pointer;
   z-index: 1000;
 }
 
-.hamburger-menu .line {
-  background: #fff;
+.hamburger-line {
   width: 100%;
-  height: 5px;
-  border-radius: 5px;
-  transition: all 0.5s ease;
+  height: 4px;
+  background-color: var(--background);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.hamburger-menu:hover .line:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
+.nav__items2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  
+  position: absolute;
 
-.hamburger-menu:hover .line:nth-child(2) {
-  opacity: 0;
-}
+  width: 100%;
 
-.hamburger-menu:hover .line:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
+  background: rgb(0,78,189);
+  background: radial-gradient(circle, rgba(0,78,189,0.6643032212885154) 5%, rgba(0,115,189,0.8687850140056023) 65%);
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  z-index: 1000;
+
 }

@@ -40,26 +40,44 @@
 }
 
 .logo img {
-	height : 400px;
-	margin-top: 35%;
+	height : 15rem;
+	width: auto;
+	margin-top: 6rem;
 }
 
-@media screen and (max-width: 769px) {
+
+@media screen and (max-width: 375px) {
 	.logo img {
-        height: 100px;
-		margin-top: 35%;
+		height : 10rem;
+		margin-top: 7rem;
     }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 768px) {
 	.logo img {
-        height: 200px;
+		height : 12rem;
+		margin-top: 7rem;
     }
 }
 
-@media screen and (max-width: 1440px) {
+@media screen and (min-width: 1024px) {
 	.logo img {
-        height: 200px;
+		height : 15rem;
+		margin-top: 7rem;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+	.logo img {
+		height : 20rem;
+		margin-top: 7rem;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+	.logo img {
+		height : 25rem;
+		margin-top: 7rem;
     }
 }
 

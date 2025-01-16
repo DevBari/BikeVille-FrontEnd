@@ -1,7 +1,9 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, Input, Renderer2, HostListener } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { Router, RouterLink, NavigationStart, NavigationEnd } from '@angular/router';
+
 import { filter } from 'rxjs/operators';
 import { AuthService } from '../../service/auth/auth.service';
 import { jwtDecode } from 'jwt-decode';
@@ -22,6 +24,7 @@ export class NavbarComponent implements OnInit {
 
   @Input() cartCount: number = 0; // Aggiungi questa linea
   @Output() toggleCartEvent = new EventEmitter<void>();
+  @Output() toggleHamburgerEvent = new EventEmitter<void>();
   @Output() routeChanged = new EventEmitter<string>();
 
   categories: any[] = [];
@@ -80,10 +83,11 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit() {
+
       // Recupera le categorie dal servizio
       this.categoryService.getCategories().subscribe((data: any) => {
       this.categories = data.$values.filter((item: any) => !item.$ref);   
-    });
+      });
 
     // Controlla se l'utente è autenticato
     this.isAuthenticated = localStorage.getItem('token') ? true : false;
@@ -228,6 +232,19 @@ export class NavbarComponent implements OnInit {
   onCartButtonClick(): void {
     console.log('Cart button Clicked')
     this.toggleCartEvent.emit();
+  }
+
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  // Metodo per aprire/nascondere il dropdown del menu
+
+  onHamburgerButtonClick(): void {
+    console.log('Hamburger button Clicked')
+    this.toggleHamburgerEvent.emit();
   }
 
 }
