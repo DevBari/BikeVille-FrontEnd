@@ -28,7 +28,7 @@ export class UserComponent implements OnInit {
   jwtDecode: any;
   emailRequest!: RequestEmail;
   showResetPass!: boolean; // variabile per mostrare il form di reset password
-
+  
   
   
   ngOnInit(): void {
@@ -135,14 +135,4 @@ export class UserComponent implements OnInit {
     return this.router.url.includes('resetPassword');
   }
 
-  /*
-  toggleResetPasswordForm() {
-    const currentUrl = this.router.url;
-    if (currentUrl.includes('resetPassword')) {
-      this.router.navigate(['/profile', this.authUser.emailAddress]);
-    } else {
-      this.router.navigate(['resetPassword', this.authUser.userId], { relativeTo: this.route });
-    }
-  }
-  */
 }

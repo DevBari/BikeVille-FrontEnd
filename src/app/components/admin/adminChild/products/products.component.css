@@ -43,6 +43,7 @@
   
   /* Contenitore del Form */
   .products-form-container {
+    position: relative;
     width: 100%;
     max-width: 800px;
     background-color: #ffffff;
@@ -188,6 +189,25 @@
     background-color: #c82333;
   }
   
+
+  /* Bottone di Chiusura */
+.close-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #c82333;
+}
   /* Responsive Design */
   @media (max-width: 768px) {
     .products-form-group {

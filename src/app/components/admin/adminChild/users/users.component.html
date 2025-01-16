@@ -53,8 +53,8 @@
                         <td class="text-center">{{salesOrder.salesOrderId}}</td>
                         <td class="text-center">{{salesOrder.salesOrderNumber}}</td>
                         <td class="text-center">{{salesOrder.purchaseOrderNumber}}</td>
-                        <td class="text-center">{{salesOrder.orderDate}}</td>
-                        <td class="text-center">{{salesOrder.shipDate}}</td>
+                        <td class="text-center">{{salesOrder.orderDate | date:'short'}}</td>
+                        <td class="text-center">{{salesOrder.shipDate ? (salesOrder.shipDate | date:'short') : 'In Elaborazione'}}</td>
                     </tr>
                 </tbody>
             </table>

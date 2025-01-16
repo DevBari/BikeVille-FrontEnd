@@ -178,6 +178,7 @@
     
     <!-- Form per Aggiornare un Prodotto -->
     <div *ngIf="showUpdateProducts" class="products-form-container">
+      <button class="products-btn close-btn" (click)="showUpdateProducts = false">Chiudi</button>
       <form class="products-form" [formGroup]="updateProductsForm" (ngSubmit)="runUpdateProduct()">
         <h2 class="products-form-title">Aggiorna Prodotto</h2>
         <div class="products-form-fields">

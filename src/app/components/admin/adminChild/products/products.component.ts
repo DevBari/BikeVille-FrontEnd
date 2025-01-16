@@ -32,7 +32,7 @@ export class ProductsComponent {
   models !:any[];
   addedProduct !: Product
   updatedProduct!: Product
-  showUpdateProducts!: boolean
+  showUpdateProducts: boolean = false;
 
   ngOnInit(): void {
       this.productService.getProductsIndex().subscribe((data: any) => {
@@ -114,13 +114,21 @@ export class ProductsComponent {
     
     
   }
-  runUpdateProduct(){
-    this.updatedProduct=this.updateProductsForm.value
-    this.productService.updateProduct(this.updatedProduct.productId!,this.updatedProduct).subscribe((data:any)=>{
-      this.notify.success("Articolo aggiornato con successo")
-      this.showUpdateProducts=false
-      this.ngOnInit();
-    })
+ 
+  runUpdateProduct() {
+    if (this.updateProductsForm.valid) {
+      this.updatedProduct = this.updateProductsForm.value;
+      this.productService.updateProduct(this.updatedProduct.productId!, this.updatedProduct).subscribe((data: any) => {
+        this.notify.success("Articolo aggiornato con successo");
+        this.showUpdateProducts = false;
+        this.ngOnInit();
+      }, error => {
+        console.error(error);
+        this.notify.error("Errore nell'aggiornamento del prodotto");
+      });
+    } else {
+      this.notify.error("Form non valido");
+    }
   }
 }
   
