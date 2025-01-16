@@ -129,33 +129,35 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('cart',JSON.stringify([]));
   }
 
-  // Metodo per gestire la registrazione
-  addUser() {
+  // Metodo per gestire la Registrazione
+  registerUser() {
     if (this.registerForm.invalid) {
-      this.notify.error('Compila correttamente i campi');
-      return;
-    } else if (this.registerForm.valid) {
-      this.authService
-        .register({
-          FirstName: this.registerForm.value.firstName,
-          LastName: this.registerForm.value.lastName,     
-          EmailAddress: this.registerForm.value.email,
-          Phone: this.authService.formattaNumero(
-            this.registerForm.value.phone.toString()
-          ),
-          Password: this.registerForm.value.password,
-          Role: 'USER',
-        })
-        .subscribe((data: any) => {
-          this.notify.success('Registrazione effettuata con successo');
-        });
-      } else {
-        this.notify.error('Registrazione fallita');
-      }
-      setTimeout(() => {
-        window.location.replace('/home');
-      }, 1000);  
+        this.notify.error('Compila correttamente i campi');
+        return;
     }
+
+    const userData = {
+        FirstName: this.registerForm.value.firstName,
+        LastName: this.registerForm.value.lastName,
+        EmailAddress: this.registerForm.value.email,
+        Phone: this.authService.formattaNumero(this.registerForm.value.phone.toString()),
+        Password: this.registerForm.value.password,
+        Role: 'USER',
+    };
+
+    this.authService.register(userData).subscribe({
+        next: (data: any) => {
+            this.notify.success('Registrazione effettuata con successo');
+            setTimeout(() => {
+                window.location.replace('/home');
+            }, 1000);
+        },
+        error: (error) => {
+            console.error('Errore durante la registrazione:', error);
+            this.notify.error('Registrazione fallita');
+        }
+    });
+}
 
 
   passwordsMatch(controls: FormGroup): ValidationErrors | null {
