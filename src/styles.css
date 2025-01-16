@@ -324,6 +324,13 @@ html {
   background-size: cover;
 }
 
+.hamburger-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .toggle-panel {
   background-image: var(--pattern-bike);
   background-position: center;

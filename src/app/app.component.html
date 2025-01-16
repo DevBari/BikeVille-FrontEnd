@@ -1,6 +1,7 @@
 <app-navbar 
-  [cartCount]="cartCount" 
+  [cartCount]="cartCount"
   (toggleCartEvent)="toggleCart()"
+  (toggleHamburgerEvent)="toggleHamburger()"
   (routeChanged)="onRouteChange($event)">
 </app-navbar>
 
@@ -82,6 +83,134 @@
       </ng-template>
 
     </div>
+
+  </div>
+
+  <div class="hamburger-overlay" [class.open]="isHamburgerOpen" *ngIf="isHamburgerOpen && isTabletScreen">
+
+    <div class="overlay-background" (click)="toggleHamburger()"></div>
+
+    <ul class="hamburger-container">
+
+      <li class="nav__item">
+        <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+          <a routerLink="home">Home 🏠</a>
+        </button>
+      </li>
+
+      <li class="nav__item-dropdown" (click)="toggleDropdown('category', $event)">
+
+        <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+
+          <a>Categorie 📂</a>
+
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-dropdown" aria-hidden="true" role="img"
+            class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
+            [ngStyle]="{'transform': isDropdownOpen['category'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
+
+            <path fill="currentColor"
+              d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3">
+            </path>
+
+          </svg>
+
+        </button>
+
+        <div class="category-menu-hamburger" *ngIf="isDropdownOpen['category']">
+          
+          <ul>
+
+            <li *ngFor="let category of categories">
+
+              <a class="nav__link-hamburger" routerLink="/categories/{{category.productCategoryId}}">
+                {{category.name}}
+              </a>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      </li>
+
+      <li class="nav__item">
+
+        <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+          <a routerLink="contact">Contatti 📞</a>
+        </button>
+
+      </li>
+
+      <li class="nav__item">
+
+        <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+          <a (click)="toggleCart()">Carrello 🛒</a>
+        </button>
+
+      </li>
+
+      <li class="nav__item-dropdown" (click)="toggleDropdown('profile', $event)">
+
+        <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
+
+          <a>Azioni Profilo 🚴🏽</a>
+
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-dropdown" aria-hidden="true" role="img"
+            class="nav__icon" width="16" height="16" viewBox="0 0 12 12"
+            [ngStyle]="{'transform': isDropdownOpen['profile'] ? 'rotate(180deg)' : 'rotate(0deg)', 'transition': 'transform 0.2s ease-in-out'}">
+
+            <path fill="currentColor"
+              d="M6 8.825c-.2 0-.4-.1-.5-.2l-3.3-3.3c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l2.7 2.7l2.7-2.7c.3-.3.8-.3 1.1 0s.3.8 0 1.1l-3.2 3.2q-.3.3-.6.3">
+            </path>
+
+          </svg>
+
+        </button>
+
+        <div class="category-menu-hamburger" *ngIf="isDropdownOpen['profile']">
+          
+          <ul>
+
+            <li class="nav__item">
+
+              <a class="nav__link-hamburger" routerLink="/profile/{{authUser.emailAddress}}" *ngIf="isAuthenticated">
+                Il mio Profilo 👨🏽
+              </a>
+
+            </li>
+
+            <li class="nav__item">
+
+              <a class="nav__link-hamburger" routerLink="/login" *ngIf="!isAuthenticated">
+                Login/Register 🔐
+              </a>
+
+            </li>
+
+            <li  class="nav__item" *ngIf="authUser.role.trim() == 'ADMIN'">
+
+              <a class="nav__link-hamburger" routerLink="/administration/{{authUser.emailAddress}}">
+                Admin Hub 👨🏽‍💻
+              </a>
+
+            </li>
+
+            <li class="nav__item">
+
+              <a class="nav__link-hamburger" (click)="logout()" *ngIf="isAuthenticated">
+                Logout ❌
+              </a>
+
+            </li>
+
+          </ul>
+
+        </div>
+
+      </li>
+
+    </ul>
 
   </div>
 
