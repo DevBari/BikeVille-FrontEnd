@@ -35,11 +35,10 @@ export class AdminService {
     return this.http.get('https://localhost:7167/Customers/Index');
   }
 
-  private baseUrl = 'https://localhost:7167/Customers';
-  // Modifica il metodo getCustomerById per chiamare l'endpoint corretto
-  getCustomerById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/Details/${id}`);
+  getCustomerById(id: number) {
+    return this.http.get('https://localhost:7167/Customers/Details/' + id );
   }
+  
   deleteCustomerById(id: number) {
     return this.http.delete('https://localhost:7167/Customers/Delete/' + id);
   }

@@ -82,15 +82,16 @@ export class LoginComponent implements OnInit {
 
   // Metodo per gestire il login
   runLogin() {
-   
-    // controllo se il form di login è valido
-    if (this.loginForm.invalid){
-      this.notify.error('compila correttamente i campi');
+    if (this.loginForm.invalid) {
+      this.notify.error('Compila correttamente i campi');
       return;
     }
-  
-    this.credentials = new Credentials(this.loginForm.value.email, this.loginForm.value.password);
-      this.authService.loginPost(this.credentials).subscribe({
+
+    this.credentials = new Credentials(
+      this.loginForm.value.email,
+      this.loginForm.value.password
+    );
+    this.authService.loginPost(this.credentials).subscribe({
       next: (response: any) => {
         if (response.status === HttpStatusCode.Ok) {
           console.log('Login effettuato');
@@ -107,11 +108,10 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (error) => {
-        //Gestione degli errori
-        if (error.status === HttpStatusCode.Unauthorized){
-          this.notify.error('Credenziali errate')
+        if (error.status === HttpStatusCode.Unauthorized) {
+          this.notify.error('Credenziali errate');
         } else {
-          this.notify.error('Errore nel processo di login,credenziali errate');
+          this.notify.error('Errore nel processo di login, credenziali errate');
         }
       },
     });
@@ -132,32 +132,52 @@ export class LoginComponent implements OnInit {
   // Metodo per gestire la Registrazione
   registerUser() {
     if (this.registerForm.invalid) {
-        this.notify.error('Compila correttamente i campi');
-        return;
+      this.notify.error('Compila correttamente i campi');
+      return;
     }
 
     const userData = {
-        FirstName: this.registerForm.value.firstName,
-        LastName: this.registerForm.value.lastName,
-        EmailAddress: this.registerForm.value.email,
-        Phone: this.authService.formattaNumero(this.registerForm.value.phone.toString()),
-        Password: this.registerForm.value.password,
-        Role: 'USER',
+      FirstName: this.registerForm.value.firstName,
+      LastName: this.registerForm.value.lastName,
+      EmailAddress: this.registerForm.value.email,
+      Phone: this.authService.formattaNumero(
+        this.registerForm.value.phone.toString()
+      ),
+      Password: this.registerForm.value.password,
+      Role: 'USER',
     };
 
     this.authService.register(userData).subscribe({
-        next: (data: any) => {
-            this.notify.success('Registrazione effettuata con successo');
-            setTimeout(() => {
-                window.location.replace('/home');
-            }, 1000);
-        },
-        error: (error) => {
-            console.error('Errore durante la registrazione:', error);
-            this.notify.error('Registrazione fallita');
-        }
+      next: (data: any) => {
+        this.notify.success('Registrazione effettuata con successo');
+        this.sendSuccessRegisterEmail(userData.EmailAddress);
+        setTimeout(() => {
+          window.location.replace('/home');
+        }, 1000);
+      },
+      error: (error) => {
+        console.error('Errore durante la registrazione:', error);
+        this.notify.error('Registrazione fallita');
+      },
     });
-}
+  }
+
+  sendSuccessRegisterEmail(email: string) {
+    const emailRequest = {
+      ToEmail: email,
+      Subject: 'Registrazione avvenuta con successo',
+      Message: '<p>Grazie per esserti registrato su BikeVille!</p>',
+    };
+
+    this.authService.sendSuccessRegisterEmail(emailRequest).subscribe({
+      next: (response: any) => {
+        console.log('Email di successo inviata');
+      },
+      error: (error) => {
+        console.error('Errore durante l\'invio dell\'email di successo:', error);
+      },
+    });
+  }
 
 
   passwordsMatch(controls: FormGroup): ValidationErrors | null {

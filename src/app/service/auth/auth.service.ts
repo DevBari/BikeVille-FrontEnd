@@ -65,9 +65,14 @@ export class AuthService{
 
   // Metodo per registrare un nuovo utente
   register(data:any){
-    console.log(data);
     return this.http.post('https://localhost:7167/Users/Add',data);
   }
+
+
+  sendSuccessRegisterEmail(emailRequest: any) {
+    return this.http.post('https://localhost:7167/Email/successRegister', emailRequest);
+  }
+
 
   formattaNumero(numero: string ): string {
     
