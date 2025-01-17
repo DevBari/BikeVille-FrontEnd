@@ -50,11 +50,6 @@
     <div class="user-action-container">
   
       <div class="user-password-action">
-    
-        <button class="button" (click)="sendRecoverPasswordEmail()">
-          <span class="button-content">Recupera password</span>
-        </button>
-    
         <button class="button" *ngIf="!isResetPasswordRoute()" (click)="toggleResetPasswordForm()">
           <span class="button-content">Reset Password</span>
         </button>
