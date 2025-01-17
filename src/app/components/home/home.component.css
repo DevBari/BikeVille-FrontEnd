@@ -62,39 +62,9 @@
   }
 }
 
-@media screen and (min-width: 940px) {
-  .slider-overlay{
-    margin-top: 30%;
-  }
-}
-
-@media screen and (min-width: 1080px) {
+@media screen and (max-width: 1080px) {
   .slider-overlay{
     margin-top: 25%;
-  }
-}
-
-@media screen and (min-width: 1230px) {
-  .slider-overlay{
-    margin-top: 23%;
-  }
-}
-
-@media screen and (min-width: 1430px) {
-  .slider-overlay{
-    margin-top: 20%;
-  }
-}
-
-@media screen and (min-width: 1630px) {
-  .slider-overlay{
-    margin-top: 15%;
-  }
-}
-
-@media screen and (max-width: 1880px) {
-  .slider-overlay{
-    margin-top: 15%;
   }
 }
 
