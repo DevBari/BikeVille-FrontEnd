@@ -117,10 +117,10 @@ export class LoginComponent implements OnInit {
     });
     this.loginForm.reset();
   }
-  
+
   // Metodo per settare il token nel local storage
   setTokenLocalStorage( token : string){
-    localStorage.setItem('token',token); 
+    localStorage.setItem('token',token);
   }
 
 
@@ -165,8 +165,76 @@ export class LoginComponent implements OnInit {
   sendSuccessRegisterEmail(email: string) {
     const emailRequest = {
       ToEmail: email,
-      Subject: 'Registrazione avvenuta con successo',
-      Message: '<p>Grazie per esserti registrato su BikeVille!</p>',
+      Subject: 'Registrazione avvenuta con successo 💪🏽',
+      Message: `<!DOCTYPE html>
+        <html lang="it">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Conferma Registrazione</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f9f9f9;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .email-container {
+                        max-width: 600px;
+                        margin: 20px auto;
+                        background-color: #ffffff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        overflow: hidden;
+                    }
+                    .header {
+                        background-color: #ffb000;
+                        color: white;
+                        padding: 20px;
+                        border-radius: 20px;
+                        text-align: center;
+                    }
+                    .content {
+                        padding: 20px;
+                        line-height: 1.6;
+                        color: #333;
+                    }
+                    .button {
+                        display: inline-block;
+                        margin: 20px 0;
+                        padding: 12px 20px;
+                        background-color: #fb000;
+                        color: white;
+                        text-decoration: none;
+                        border-radius: 5px;
+                        font-size: 16px;
+                    }
+                    .footer {
+                        background-color: #f1f1f1;
+                        color: #777;
+                        text-align: center;
+                        padding: 10px 20px;
+                        font-size: 12px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="email-container mt-5">
+                    <div class="header mt-5">
+                        <h1>Registrizione effettua con successo</h1>
+                    </div>
+                    <div class="content">
+                        <p>Grazie per esserti registrato su BikeVille!</strong>,</p>
+
+                        <p>Il Team BikeVille</p>
+                    </div>
+                    <div class="footer">
+                        <p>&copy; 2024 BikeVille. Tutti i diritti riservati.</p>
+                    </div>
+                </div>
+            </body>
+        </html>`,
     };
 
     this.authService.sendSuccessRegisterEmail(emailRequest).subscribe({
@@ -190,9 +258,4 @@ export class LoginComponent implements OnInit {
     return null;
   }
 
-  
-
-    
-
 }
-

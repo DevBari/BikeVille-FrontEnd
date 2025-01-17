@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { ViewChild, ElementRef } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+import { WeatherService } from './service/weather/weather.service';
+
 import { RouterModule } from '@angular/router';
 
 import AOS from 'aos';
@@ -32,7 +35,7 @@ import { jwtDecode } from 'jwt-decode';
   
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, LoginComponent, HomeComponent, FormsModule, CommonModule, RouterModule],
+  imports: [RouterOutlet, LoadRedirect, HeaderComponent, FooterComponent, NavbarComponent, LoginComponent, HomeComponent, FormsModule, CommonModule, RouterModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   
@@ -70,7 +73,8 @@ export class AppComponent implements OnInit {
     private categoryService: CategoriesService,
     private renderer: Renderer2,
     private el: ElementRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private weatherService: WeatherService
   )
     {
       window.addEventListener('resize', () => {
@@ -188,6 +192,8 @@ export class AppComponent implements OnInit {
 
     this.updateScreenSize();
 
+    this.getWeatherForBari();
+
   }
   
   // Metodo per aggiornare la route corrente
@@ -279,6 +285,20 @@ export class AppComponent implements OnInit {
       document.documentElement.setAttribute('data-theme', 'light');
       localStorage.setItem('theme', 'light');
     }
+  }
+
+  weatherData: any;
+
+  getWeatherForBari(): void {
+    this.weatherService.getWeatherByCity('Bari').subscribe(
+      data => {
+        this.weatherData = data;
+        console.log(this.weatherData); // Per debug
+      },
+      error => {
+        console.error('Errore nel recupero dei dati meteo:', error);
+      }
+    );
   }
 
 }
