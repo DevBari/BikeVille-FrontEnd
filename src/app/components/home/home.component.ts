@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 
 import AOS from 'aos';
+import { ScrollService } from '../../service/scroll/scroll-to-down.service';
 
 @Component({
   selector: 'app-home',
@@ -60,6 +61,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     AOS.init();
     this.startCarousel();
     this.startRev();
+
+    this.scrollService.scrollEvent$.subscribe(() => {
+      this.scrollToBottom();
+    });
   }
 
   ngOnDestroy() {
@@ -137,13 +142,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   setCurrentRev(index: number) {
-      // Clear the existing interval
+      // Clear intervallo
       clearInterval(this.viewId);
 
-      // Set the current slide
+      // Set slide corrente
       this.currentRev = index;
 
-      // Restart the carousel
+      // Restart carosello
       this.startRev();
   }
 
@@ -155,7 +160,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnUpdate(): void { this.updateScreenSize(); }
   
+  isLargeScreen: boolean = false;
   isTabletScreen: boolean = false;
+  isMobileScreen: boolean = false;
 
   @HostListener('window:resize', [])
 
@@ -165,7 +172,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private updateScreenSize(): void {
     const screenWidth = document.documentElement.clientWidth;
+    this.isLargeScreen = screenWidth < 1440;
     this.isTabletScreen = screenWidth <= 1024;
+    this.isMobileScreen = screenWidth < 425;
+  }
+
+  @ViewChild('Home') bottomElement!: ElementRef;
+
+  constructor(private scrollService: ScrollService) {}
+
+  scrollToBottom(): void {
+    this.bottomElement.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
 }

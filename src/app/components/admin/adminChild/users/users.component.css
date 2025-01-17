@@ -5,9 +5,14 @@
     align-items: center;
     width: 100%;
     padding: 1rem;
+    border-radius: 20px;
     box-sizing: border-box;
     flex: 1; /* Occupa lo spazio disponibile */
     overflow: hidden; /* Previene scrollbar esterne */
+
+    background-color: #ffae0095;
+
+    transition: all 0.3s ease-in-out;
 }
 
 /* Controlli della Paginazione */
@@ -39,7 +44,7 @@
 .users-table, .sales-orders-container {
     width: 100%;
     max-width: 1000px;
-    background-color: #ffffff;
+    background-color: var(--card);
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
@@ -73,7 +78,7 @@
 }
 
 .table-custom th {
-    background-color: #f2f2f2;
+    background-color: var(--secondary);
     font-weight: bold;
     position: sticky;
     top: 0;
@@ -102,15 +107,15 @@
 }
 
 .btn-delete:hover {
-    background-color: #f8d7da;
+    background-color: #ffae00a2;
 }
 
 .btn-view {
-    color: #0d6efd; /* Colore blu per visualizzazione */
+    color: #004ebd; /* Colore blu per visualizzazione */
 }
 
 .btn-view:hover {
-    background-color: #d1e7dd;
+    background-color: #ffae00a2;
 }
 
 .btn-close {
@@ -167,15 +172,15 @@
 }
 
 .table-wrapper::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--card);
     border-radius: 4px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
-    background: #c1c1c1;
+    background: var(--secondary);
     border-radius: 4px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb:hover {
-    background: #a8a8a8;
+    background: #885a37;
 }

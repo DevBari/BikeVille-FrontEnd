@@ -62,6 +62,7 @@ export class AppComponent implements OnInit {
 
   isXlScreen = window.innerWidth >= 1280; // Condizione per schermi XL
   isTabletScreen = window.innerWidth <= 799; 
+  isMobileScreen = window.innerWidth < 425;
 
   constructor(
     private router: Router, 
@@ -76,6 +77,7 @@ export class AppComponent implements OnInit {
         // Aggiungi un listener per aggiornare isXlScreen durante il ridimensionamento della finestra
         this.isXlScreen = window.innerWidth >= 1280;
         this.isTabletScreen = window.innerWidth <= 799;
+        this.isMobileScreen = window.innerWidth < 425;
       });
 
       this.router.events.subscribe((event) => {
@@ -124,6 +126,7 @@ export class AppComponent implements OnInit {
     const width = window.innerWidth;
     this.isXlScreen = width >= 1280;
     this.isTabletScreen = width <= 799;
+    this.isMobileScreen = width < 425;
   }
     
   logout() {
@@ -196,7 +199,7 @@ export class AppComponent implements OnInit {
   }
 
   ShowFooter(): boolean {
-    return !(this.currentRoute === '/login' || this.currentRoute.startsWith('/profile/'));
+    return !(this.currentRoute === 'login' || this.currentRoute.startsWith('profile/'));
   }
 
   toggleHamburger(): void {

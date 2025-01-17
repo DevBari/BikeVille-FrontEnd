@@ -36,6 +36,18 @@
     font-family: "contour-generator";
 }
 
+@media screen and (max-width: 767px) {
+    .category-title {
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .category-title {
+        font-size: 1.5rem;
+    }
+}
+
 /* Container Layout */
 .category-container {
     display: flex;
@@ -72,6 +84,14 @@
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--card-shadow);
+
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 424px) {
+    .filters {
+        width: 80%;
+    }
 }
 
 .accordion {
@@ -199,7 +219,7 @@
     flex: 3 1 600px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 1.8rem;
     justify-content: center;
 }
 

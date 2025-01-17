@@ -380,6 +380,13 @@ html {
   background-size: cover;
 }
 
+.admin-sidebar {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .user-page {
   background-image: url("assets/images/user-background-pattern.png");
   background-position: center;
@@ -389,6 +396,13 @@ html {
 
 .admin-banner {
   background-image: url("assets/images/admin-banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-container {
+  background-image: url("assets/images/Sale\ Banner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

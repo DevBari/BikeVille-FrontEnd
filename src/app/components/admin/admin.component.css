@@ -84,6 +84,8 @@
     border: none;
     cursor: pointer;
     font-size: 1.5rem;
+
+    color: var(--primary-text);
 }
 
 /* Contenuto della Sidebar */
@@ -99,14 +101,15 @@
     align-items: center;
     padding: 0.75rem 1rem;
     text-decoration: none;
-    color: #343a40;
-    border-radius: 4px;
-    transition: background-color 0.2s ease-in-out;
+    color: var(--primary-text);
+    border-radius: 20px;
+    transition: background-color 0.3s ease-in-out;
     margin-bottom: 0.5rem;
 }
 
 .admin-sidebar-button:hover {
-    background-color: #e9ecef;
+    background-color: #ce8c0856;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .admin-sidebar-button i {

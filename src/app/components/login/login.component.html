@@ -6,7 +6,7 @@
       
       <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
 
-            <h1>Crea Account</h1>
+            <h1>Crea Account ⛓️‍💥</h1>
             <span>Oppure usa la tua Email per registrati</span>
             <div class="input-container" [ngClass]="{'has-error': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
             <input formControlName="firstName" type="text" placeholder="Nome">
@@ -56,12 +56,12 @@
               <small>Le password non coincidono</small>
             </div>
           </div>
-            <button type="submit">Registrati</button>
+            <button type="submit">Registrati ⛓️‍💥</button>
         </form>
     </div>
     <div class="form-container sign-in" *ngIf="showLogin">
         <form [formGroup]="loginForm" (ngSubmit)="runLogin()">
-            <h1>Accedi</h1>
+            <h1>Accedi 🔗</h1>
             <span>Utilizza email e password per accedere</span>
             <div class="input-container" [ngClass]="{'has-error':loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
             <input formControlName="email" type="email" placeholder="Email" required>
@@ -92,7 +92,7 @@
             <div class="toggle-panel toggle-right">
                 <h2>Hey, Benvenuto!</h2>
                 <p>Sei nuovo? Crea il tuo account</p>
-                <button class="hidden" (click)="showRegisterForm()">Registrati</button>
+                <button class="hidden" (click)="showRegisterForm()">Registrati ⛓️‍💥</button>
             </div>
         </div>
     </div>

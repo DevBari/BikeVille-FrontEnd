@@ -5,9 +5,9 @@
   (routeChanged)="onRouteChange($event)">
 </app-navbar>
 
-<app-header *ngIf="currentRoute === 'home' || currentRoute === 'home#home'"></app-header>
+<app-header *ngIf="currentRoute === 'home'"></app-header>
 
-<!-- Route outlet for dynamic content -->
+<!-- Route outlet -->
 <router-outlet></router-outlet>
 
   <!-- Finestra del Carrello - Spostato fuori dal router-outlet -->
@@ -91,6 +91,12 @@
     <div class="overlay-background" (click)="toggleHamburger()"></div>
 
     <ul class="hamburger-container">
+
+      <button class="close-button" (click)="toggleHamburger()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" width="20" height="20">
+          <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.19 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.19 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/>
+        </svg>
+      </button>
 
       <li class="nav__item">
         <button class="nav__link nav__button" aria-label="Espandi" aria-expanded="false">
@@ -214,5 +220,5 @@
 
   </div>
 
-<!-- footer component here -->
+<!-- footer component -->
 <app-footer *ngIf="ShowFooter()"></app-footer>
