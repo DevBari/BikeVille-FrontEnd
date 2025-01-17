@@ -387,6 +387,13 @@ html {
   background-size: cover;
 }
 
+.user-orders {
+  background-image: url("assets/images/orders.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .user-page {
   background-image: url("assets/images/user-background-pattern.png");
   background-position: center;
