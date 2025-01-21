@@ -1,0 +1,228 @@
+/* Container Principale */
+.products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--card);
+
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Gruppo di Bottoni */
+  .products-button-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .products-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .products-btn.add-btn {
+    background-color: var(--secondary);
+    color: var(--text-primary);
+  }
+  
+  .products-btn.add-btn:hover {
+    background-color: #c68803;
+  }
+  
+  .products-btn.list-btn {
+    background-color: #004ebd;
+    color: #fff;
+  }
+  
+  .products-btn.list-btn:hover {
+    background-color: #0070d9;
+  }
+  
+  /* Contenitore del Form */
+  .products-form-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--card);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .products-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .products-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--shades);
+  }
+  
+  .products-form-fields {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .products-form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 45%;
+  }
+  
+  .products-form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555555;
+  }
+  
+  .products-form-group input,
+  .products-form-group select {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .products-form-group.products-invalid input,
+  .products-form-group.products-invalid select {
+    border-color: #dc3545;
+  }
+  
+  .products-error-messages {
+    margin-top: 5px;
+    color: #dc3545;
+    font-size: 14px;
+  }
+  
+  .products-submit-btn {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .products-submit-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .products-submit-btn:not(:disabled):hover {
+    background-color: #0056b3;
+  }
+  
+  /* Contenitore della Tabella */
+  .products-table-container {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 70vh;
+    overflow-x: scroll;
+    overflow-y: scroll;
+  }
+  
+  .products-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .products-table thead {
+    background-color: #343a40;
+    color: white;
+  }
+  
+  .products-table th,
+  .products-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .products-table tr:nth-child(even) {
+    background-color: var(--shades);
+  }
+  
+  .products-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .products-edit-btn,
+  .products-delete-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .products-edit-btn {
+    background-color: #ffc107;
+    color: #ffffff;
+  }
+  
+  .products-edit-btn:hover {
+    background-color: #e0a800;
+  }
+  
+  .products-delete-btn {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+  
+  .products-delete-btn:hover {
+    background-color: #c82333;
+  }
+  
+
+  /* Bottone di Chiusura */
+.close-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.close-btn:hover {
+  background-color: #c82333;
+}
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .products-form-group {
+      flex: 1 1 100%;
+    }
+    
+    .products-button-group {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .products-btn {
+      width: 100%;
+    }
+  }

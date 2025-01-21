@@ -1,0 +1,46 @@
+<section class="admin-page">
+
+    <div class="admin-banner"></div>
+
+    <hr style="width: 100%; height: 5px; background-color: #f1683a; margin: 0; border: none;">
+
+    <div class="admin-container">
+    
+        <div id="admin-sidebar" class="admin-sidebar" [class.closed]="isClose">
+
+            <div class="admin-sidebar-header">
+
+                <span class="admin-sidebar-title">Admin HUB 👨🏽‍💻</span>
+
+                <button class="toggle-button" (click)="toggleNav()" aria-label="Toggle Sidebar">
+                    <i class="fa-solid" [ngClass]="isClose ? 'fa-plus' : 'fa-minus'"></i>
+                </button>
+
+            </div>
+
+            <div class="admin-sidebar-content">
+                <a [routerLink]="['/administration', authUser?.emailAddress, 'users']" class="admin-sidebar-button">
+                    <i class="fas fa-users"></i><span>Customers</span>
+                </a>
+                <a [routerLink]="['/administration', authUser?.emailAddress, 'products']" class="admin-sidebar-button">
+                    <i class="fa-solid fa-bag-shopping"></i><span>Prodotti</span>
+                </a>
+            </div>
+
+        </div>
+    
+        <!-- Sezione Principale -->
+        <div class="admin-main-section" [class.expanded]="isClose">
+
+            <div class="admin-content-container">
+
+                <h1 style="font-family: 'Inter-Bold';">Admin Hub 👨🏽‍💻</h1>
+                <router-outlet></router-outlet>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

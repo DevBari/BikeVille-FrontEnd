@@ -1,3 +1,6 @@
+@import url('@fortawesome/fontawesome-free/css/all.min.css');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 /* Font Styles */
 @font-face {
 
@@ -32,43 +35,125 @@
   --background: #f5f5f5;
   --primary: #004ebd;
   --secondary: #ffb000;
+  --about: #fff;
   --shades: rgba(238, 238, 238, 1);
-  --card: #ffffff;
+  --card-shadow: linear-gradient(to bottom left, #e1eeef, #ffffff);
+  --card: #fff;
   --border: #e0e0e0;
+  --box-shadow: 0px 0px 10px 1px #eee;
   --table-header: #f0f0f0;
   --primary-text: #000000;
-  --secondary-text: #666666;
+  --secondary-text: #272727;
+  --third-text: #00a6a2;
+
+  --pattern-bike: url("assets/images/pattern-bike.svg");
+
+  --sun-color: #fff; /* Giallo per il sole */
+  --moon-color: #ffb000; /* Blu per la luna */
+
+  --blur-background: rgba(255, 255, 255, 0.5);
+
+}
+
+[data-theme="dark"] .sunMoon {
+
+  fill: var(--moon-color);
+
+}
+
+[data-theme="light"] .sunMoon {
+
+  fill: var(--sun-color);
 
 }
 
 /* Dark Theme */
 [data-theme="dark"] {
+
   --background: #212121;
-  --primary: #1a73e8;
-  --secondary: #fbbc04;
+  --primary: #004ebd;
+  --secondary: #ffb000;
+  --about: #ffae00ca;
   --shades: rgba(40, 40, 40, 1);
-  --card: #181818;
+  --card-shadow: linear-gradient(to bottom left, #2b2a2a, #1e1d1d);
+  --card: #2d2d2d;
   --border: #212121;
+  --box-shadow: 0px 0px 30px 1px  rgba(71, 70, 70, 0.167);
   --table-header: #212121;
   --primary-text: #f6f6f6;
   --secondary-text: #9ca3af;
+  --third-text: #105b59;
+
+  --pattern-bike: url("assets/images/pattern-bike.svg");
+
+  --blur-background: rgba(60, 60, 60, 0.5);
+
+}
+
+/* Smartphone (fino a 480px) */
+@media (max-width: 480px) {
+  body {
+      font-size: 14px; /* Dimensione del font per smartphone */
+  }
+  .container {
+      width: 100%; /* Contenitore a larghezza piena */
+      padding: 10px; /* Padding per il contenitore */
+  }
+}
+
+/* Smartphone (in orizzontale) e piccoli tablet (fino a 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  body {
+      font-size: 15px; /* Dimensione del font per smartphone in orizzontale e tablet */
+  }
+  .container {
+      width: 90%; /* Contenitore con larghezza del 90% */
+      margin: auto; /* Centra il contenitore */
+  }
+}
+
+/* Tablet (fino a 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+      font-size: 16px; /* Dimensione del font per tablet */
+  }
+  .container {
+      width: 80%; /* Contenitore con larghezza dell'80% */
+  }
+}
+
+/* Laptop e Desktop (oltre 1024px) */
+@media (min-width: 1025px) {
+  body {
+      font-size: 18px; /* Dimensione del font per laptop e desktop */
+  }
+  .container {
+      width: 70%; /* Contenitore con larghezza del 70% */
+  }
 }
 
 /* General Scrollbar Setup */
 body {
 
   overflow-y: scroll;
-  height: 100%;
+  overflow-x: hidden;
+  min-height: 100svh;
+  width: 100%;
+  max-width: 100%;
   margin: 0;
   background-color: var(--background);
   color: var(--primary-text);
+
+  font-family: 'inter-regular', 'inter-bold';
+
+  transition: background-color 0.4s ease-in-out !important;
 
 }
 
 /* Scrollbar container */
 body::-webkit-scrollbar {
 
-  width: 15px; /* Dimensione della scrollbar */
+  width: 12px; /* Dimensione della scrollbar */
 
 }
 
@@ -76,6 +161,7 @@ body::-webkit-scrollbar {
 body::-webkit-scrollbar-track {
 
   background: rgb(175, 212, 255);
+
   background: linear-gradient(
 
     180deg,
@@ -90,7 +176,7 @@ body::-webkit-scrollbar-track {
 }
 
 /* Scrollbar thumb */
-body::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb{
 
   background: linear-gradient(
 
@@ -111,7 +197,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* Hover effect */
-body::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover{
 
   background: linear-gradient(
 
@@ -128,7 +214,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* Active (dragging) effect */
-body::-webkit-scrollbar-thumb:active {
+body::-webkit-scrollbar-thumb:active{
 
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(131, 75, 1, 0.5); /* Effetto più marcato */
@@ -137,7 +223,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 /* Track Decorations */
-body::-webkit-scrollbar-track-piece {
+body::-webkit-scrollbar-track-piece{
 
   background: rgb(190, 220, 255);
   background: linear-gradient(
@@ -150,6 +236,42 @@ body::-webkit-scrollbar-track-piece {
 
 }
 
+.cart-container::-webkit-scrollbar,
+.accordion-content::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.cart-container::-webkit-scrollbar-track,
+.accordion-content::-webkit-scrollbar  {
+  background: var(--shades);
+  border-radius: 20px;  
+}
+
+.cart-container::-webkit-scrollbar-thumb,
+.accordion-content::-webkit-scrollbar  {
+  background: linear-gradient(
+
+    to right,
+    #ffb000,
+    #ff9500
+
+  );
+
+  border-radius: 20px; 
+}
+
+.cart-container::-webkit-scrollbar-thumb:hover,
+.accordion-content::-webkit-scrollbar  {
+  background: linear-gradient(
+
+    to right,
+    #ff9500,
+    #ffb000
+
+  ); 
+  cursor: grab;
+}
+
 a {
 
   text-decoration: none;
@@ -158,9 +280,201 @@ a {
 
 }
 
+b {
+  font-family: "inter-bold";
+}
+
 html {
 
 	scroll-behavior:smooth; 
   transition: 3s linear;
-  
+  min-height: 100svh;
+
+}
+
+.home-storytelling{
+
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.home-about-us {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  box-shadow: 0 0 8px #999999;
+  color: #FFFFFF;
+}
+
+.body-login {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cart-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hamburger-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.toggle-panel {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-info-container {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-password-action {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-orders{
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-profile-container{
+  background-image: url("assets/images/profile-container-pattern.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.category-menu {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dropdown-menu {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.admin-sidebar {
+  background-image: var(--pattern-bike);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-orders {
+  background-image: url("assets/images/orders.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.user-page {
+  background-image: url("assets/images/user-background-pattern.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.admin-banner {
+  background-image: url("assets/images/admin-banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-container {
+  background-image: url("assets/images/Sale\ Banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.footer_bikes {
+  background-image: url("assets/images/bg-bike.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Posizionamento delle Notifiche */
+.toast-top-right {
+  top: 12px;
+  right: 12px;
+}
+
+/* Tipi di Notifiche: solo success ed error */
+.toast-success {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA1MTIgNTEyJyB3aWR0aD0nNTEyJyBoZWlnaHQ9JzUxMic+PHBhdGggZmlsbD0ncmdiKDI1NSwyNTUsMjU1KScgZD0nTTE3My44OTggNDM5LjQwNGwtMTY2LjQtMTY2LjRjLTkuOTk3LTkuOTk3LTkuOTk3LTI2LjIwNiAwLTM2LjIwNGwzNi4yMDMtMzYuMjA0YzkuOTk3LTkuOTk4IDI2LjIwNy05Ljk5OCAzNi4yMDQgMEwxOTIgMzEyLjY5IDQzMi4wOTUgNzIuNTk2YzkuOTk3LTkuOTk3IDI2LjIwNy05Ljk5NyAzNi4yMDQgMGwzNi4yMDMgMzYuMjA0YzkuOTk3IDkuOTk3IDkuOTk3IDI2LjIwNiAwIDM2LjIwNGwtMjk0LjQgMjk0LjQwMWMtOS45OTggOS45OTctMjYuMjA3IDkuOTk3LTM2LjIwNC0uMDAxeicvPjwvc3ZnPg=="); /* Icona check */
+  background-color: #51A351;
+}
+
+.toast-error {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA1MTIgNTEyJyB3aWR0aD0nNTEyJyBoZWlnaHQ9JzUxMic+PHBhdGggZmlsbD0ncmdiKDI1NSwyNTUsMjU1KScgZD0nTTI1NiA4QzExOSA4IDggMTE5IDggMjU2czExMSAyNDggMjQ4IDI0OCAyNDgtMTExIDI0OC0yNDhTMzkzIDggMjU2IDh6bTEyMS42IDMxMy4xYzQuNyA0LjcgNC43IDEyLjMgMCAxN0wzMzggMzc3LjZjLTQuNyA0LjctMTIuMyA0LjctMTcgMEwyNTYgMzEybC02NS4xIDY1LjZjLTQuNyA0LjctMTIuMyA0LjctMTcgMEwxMzQuNCAzMzhjLTQuNy00LjctNC43LTEyLjMgMC0xN2w2NS42LTY1LTY1LjYtNjUuMWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDM5LjYtMzkuNmM0LjctNC43IDEyLjMtNC43IDE3IDBsNjUgNjUuNyA2NS4xLTY1LjZjNC43LTQuNyAxMi4zLTQuNyAxNyAwbDM5LjYgMzkuNmM0LjcgNC43IDQuNyAxMi4zIDAgMTdMMzEyIDI1Nmw2NS42IDY1LjF6Jy8+PC9zdmc+"); /* Icona times-circle */
+  background-color: #BD362F;
+}
+
+/* Pulsanti di Chiusura */
+button.toast-close-button {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+
+/* Container delle Notifiche */
+.toast-container {
+  pointer-events: none;
+  position: fixed;
+  z-index: 999999;
+}
+
+.toast-container .ngx-toastr {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  width: 15em;
+  border-radius: 3px;
+  background-position: 15px center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  box-shadow: 0 0 12px #999999;
+}
+
+/* Responsive Design: mantenere solo le media queries necessarie */
+@media all and (max-width: 480px) {
+  .toast-container .ngx-toastr {
+    padding: 8px 8px 8px 50px;
+    width: 18em;
+  }
+  .toast-container .toast-close-button {
+    right: -0.2em;
+    top: -0.2em;
+  }
 }

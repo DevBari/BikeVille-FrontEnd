@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                <mask id="carousel-bullet-mask-429">
+                  <circle cx="10" cy="10" r="9" stroke-width="2" stroke="#ffffff" fill="none"/>
+                </mask>
+                <g mask="url(#carousel-bullet-mask-429)">
+                  <circle class="bullet-bg" cx="10" cy="10" r="10" fill="#ffffff"/>
+                  <circle class="bullet-progress-circle" cx="10" cy="10" r="9" stroke-width="3" fill="none" style="stroke-dashoffset: 0px;"/>
+                </g>
+              </svg>

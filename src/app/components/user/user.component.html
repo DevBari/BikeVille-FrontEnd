@@ -1,0 +1,70 @@
+<section class="user-page">
+
+  <div class="user-profile-container">
+
+    <div class="user-info-container">
+
+      <div class="profile-image">
+        <img src="assets/images/profile-pic1.svg" alt="Admin" class="profile-pic">
+      </div>
+
+      <div class="profile-info">
+
+        <div class="profile-name">
+          <h1>Profilo Biker 🚴🏽: </h1>
+        </div>
+
+        <div class="profile-aim">
+          <h4>{{authUser.firstName}} {{authUser.lastName}}</h4>
+          <p class="role">{{authUser.role}}</p>
+        </div>
+
+      </div>
+  
+      <div class="profile-details">
+    
+        <div class="profile-card">
+          <h6>Nome ✒️</h6>
+          <p>{{authUser.firstName}} {{authUser.lastName}}</p>
+        </div>
+    
+        <div class="profile-card">
+          <h6>Email 📧</h6>
+          <p>{{authUser.emailAddress}}</p>
+        </div>
+    
+        <div class="profile-card">
+          <h6>Cell 📞</h6>
+          <p>{{authUser.phone}}</p>
+        </div>
+    
+        <div class="profile-card">
+          <h6>Ruolo 👨‍💼</h6>
+          <p>{{authUser.role}}</p>
+        </div>
+    
+      </div>
+
+    </div>
+
+    <div class="user-action-container">
+  
+      <div class="user-password-action">
+        <button class="button" *ngIf="!isResetPasswordRoute()" (click)="toggleResetPasswordForm()">
+          <span class="button-content">Reset Password</span>
+        </button>
+
+        <router-outlet class="router-outlet"></router-outlet>
+    
+      </div>
+
+      <div class="user-orders">
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<hr style="width: 100%; height: 5px; background-color: #f1683a18; margin: 0; border: none;">

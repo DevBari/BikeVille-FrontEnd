@@ -1,0 +1,308 @@
+<div class="products-container">
+  
+    <!-- Sezione Bottoni Aggiungi/List -->
+    <div class="products-button-group">
+      <button class="products-btn add-btn" (click)="showAddProducts = true">Aggiungi Prodotto</button>
+      <button class="products-btn list-btn" (click)="showAddProducts = false">Lista Prodotti</button>
+    </div>
+    
+    <!-- Form per Aggiungere un Prodotto -->
+    <div *ngIf="showAddProducts" class="products-form-container">
+      <form class="products-form" [formGroup]="addProductsForm" (ngSubmit)="addProductToDB()">
+        <h2 class="products-form-title">Aggiungi Prodotto</h2>
+        <div class="products-form-fields">
+          
+          <!-- Nome Prodotto -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('name')?.invalid && addProductsForm.get('name')?.touched}">
+            <label for="name">Nome</label>
+            <input id="name" type="text" formControlName="name" placeholder="Nome">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('name')?.hasError('required') && addProductsForm.get('name')?.touched">Nome è richiesto.</span>
+              <span *ngIf="addProductsForm.get('name')?.hasError('minlength') && addProductsForm.get('name')?.touched">Il nome deve avere almeno 3 caratteri.</span>
+              <span *ngIf="addProductsForm.get('name')?.hasError('maxlength') && addProductsForm.get('name')?.touched">Il nome non può superare i 50 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Numero Prodotto -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('productNumber')?.invalid && addProductsForm.get('productNumber')?.touched}">
+            <label for="productNumber">Numero Prodotto</label>
+            <input id="productNumber" type="text" formControlName="productNumber" placeholder="Numero Prodotto">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('productNumber')?.hasError('required') && addProductsForm.get('productNumber')?.touched">Numero Prodotto è richiesto.</span>
+              <span *ngIf="addProductsForm.get('productNumber')?.hasError('minlength') && addProductsForm.get('productNumber')?.touched">Il numero deve avere almeno 4 caratteri.</span>
+              <span *ngIf="addProductsForm.get('productNumber')?.hasError('maxlength') && addProductsForm.get('productNumber')?.touched">Il numero non può superare i 10 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Colore -->
+          <div class="products-form-group">
+            <label for="color">Colore</label>
+            <select id="color" formControlName="color">
+              <option value="Nero">Nero</option>
+              <option value="Rosso">Rosso</option>
+              <option value="Blu">Blu</option>
+              <option value="Verde">Verde</option>
+              <option value="Viola">Viola</option>
+              <option value="Giallo">Giallo</option>
+            </select>
+          </div>
+          
+          <!-- Costo Standard -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('standardCost')?.invalid && addProductsForm.get('standardCost')?.touched}">
+            <label for="standardCost">Costo Standard</label>
+            <input id="standardCost" type="number" formControlName="standardCost" placeholder="Costo Standard">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('standardCost')?.hasError('required') && addProductsForm.get('standardCost')?.touched">Costo Standard è richiesto.</span>
+              <span *ngIf="addProductsForm.get('standardCost')?.hasError('min') && addProductsForm.get('standardCost')?.touched">Il costo deve essere almeno 0.</span>
+            </div>
+          </div>
+          
+          <!-- Prezzo di Lista -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('listPrice')?.invalid && addProductsForm.get('listPrice')?.touched}">
+            <label for="listPrice">Prezzo di Lista</label>
+            <input id="listPrice" type="number" formControlName="listPrice" placeholder="Prezzo di Lista">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('listPrice')?.hasError('required') && addProductsForm.get('listPrice')?.touched">Prezzo di Lista è richiesto.</span>
+              <span *ngIf="addProductsForm.get('listPrice')?.hasError('min') && addProductsForm.get('listPrice')?.touched">Il prezzo deve essere almeno 0.</span>
+            </div>
+          </div>
+          
+          <!-- Dimensione -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('size')?.invalid && addProductsForm.get('size')?.touched}">
+            <label for="size">Dimensione</label>
+            <input id="size" type="text" formControlName="size" placeholder="Dimensione">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('size')?.hasError('minlength') && addProductsForm.get('size')?.touched">La dimensione deve avere almeno 1 carattere.</span>
+              <span *ngIf="addProductsForm.get('size')?.hasError('maxlength') && addProductsForm.get('size')?.touched">La dimensione non può superare i 2 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Peso -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('weight')?.invalid && addProductsForm.get('weight')?.touched}">
+            <label for="weight">Peso</label>
+            <input id="weight" type="number" formControlName="weight" placeholder="Peso">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('weight')?.hasError('min') && addProductsForm.get('weight')?.touched">Il peso deve essere almeno 0.</span>
+              <span *ngIf="addProductsForm.get('weight')?.hasError('max') && addProductsForm.get('weight')?.touched">Il peso non può superare 1000.</span>
+            </div>
+          </div>
+          
+          <!-- Categoria -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('productCategoryId')?.invalid && addProductsForm.get('productCategoryId')?.touched}">
+            <label for="productCategoryId">Categoria</label>
+            <select id="productCategoryId" formControlName="productCategoryId">
+              <option *ngFor="let category of categories" [value]="category.productCategoryId">{{category.name}}</option>
+            </select>
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('productCategoryId')?.hasError('required') && addProductsForm.get('productCategoryId')?.touched">Categoria è richiesta.</span>
+            </div>
+          </div>
+          
+          <!-- Modello -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('productModelId')?.invalid && addProductsForm.get('productModelId')?.touched}">
+            <label for="productModelId">Modello</label>
+            <select id="productModelId" formControlName="productModelId">
+              <option *ngFor="let model of models" [value]="model.productModelId">{{model.name}}</option>
+            </select>
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('productModelId')?.hasError('required') && addProductsForm.get('productModelId')?.touched">Modello è richiesto.</span>
+            </div>
+          </div>
+          
+          <!-- Data Inizio Vendita -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': addProductsForm.get('sellStartDate')?.invalid && addProductsForm.get('sellStartDate')?.touched}">
+            <label for="sellStartDate">Data Inizio Vendita</label>
+            <input id="sellStartDate" type="datetime-local" formControlName="sellStartDate">
+            <div class="products-error-messages">
+              <span *ngIf="addProductsForm.get('sellStartDate')?.hasError('required') && addProductsForm.get('sellStartDate')?.touched">Data Inizio Vendita è richiesta.</span>
+            </div>
+          </div>
+          
+          <!-- Data Fine Vendita -->
+          <div class="products-form-group">
+            <label for="sellEndDate">Data Fine Vendita</label>
+            <input id="sellEndDate" type="datetime-local" formControlName="sellEndDate">
+          </div>
+        
+        </div>
+        
+        <!-- Bottone di Invio -->
+        <button class="products-submit-btn" type="submit" [disabled]="addProductsForm.invalid">Aggiungi Prodotto</button>
+      </form>
+    </div>
+    
+    <!-- Lista dei Prodotti -->
+    <div *ngIf="!showAddProducts" class="products-table-container">
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th>ID Prodotto</th>
+            <th>Nome</th>
+            <th>Numero Prodotto</th>
+            <th>Colore</th>
+            <th>Costo Standard</th>
+            <th>Prezzo di Lista</th>
+            <th>Dimensione</th>
+            <th>Peso</th>
+            <th>ID Categoria</th>
+            <th>ID Modello</th>
+            <th>Data Inizio Vendita</th>
+            <th>Azioni</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{product.productId}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.productNumber}}</td>
+            <td>{{product.color || 'N/A'}}</td>
+            <td>{{product.standardCost | currency}}</td>
+            <td>{{product.listPrice | currency}}</td>
+            <td>{{product.size || 'N/A'}}</td>
+            <td>{{product.weight || 'N/A'}}</td>
+            <td>{{product.productCategoryId}}</td>
+            <td>{{product.productModelId}}</td>
+            <td>{{product.sellStartDate | date:'short'}}</td>
+            <td class="products-action-buttons">
+              <button class="products-edit-btn" (click)="loadProductsInfo(product)">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button class="products-delete-btn" (click)="deleteProduct(product.productId)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Form per Aggiornare un Prodotto -->
+    <div *ngIf="showUpdateProducts" class="products-form-container">
+      <button class="products-btn close-btn" (click)="showUpdateProducts = false">Chiudi</button>
+      <form class="products-form" [formGroup]="updateProductsForm" (ngSubmit)="runUpdateProduct()">
+        <h2 class="products-form-title">Aggiorna Prodotto</h2>
+        <div class="products-form-fields">
+          
+          <!-- ID Prodotto (Nascondi) -->
+          <input type="hidden" formControlName="productId">
+          
+          <!-- Nome Prodotto -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('name')?.invalid && updateProductsForm.get('name')?.touched}">
+            <label for="updateName">Nome</label>
+            <input id="updateName" type="text" formControlName="name" placeholder="Nome">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('name')?.hasError('required') && updateProductsForm.get('name')?.touched">Nome è richiesto.</span>
+              <span *ngIf="updateProductsForm.get('name')?.hasError('minlength') && updateProductsForm.get('name')?.touched">Il nome deve avere almeno 3 caratteri.</span>
+              <span *ngIf="updateProductsForm.get('name')?.hasError('maxlength') && updateProductsForm.get('name')?.touched">Il nome non può superare i 50 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Numero Prodotto -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('productNumber')?.invalid && updateProductsForm.get('productNumber')?.touched}">
+            <label for="updateProductNumber">Numero Prodotto</label>
+            <input id="updateProductNumber" type="text" formControlName="productNumber" placeholder="Numero Prodotto">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('productNumber')?.hasError('required') && updateProductsForm.get('productNumber')?.touched">Numero Prodotto è richiesto.</span>
+              <span *ngIf="updateProductsForm.get('productNumber')?.hasError('minlength') && updateProductsForm.get('productNumber')?.touched">Il numero deve avere almeno 4 caratteri.</span>
+              <span *ngIf="updateProductsForm.get('productNumber')?.hasError('maxlength') && updateProductsForm.get('productNumber')?.touched">Il numero non può superare i 10 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Colore -->
+          <div class="products-form-group">
+            <label for="updateColor">Colore</label>
+            <select id="updateColor" formControlName="color">
+              <option value="Nero">Nero</option>
+              <option value="Rosso">Rosso</option>
+              <option value="Blu">Blu</option>
+              <option value="Verde">Verde</option>
+              <option value="Viola">Viola</option>
+              <option value="Giallo">Giallo</option>
+            </select>
+          </div>
+          
+          <!-- Costo Standard -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('standardCost')?.invalid && updateProductsForm.get('standardCost')?.touched}">
+            <label for="updateStandardCost">Costo Standard</label>
+            <input id="updateStandardCost" type="number" formControlName="standardCost" placeholder="Costo Standard">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('standardCost')?.hasError('required') && updateProductsForm.get('standardCost')?.touched">Costo Standard è richiesto.</span>
+              <span *ngIf="updateProductsForm.get('standardCost')?.hasError('min') && updateProductsForm.get('standardCost')?.touched">Il costo deve essere almeno 0.</span>
+            </div>
+          </div>
+          
+          <!-- Prezzo di Lista -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('listPrice')?.invalid && updateProductsForm.get('listPrice')?.touched}">
+            <label for="updateListPrice">Prezzo di Lista</label>
+            <input id="updateListPrice" type="number" formControlName="listPrice" placeholder="Prezzo di Lista">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('listPrice')?.hasError('required') && updateProductsForm.get('listPrice')?.touched">Prezzo di Lista è richiesto.</span>
+              <span *ngIf="updateProductsForm.get('listPrice')?.hasError('min') && updateProductsForm.get('listPrice')?.touched">Il prezzo deve essere almeno 0.</span>
+            </div>
+          </div>
+          
+          <!-- Dimensione -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('size')?.invalid && updateProductsForm.get('size')?.touched}">
+            <label for="updateSize">Dimensione</label>
+            <input id="updateSize" type="text" formControlName="size" placeholder="Dimensione">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('size')?.hasError('minlength') && updateProductsForm.get('size')?.touched">La dimensione deve avere almeno 1 carattere.</span>
+              <span *ngIf="updateProductsForm.get('size')?.hasError('maxlength') && updateProductsForm.get('size')?.touched">La dimensione non può superare i 2 caratteri.</span>
+            </div>
+          </div>
+          
+          <!-- Peso -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('weight')?.invalid && updateProductsForm.get('weight')?.touched}">
+            <label for="updateWeight">Peso</label>
+            <input id="updateWeight" type="number" formControlName="weight" placeholder="Peso">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('weight')?.hasError('min') && updateProductsForm.get('weight')?.touched">Il peso deve essere almeno 0.</span>
+              <span *ngIf="updateProductsForm.get('weight')?.hasError('max') && updateProductsForm.get('weight')?.touched">Il peso non può superare 1000.</span>
+            </div>
+          </div>
+          
+          <!-- Categoria -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('productCategoryId')?.invalid && updateProductsForm.get('productCategoryId')?.touched}">
+            <label for="updateProductCategoryId">Categoria</label>
+            <select id="updateProductCategoryId" formControlName="productCategoryId">
+              <option *ngFor="let category of categories" [value]="category.productCategoryId">{{category.name}}</option>
+            </select>
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('productCategoryId')?.hasError('required') && updateProductsForm.get('productCategoryId')?.touched">Categoria è richiesta.</span>
+            </div>
+          </div>
+          
+          <!-- Modello -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('productModelId')?.invalid && updateProductsForm.get('productModelId')?.touched}">
+            <label for="updateProductModelId">Modello</label>
+            <select id="updateProductModelId" formControlName="productModelId">
+              <option *ngFor="let model of models" [value]="model.productModelId">{{model.name}}</option>
+            </select>
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('productModelId')?.hasError('required') && updateProductsForm.get('productModelId')?.touched">Modello è richiesto.</span>
+            </div>
+          </div>
+          
+          <!-- Data Inizio Vendita -->
+          <div class="products-form-group" [ngClass]="{'products-invalid': updateProductsForm.get('sellStartDate')?.invalid && updateProductsForm.get('sellStartDate')?.touched}">
+            <label for="updateSellStartDate">Data Inizio Vendita</label>
+            <input id="updateSellStartDate" type="datetime-local" formControlName="sellStartDate">
+            <div class="products-error-messages">
+              <span *ngIf="updateProductsForm.get('sellStartDate')?.hasError('required') && updateProductsForm.get('sellStartDate')?.touched">Data Inizio Vendita è richiesta.</span>
+            </div>
+          </div>
+          
+          <!-- Data Fine Vendita -->
+          <div class="products-form-group">
+            <label for="updateSellEndDate">Data Fine Vendita</label>
+            <input id="updateSellEndDate" type="datetime-local" formControlName="sellEndDate">
+          </div>
+        
+        </div>
+        
+        <!-- Bottone di Invio -->
+        <button class="products-submit-btn" type="submit" [disabled]="updateProductsForm.invalid">Aggiorna Prodotto</button>
+      </form>
+    </div>
+    
+  </div>
