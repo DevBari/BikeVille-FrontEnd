@@ -6,7 +6,6 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
-import { WeatherService } from './service/weather/weather.service';
 
 import { RouterModule } from '@angular/router';
 
@@ -74,7 +73,7 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2,
     private el: ElementRef,
     private authService: AuthService,
-    private weatherService: WeatherService
+   
   )
     {
       window.addEventListener('resize', () => {
@@ -192,8 +191,6 @@ export class AppComponent implements OnInit {
 
     this.updateScreenSize();
 
-    this.getWeatherForBari();
-
   }
   
   // Metodo per aggiornare la route corrente
@@ -287,18 +284,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  weatherData: any;
-
-  getWeatherForBari(): void {
-    this.weatherService.getWeatherByCity('Bari').subscribe(
-      data => {
-        this.weatherData = data;
-        console.log(this.weatherData); // Per debug
-      },
-      error => {
-        console.error('Errore nel recupero dei dati meteo:', error);
-      }
-    );
-  }
+  
+  
 
 }

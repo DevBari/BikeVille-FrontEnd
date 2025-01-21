@@ -8,19 +8,7 @@
 <app-header *ngIf="currentRoute === 'home'"></app-header>
 
 <!-- Route outlet -->
-<router-outlet> 
-  
-  <div *ngIf="weatherData">
-
-    <h1>Meteo a {{ weatherData.name }}</h1>
-    <p>Temperatura: {{ weatherData.main.temp }}°C</p>
-    <p>Descrizione: {{ weatherData.weather[0].description }}</p>
-    <p>Umidità: {{ weatherData.main.humidity }}%</p>
-    <p>Vento: {{ weatherData.wind.speed }} m/s</p>
-
-  </div>
-
-</router-outlet>
+<router-outlet></router-outlet>
 
   <!-- Finestra del Carrello - Spostato fuori dal router-outlet -->
   <div class="cart-overlay" [class.open]="isCartOpen">

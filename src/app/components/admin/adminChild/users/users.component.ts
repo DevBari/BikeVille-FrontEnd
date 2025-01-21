@@ -30,7 +30,7 @@ export class UsersComponent {
       if (data.$values && Array.isArray(data.$values)) {
         this.customers = data.$values.map((customer: any) => ({
           customerId: customer.customerId,
-          userId: customer.userId, // Assicurati che la proprietà sia corretta (userId vs userID)
+          userId: customer.userID, 
           firstName: customer.firstName,
           lastName: customer.lastName,
           companyName: customer.companyName,
